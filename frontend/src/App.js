@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Notification from 'react-notify-toast'
 
+import IntroParallax from './components/common/IntroParallax'
 import Home from './components/common/Home'
 import Navbar from './components/common/Navbar'
 import Register from './components/auth/Register'
@@ -26,23 +27,24 @@ const App = () => {
     getData()
   }, [])
 
-  <BrowserRouter>
-  <main>
-    <Notification />
-    <Navbar />
-    <Switch>
-      <Route exact path="/" component={Home} />
-      <Route path="/photos/new" component={} />
-      <Route path="/photos/:id" component={} />
-      <Route path="/photos" component={} />
-      <Route exact path="/profile/:id" component={Profile} />
-      <Route path="/register" component={Register} />
-      <Route path="/login" component={Login} />
-      <Route path="/*" component={ErrorPage} />
-    </Switch>
-  </main>
-  </BrowserRouter>
-
+  return (
+    <BrowserRouter>
+    <main>
+      <Notification />
+      <Navbar />
+      <Switch>
+        <Route exact path="/" component={IntroParallax} />
+        <Route path="/photos/new" component={} />
+        <Route path="/photos/:id" component={PhotoCard} />
+        <Route path="/photos" component={Home} />
+        <Route exact path="/profile/:id" component={Profile} />
+        <Route path="/register" component={Register} />
+        <Route path="/login" component={Login} />
+        <Route path="/*" component={ErrorPage} />
+      </Switch>
+    </main>
+    </BrowserRouter>
+  )
 }
 
 export default App
