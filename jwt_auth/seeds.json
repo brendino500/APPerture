@@ -1,0 +1,192 @@
+[
+{
+  "model": "jwt_auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$dbYpj2L4Xtyf$00PEp06yEL/OzgGk3ECwqikdp20/be/FvRuGc0dUqx0=",
+    "last_login": "2020-09-10T16:48:12.452Z",
+    "is_superuser": true,
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2020-09-10T16:48:04.329Z",
+    "email": "admin@email.com",
+    "profile_image": "",
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "jwt_auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pass",
+    "last_login": null,
+    "is_superuser": false,
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2020-09-10T16:50:55Z",
+    "email": "brendino@email.com",
+    "profile_image": "https://images.unsplash.com/photo-1596478259716-3a47ff0961de?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1352&q=80",
+    "username": "brendino",
+    "first_name": "B",
+    "last_name": "T",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "jwt_auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pass",
+    "last_login": null,
+    "is_superuser": false,
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2020-09-10T16:51:50Z",
+    "email": "julien@email.com",
+    "profile_image": "https://images.unsplash.com/photo-1533804786765-f30a3e73c33c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
+    "username": "juju",
+    "first_name": "J",
+    "last_name": "X",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "jwt_auth.user",
+  "pk": 4,
+  "fields": {
+    "password": "pass",
+    "last_login": null,
+    "is_superuser": false,
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2020-09-10T16:52:23Z",
+    "email": "klaus@email.com",
+    "profile_image": "https://images.unsplash.com/photo-1549150712-1d243024db80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80",
+    "username": "klaus",
+    "first_name": "K",
+    "last_name": "F",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "jwt_auth.user",
+  "pk": 5,
+  "fields": {
+    "password": "pass",
+    "last_login": null,
+    "is_superuser": false,
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2020-09-10T16:52:48Z",
+    "email": "beatrix@email.com",
+    "profile_image": "https://images.unsplash.com/photo-1551810815-401dd8f019ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
+    "username": "beatrix",
+    "first_name": "B",
+    "last_name": "H",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "jwt_auth.user",
+  "pk": 6,
+  "fields": {
+    "password": "pass",
+    "last_login": null,
+    "is_superuser": false,
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2020-09-10T16:53:13Z",
+    "email": "lukas@email.com",
+    "profile_image": "https://images.unsplash.com/photo-1591367337955-25cc06f27125?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
+    "username": "lukas",
+    "first_name": "L",
+    "last_name": "E",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "jwt_auth.user",
+  "pk": 7,
+  "fields": {
+    "password": "pass",
+    "last_login": null,
+    "is_superuser": false,
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2020-09-10T16:53:39Z",
+    "email": "anna@email.com",
+    "profile_image": "https://images.unsplash.com/photo-1544647927-8f3a5576190e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80",
+    "username": "anna",
+    "first_name": "A",
+    "last_name": "W",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "jwt_auth.user",
+  "pk": 8,
+  "fields": {
+    "password": "pass",
+    "last_login": null,
+    "is_superuser": false,
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2020-09-10T16:54:02Z",
+    "email": "olga@email.com",
+    "profile_image": "https://images.unsplash.com/photo-1534954553104-88cb75be7648?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    "username": "olga",
+    "first_name": "O",
+    "last_name": "K",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "jwt_auth.user",
+  "pk": 9,
+  "fields": {
+    "password": "pass",
+    "last_login": null,
+    "is_superuser": false,
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2020-09-10T16:54:28Z",
+    "email": "maria@email.com",
+    "profile_image": "https://images.unsplash.com/photo-1529408570047-e4414fb17e95?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=640&q=80",
+    "username": "maria",
+    "first_name": "M",
+    "last_name": "N",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "jwt_auth.user",
+  "pk": 10,
+  "fields": {
+    "password": "pass",
+    "last_login": null,
+    "is_superuser": false,
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2020-09-10T16:54:51Z",
+    "email": "yanna",
+    "profile_image": "https://images.unsplash.com/photo-1486074051793-e41332bf18fc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
+    "username": "yanna",
+    "first_name": "Y",
+    "last_name": "R",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
