@@ -3,11 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.30",
+    "@fortawesome/free-solid-svg-icons": "^5.14.0",
+    "@fortawesome/react-fontawesome": "^0.1.11",
     "eslint-plugin-react": "^7.20.6",
     "http-proxy-middleware": "^1.0.5",
+    "mapbox-gl": "^1.12.0",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-log-state": "^0.1.0",
+    "react-mapbox-gl": "^4.8.6",
+    "react-notify-toast": "^0.5.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3"
   },
   "scripts": {

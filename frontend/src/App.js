@@ -1,6 +1,7 @@
 import React from 'react'
 
 const App = () => {
+  
   React.useEffect(() => {
     const getData = async () => {
       const res = await fetch('/api/photos/')
@@ -9,6 +10,8 @@ const App = () => {
     }
     getData()
   }, [])
+
+
 
   return (
     <h1>Hello APPerture</h1>
