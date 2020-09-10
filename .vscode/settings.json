@@ -1,0 +1,11 @@
+{
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#cbb015",
+    "titleBar.activeBackground": "#cbb015",
+    "titleBar.inactiveBackground": "#cbb015",
+    "titleBar.inactiveForeground": "#4b4b4b",
+    "titleBar.activeForeground": "#4b4b4b",
+  },
+  "window.title": "B A C K E N D",
+  "python.pythonPath": "/usr/bin/python"
+}
