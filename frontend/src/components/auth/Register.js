@@ -25,8 +25,24 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
+const initialState = {
+  data: {
+    username: '',
+    email: '',
+    password: '',
+    passwordConfirmation: '',
+    firstName: '',
+    lastName: '',
+    profilePhoto: ''
+  },
+  errors: {}
+}
+
 export default function Register() {
   const classes = useStyles()
+
+  const [state, setState] = React.useState(initialState)
+  console.log(state)
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
