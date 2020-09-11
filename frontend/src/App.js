@@ -17,6 +17,8 @@ import PhotoMap from './components/photos/PhotoMap'
 
 import IntroParallax from './components/Parallax/IntroPage/Intro'
 
+import Button from '@material-ui/core/Button'
+
 const App = () => {
   
   React.useEffect(() => {
