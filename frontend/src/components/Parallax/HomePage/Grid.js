@@ -9,12 +9,12 @@ const styles = {
     position: 'relative',
     width: '100%',
     overflow: 'hidden',
-    minHeight: '100%',
+    minHeight: '100%'
   },
   cell: {
     position: 'absolute',
-    willChange: 'transform, width, height, opacity',
-  },
+    willChange: 'transform, width, height, opacity'
+  }
 }
 
 export default class Grid extends React.Component {
@@ -26,16 +26,18 @@ export default class Grid extends React.Component {
     margin: PropTypes.number,
     heights: PropTypes.oneOfType([PropTypes.func, PropTypes.number]),
     lockScroll: PropTypes.bool,
-    closeDelay: PropTypes.number,
+    closeDelay: PropTypes.number
   }
+
   static defaultProps = {
     occupySpace: true,
     columns: 3,
     margin: 0,
     heights: 400,
     lockScroll: false,
-    closeDelay: 0,
+    closeDelay: 0
   }
+
   state = { width: 0, height: 0, open: undefined, lastOpen: undefined }
   scrollOut = e => {
     if (!this.props.lockScroll) {
@@ -43,19 +45,21 @@ export default class Grid extends React.Component {
       this.clicked = false
     }
   }
+
   toggle = key =>
     this.setState(
       state => ({
         lastOpen: state.open,
-        open: state.open === key ? undefined : key,
+        open: state.open === key ? undefined : key
       }),
       () => (this.clicked = true)
     )
   resize = (width, height, props) =>
     this.setState({
       [width]: props.client.width,
-      [height]: props.client.height,
+      [height]: props.client.height
     })
+
   resizeOuter = props => this.resize('widthOuter', 'heightOuter', props)
   resizeInner = props => this.resize('width', 'height', props)
   update = ({ key, x, y, width, height }) => {
@@ -65,7 +69,7 @@ export default class Grid extends React.Component {
       x: open ? this.outerRef.scrollLeft : x,
       y: open ? this.outerRef.scrollTop : y,
       width: open ? this.state.width : width,
-      height: open ? this.state.heightOuter : height,
+      height: open ? this.state.heightOuter : height
     }
   }
 
@@ -74,7 +78,7 @@ export default class Grid extends React.Component {
   }
 
   render() {
-    let {
+    const {
       children,
       columns,
       margin,
@@ -88,19 +92,19 @@ export default class Grid extends React.Component {
       lockScroll,
       ...rest
     } = this.props
-    let { lastOpen, open, width } = this.state
+    const { lastOpen, open, width } = this.state
     let column = 0
-    let columnHeights = new Array(columns).fill(0)
+    const columnHeights = new Array(columns).fill(0)
 
-    let displayData = data.map((child, i) => {
-      let index = occupySpace
+    const displayData = data.map((child, i) => {
+      const index = occupySpace
         ? columnHeights.indexOf(Math.min(...columnHeights))
         : column++ % columns
-      let cellWidth = width / columns - margin / (1 - 1 / (columns + 1))
-      let left = cellWidth * index
-      let offset = (index + 1) * margin
-      let top = columnHeights[index] + margin
-      let height = typeof heights === 'function' ? heights(child) : heights
+      const cellWidth = width / columns - margin / (1 - 1 / (columns + 1))
+      const left = cellWidth * index
+      const offset = (index + 1) * margin
+      const top = columnHeights[index] + margin
+      const height = typeof heights === 'function' ? heights(child) : heights
       columnHeights[index] += height + margin
       return {
         x: margin ? left + offset : left,
@@ -108,11 +112,13 @@ export default class Grid extends React.Component {
         width: cellWidth,
         height,
         key: keys(child),
-        object: child,
+        object: child
       }
     })
+
     const overflow = lockScroll ? (open ? 'hidden' : 'auto') : 'auto'
     const height = Math.max(...columnHeights) + margin
+
     return (
       <Measure
         client
@@ -143,7 +149,7 @@ export default class Grid extends React.Component {
                     impl={impl}
                     config={{
                       ...config,
-                      delay: this.clicked && !open ? closeDelay : 0,
+                      delay: this.clicked && !open ? closeDelay : 0
                     }}>
                     {(c, i) => ({ opacity, x, y, width, height }) => (
                       <animated.div
@@ -157,7 +163,7 @@ export default class Grid extends React.Component {
                           transform: interpolate(
                             [x, y],
                             (x, y) => `translate3d(${x}px,${y}px, 0)`
-                          ),
+                          )
                         }}
                         children={children(c.object, open === c.key, () =>
                           this.toggle(c.key)

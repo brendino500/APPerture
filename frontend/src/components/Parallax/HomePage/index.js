@@ -49,7 +49,10 @@ class Cell extends Component {
 
 export default class App extends Component {
   state = { data }
+
+
   render() {
+    console.log(this.state.data)
     return (
       <Grid
         className="grid"
