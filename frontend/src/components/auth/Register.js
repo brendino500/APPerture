@@ -3,6 +3,8 @@ import TextField from '@material-ui/core/TextField'
 import { makeStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 
+import { registerUser } from ''
+
 const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
@@ -43,6 +45,19 @@ export default function Register() {
 
   const [state, setState] = React.useState(initialState)
   console.log(state)
+
+  // const handleSubmit = async e => {
+  //   e.preventDefault()
+  //   try {
+  //     const res = await registerUser(state)
+  //     console.log(res.data)
+  //     console.log(res)
+  //   } catch (err) {
+  //     console.log(state)
+  //     console.log(err)
+  //     setState({ errors: err.response.data.errors })
+  //   }
+  // }
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
