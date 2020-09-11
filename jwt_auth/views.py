@@ -50,3 +50,13 @@ class ProfileView(APIView):
         user = User.objects.get(pk=request.user.id)
         serialized_user = PopulatedUserSerializer(user)
         return Response(serialized_user.data)
+
+    def post(self, request, pk):
+        followed_user = User.objects.get(pk=pk)
+        followed_user.followers.add(request.user.id)
+        serialized_followed_user = PopulatedUserSerializer(followed_user)
+        return Response(serialized_followed_user.data)
+
+
+
+

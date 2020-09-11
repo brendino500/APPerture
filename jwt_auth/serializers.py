@@ -26,7 +26,8 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = '__all__'
 
+
 class PopulatedUserSerializer(UserSerializer):
     created_photo = PhotoSerializer(many=True)
     comments_made = CommentSerializer(many=True)
-
+    following = UserSerializer(many=True)
