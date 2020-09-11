@@ -17,8 +17,8 @@ export class Slug extends React.PureComponent {
         style: {
           willChange: 'opacity, transform',
           ...child.props.style,
-          ...styles,
-        },
+          ...styles
+        }
       }
       return <Component {...props} />
     })
@@ -55,8 +55,8 @@ export class Fade extends React.PureComponent {
         style: {
           willChange: 'opacity, transform',
           ...props.style,
-          ...styles,
-        },
+          ...styles
+        }
       }
       return <Component {...newProps} />
     }

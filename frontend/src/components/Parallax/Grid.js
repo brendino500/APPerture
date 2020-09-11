@@ -39,7 +39,7 @@ export default class Grid extends React.Component {
   }
 
   state = { width: 0, height: 0, open: undefined, lastOpen: undefined }
-  scrollOut = e => {
+  scrollOut = () => {
     if (!this.props.lockScroll) {
       this.state.open && this.toggle(undefined)
       this.clicked = false
@@ -97,15 +97,18 @@ export default class Grid extends React.Component {
     const columnHeights = new Array(columns).fill(0)
 
     const displayData = data.map((child, i) => {
+      
       const index = occupySpace
         ? columnHeights.indexOf(Math.min(...columnHeights))
         : column++ % columns
+
       const cellWidth = width / columns - margin / (1 - 1 / (columns + 1))
       const left = cellWidth * index
       const offset = (index + 1) * margin
       const top = columnHeights[index] + margin
       const height = typeof heights === 'function' ? heights(child) : heights
       columnHeights[index] += height + margin
+
       return {
         x: margin ? left + offset : left,
         y: top,
