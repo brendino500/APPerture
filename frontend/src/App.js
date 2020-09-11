@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Notification from 'react-notify-toast'
 
-import Home from './components/common/Home'
+import Index from './components/Parallax/HomePage/index'
 import Navbar from './components/common/Navbar'
 import Register from './components/auth/Register'
 import Login from './components/auth/Login'
@@ -37,7 +37,7 @@ const App = () => {
           <Route exact path="/" component={IntroParallax} />
           {/* <Route path="/photos/new" component={} /> */}
           <Route path="/photos/:id" component={PhotoCard} />
-          <Route path="/photos" component={Home} />
+          <Route path="/photos" component={Index} />
           <Route exact path="/profile/:id" component={Profile} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
