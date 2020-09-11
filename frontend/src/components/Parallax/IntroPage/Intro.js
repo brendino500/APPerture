@@ -31,19 +31,19 @@ const MyComponent = () => (
         <div style={insideStyles}>HTML inside the parallax</div>
       </div>
     </Parallax>
-    {/* <h1>| | |</h1> */}
+    <h1>| | |</h1>
     <Parallax bgImage={image2} strength={500}>
       <div style={{ height: 500 }}>
         <div style={insideStyles}>HTML inside the parallax</div>
       </div>
     </Parallax>
-    {/* <h1>| | |</h1> */}
+    <h1>| | |</h1>
     <Parallax bgImage={image3} strength={500}>
       <div style={{ height: 500 }}>
         <div style={insideStyles}>HTML inside the parallax</div>
       </div>
     </Parallax>
-    {/* <h1>| | |</h1> */}
+    <h1>| | |</h1>
     <Parallax
       bgImage={image4}
       strength={200}
@@ -68,7 +68,7 @@ const MyComponent = () => (
         <div style={insideStyles}>renderProp</div>
       </div>
     </Parallax>
-    {/* <h1>| | |</h1> */}
+    <h1>| | |</h1>
     <Parallax
       bgImage={image4}
       strength={200}
@@ -93,7 +93,7 @@ const MyComponent = () => (
         <div style={insideStyles}>renderProp</div>
       </div>
     </Parallax>
-    {/* <h1>| | |</h1> */}
+    <h1>| | |</h1>
     <Parallax
       bgImage={image4}
       strength={200}

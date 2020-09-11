@@ -19,15 +19,6 @@ import IntroParallax from './components/parallax/introPage/Intro'
 
 const App = () => {
   
-  // React.useEffect(() => {
-  //   const getData = async () => {
-  //     const res = await fetch('/api/photos/')
-  //     const data = await res.json()
-  //     console.log(data)
-  //   }
-  //   getData()
-  // }, [])
-
   return (
     <BrowserRouter>
       <main>
