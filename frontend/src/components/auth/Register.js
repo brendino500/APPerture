@@ -32,10 +32,10 @@ const initialState = {
     username: '',
     email: '',
     password: '',
-    passwordConfirmation: '',
-    firstName: '',
-    lastName: '',
-    profilePhoto: ''
+    password_confirmation: '',
+    first_name: '',
+    last_name: '',
+    profile_image: ''
   },
   errors: {}
 }
@@ -89,9 +89,9 @@ function Register() {
           style={{ margin: 8 }}
           fullWidth
           margin="normal"
-          name="firstName"
+          name="first_name"
           onChange={handleChange}
-          value={state.firstName}
+          value={state.first_name}
         />
         <TextField
           required
@@ -102,9 +102,9 @@ function Register() {
           style={{ margin: 8 }}
           fullWidth
           margin="normal"
-          name="lastName"
+          name="last_name"
           onChange={handleChange}
-          value={state.lastName}
+          value={state.last_name}
         />
         <TextField
           required
@@ -143,30 +143,50 @@ function Register() {
           style={{ margin: 8 }}
           fullWidth
           margin="normal"
-          name="passwordConfirmation"
+          name="password_confirmation"
           onChange={handleChange}
-          value={state.passwordConfirmation}
+          value={state.password_confirmation}
         />
-        <div className={classes.root}>
-          <input
-            accept="image/*"
-            className={classes.input}
-            id="contained-button-file"
-            multiple
-            type="file"
-          />
-          <label htmlFor="contained-button-file">
-            <Button variant="contained" color="primary" component="span">
-            Upload Profile Photo
-            </Button>
-          </label>
-          <Button 
-            type="submit"
-            variant="outlined"
-          >
-            Submit
+        {/* <TextField
+          required
+          id="outlined-password-confirm"
+          label="profile_image"
+          autoComplete="profile-image"
+          variant="outlined"
+          style={{ margin: 8 }}
+          fullWidth
+          margin="normal"
+          name="profile_image"
+          onChange={handleChange}
+          value={state.profile_image}
+        /> */}
+        <input
+          accept="image/*"
+          multiple
+          type="file"
+          required
+          id="outlined-required"
+          label="profile_image"
+          autoComplete="profile-image"
+          variant="outlined"
+          style={{ margin: 8 }}
+          fullWidth
+          margin="normal"
+          name="profile_image"
+          onChange={handleChange}
+          value={state.profile_image}
+        />
+        {/* <label htmlFor="contained-button-file">
+          <Button variant="contained" color="primary" component="span">
+          Upload
           </Button>
-        </div>
+        </label> */}
+        <Button 
+          type="submit"
+          variant="outlined"
+        >
+            Submit
+        </Button>
       </div>
     </form>
   )
