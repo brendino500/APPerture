@@ -3,7 +3,7 @@ import TextField from '@material-ui/core/TextField'
 import { makeStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 
-import { registerUser } from ''
+import { registerUser } from '../../lib/api'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,41 +40,33 @@ const initialState = {
   errors: {}
 }
 
-export default function Register() {
+function Register() {
   const classes = useStyles()
 
   const [state, setState] = React.useState(initialState)
-  console.log(state)
 
-  // const handleSubmit = async e => {
-  //   e.preventDefault()
-  //   try {
-  //     const res = await registerUser(state)
-  //     console.log(res.data)
-  //     console.log(res)
-  //   } catch (err) {
-  //     console.log(state)
-  //     console.log(err)
-  //     setState({ errors: err.response.data.errors })
-  //   }
-  // }
+  const handleChange = e => {
+    const data = { ...state.data, [e.target.name]: e.target.value }
+    console.log('Info check', state.data)
+    const errors = { ...state.errors, [e.target.name]: '' }
+    setState({ data, errors })
+  }
+
+  const handleSubmit = async e => {
+    e.preventDefault()
+    try {
+      console.log('REACHING THIS STAGE')
+      const res = await registerUser(state.data)
+      console.log('handle submit data ', res.data)
+    } catch (err) {
+      console.log(err)
+      setState({ errors: err.response.data.errors })
+    }
+  }
 
   return (
-    <form className={classes.root} noValidate autoComplete="off">
+    <form onSubmit={handleSubmit} className={classes.root} noValidate autoComplete="off">
       <div>
-        <TextField
-          id="outlined-full-width"
-          label="Label"
-          style={{ margin: 8 }}
-          placeholder="Placeholder"
-          helperText="Full width!"
-          fullWidth
-          margin="normal"
-          InputLabelProps={{
-            shrink: true
-          }}
-          variant="outlined"
-        />
         <TextField
           required
           id="outlined-required"
@@ -83,7 +75,10 @@ export default function Register() {
           fullWidth
           margin="normal"
           defaultValue="Username"
+          name="username"
           variant="outlined"
+          onChange={handleChange}
+          value={state.username}
         />
         <TextField
           required
@@ -94,6 +89,9 @@ export default function Register() {
           style={{ margin: 8 }}
           fullWidth
           margin="normal"
+          name="firstName"
+          onChange={handleChange}
+          value={state.firstName}
         />
         <TextField
           required
@@ -104,6 +102,9 @@ export default function Register() {
           style={{ margin: 8 }}
           fullWidth
           margin="normal"
+          name="lastName"
+          onChange={handleChange}
+          value={state.lastName}
         />
         <TextField
           required
@@ -114,6 +115,9 @@ export default function Register() {
           style={{ margin: 8 }}
           fullWidth
           margin="normal"
+          name="email"
+          onChange={handleChange}
+          value={state.email}
         />
         <TextField
           required
@@ -125,6 +129,9 @@ export default function Register() {
           style={{ margin: 8 }}
           fullWidth
           margin="normal"
+          name="password"
+          onChange={handleChange}
+          value={state.password}
         />
         <TextField
           required
@@ -136,6 +143,9 @@ export default function Register() {
           style={{ margin: 8 }}
           fullWidth
           margin="normal"
+          name="passwordConfirmation"
+          onChange={handleChange}
+          value={state.passwordConfirmation}
         />
         <div className={classes.root}>
           <input
@@ -150,9 +160,16 @@ export default function Register() {
             Upload Profile Photo
             </Button>
           </label>
-          <Button variant="outlined">Submit</Button>
+          <Button 
+            type="submit"
+            variant="outlined"
+          >
+            Submit
+          </Button>
         </div>
       </div>
     </form>
   )
 }
+
+export default Register

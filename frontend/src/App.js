@@ -27,10 +27,10 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={IntroParallax} />
           {/* <Route path="/photos/new" component={} /> */}
-          <Route path="/photos/:id" component={PhotoCard} />
-          <Route path="/photos" component={ParallaxGrid} />
-          <Route exact path="/profile/:id" component={Profile} />
-          <Route path="/register" component={Register} />
+          <Route path="/photos/:id/" component={PhotoCard} />
+          <Route path="/photos/" component={ParallaxGrid} />
+          <Route exact path="/profile/:id/" component={Profile} />
+          <Route path="/auth/" component={Register} />
           {/* <Route path="/login" component={Login} /> */}
           <Route path="/*" component={ErrorPage} />
         </Switch>
