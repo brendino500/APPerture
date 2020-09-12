@@ -5,21 +5,16 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import TextField from '@material-ui/core/TextField'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
-import Link from '@material-ui/core/Link'
 import Grid from '@material-ui/core/Grid'
-import Box from '@material-ui/core/Box'
 import LockIcon from '@material-ui/icons/Lock'
 import Typography from '@material-ui/core/Typography'
-import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 
-function Copyright() {
-  return (
-    <div>
-
-    </div>
-  )
-}
+import { makeStyles } from '@material-ui/core/styles'
+import { Link, useHistory } from 'react-router-dom'
+import { popupNotification } from '../../lib/notification'
+import { loginUser } from '../../lib/api'
+import { setToken } from '../../lib/auth'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -41,8 +36,41 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export default function SignIn() {
+function Login() {
   const classes = useStyles()
+  const history = useHistory()
+
+  const loginData = {
+    data: {
+      email: '',
+      password: ''
+    },
+    errors: ''
+  }
+
+  const [state, setState] = React.useState(loginData)
+
+  const handleChange = e => {
+    const data = { ...state.data, [e.target.name]: e.target.value }
+    console.log('Info check', state.data)
+    const errors = { ...state.errors, [e.target.name]: '' }
+    setState({ data, errors })
+  }
+  
+  const handleSubmit = async e => {
+    e.preventDefault()
+    try {
+      const res = await loginUser(state.data)
+      setToken(res.data.token)
+      popupNotification(res.data.message)
+      history.push('/photos')
+      console.log('handle submit data ', res.data)
+    } catch (err) {
+      console.log(err)
+      setState({ errors: err.response.data.errors })
+      popupNotification('Wrong Credentials')
+    }
+  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -54,7 +82,7 @@ export default function SignIn() {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate>
+        <form onSubmit={handleSubmit} className={classes.form} noValidate>
           <TextField
             variant="outlined"
             margin="normal"
@@ -65,6 +93,8 @@ export default function SignIn() {
             name="email"
             autoComplete="email"
             autoFocus
+            onChange={handleChange}
+            value={state.email}
           />
           <TextField
             variant="outlined"
@@ -76,6 +106,8 @@ export default function SignIn() {
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange={handleChange}
+            value={state.password}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
@@ -91,22 +123,16 @@ export default function SignIn() {
             Sign In
           </Button>
           <Grid container>
-            <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
-            </Grid>
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link to="/register/" variant="body2">
                 {'Don\'t have an account? Sign Up'}
               </Link>
             </Grid>
           </Grid>
         </form>
       </div>
-      <Box mt={8}>
-        <Copyright />
-      </Box>
     </Container>
   )
 }
+
+export default Login

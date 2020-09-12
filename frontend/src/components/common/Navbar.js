@@ -1,11 +1,12 @@
 import React from 'react'
-import { fade, makeStyles } from '@material-ui/core/styles'
+
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
 import Typography from '@material-ui/core/Typography'
 import InputBase from '@material-ui/core/InputBase'
 import Badge from '@material-ui/core/Badge'
+
 import MenuItem from '@material-ui/core/MenuItem'
 import Menu from '@material-ui/core/Menu'
 import MenuIcon from '@material-ui/icons/Menu'
@@ -14,6 +15,12 @@ import AccountCircle from '@material-ui/icons/AccountCircle'
 import MailIcon from '@material-ui/icons/Mail'
 import NotificationsIcon from '@material-ui/icons/Notifications'
 import MoreIcon from '@material-ui/icons/MoreVert'
+
+import { fade, makeStyles } from '@material-ui/core/styles'
+import { Link, withRouter, useHistory } from 'react-router-dom'
+import { popupNotification } from '../../lib/notification'
+import { logout, isAuthenticated, getUserId } from '../../lib/auth'
+import { notification } from 'antd'
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -88,12 +95,23 @@ const useStyles = makeStyles((theme) => ({
 
 function Navbar() {
 
+  const history = useHistory()
+  const userID = getUserId()
   const classes = useStyles()
+  const userAuthenticated = isAuthenticated()
+
   const [anchorEl, setAnchorEl] = React.useState(null)
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null)
 
   const isMenuOpen = Boolean(anchorEl)
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl)
+
+  const handleLogout = () => {
+    
+    logout()
+    popupNotification('Have a creative day!')
+    history.push('/')
+  }
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget)
@@ -114,7 +132,6 @@ function Navbar() {
 
   const menuId = 'primary-search-account-menu'
   const renderMenu = (
-
     <Menu
       anchorEl={anchorEl}
       anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
@@ -124,8 +141,16 @@ function Navbar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleMenuClose}>
+        {!userAuthenticated && <Link style={{ color: 'black' }} to={'/photos'}>Collection</Link>}
+      </MenuItem>
+      <MenuItem onClick={handleMenuClose}>
+        {!userAuthenticated && <Link style={{ color: 'black' }} to={'/login'}>Log In</Link>}
+      </MenuItem>
+      <MenuItem onClick={handleMenuClose}>
+        {userAuthenticated && <Link style={{ color: 'black' }} to={`/profile/${userID}`}>Profile</Link>}
+      </MenuItem>
+      {userAuthenticated && <MenuItem onClick={handleLogout}>Log Out</MenuItem>}
     </Menu>
   )
 
@@ -170,8 +195,11 @@ function Navbar() {
     </Menu>
   )
 
+  console.log('User Authenticated CHECK', isAuthenticated())
+
   return (
     <div className={classes.grow}>
+      {/* <p>You clicked {String(isAuthenticated())} times</p> */}
       <AppBar position="static" style={{ backgroundColor: 'transparent', color: 'black', boxShadow: '0px 0px 0px 0px' }}>
         <Toolbar>
           <IconButton
@@ -183,7 +211,7 @@ function Navbar() {
             <MenuIcon/>
           </IconButton>
           <Typography className={classes.title} variant="h6" style={{ color: 'black' }} noWrap>
-            APPerture
+            <Link to='/' style={{ color: 'black' }}>APPerture</Link>
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -206,7 +234,7 @@ function Navbar() {
               </Badge>
             </IconButton>
             <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
+              <Badge badgeContent={10} color="secondary">
                 <NotificationsIcon />
               </Badge>
             </IconButton>
