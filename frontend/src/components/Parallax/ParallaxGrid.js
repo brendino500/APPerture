@@ -7,7 +7,7 @@ import 'antd/dist/antd.css'
 import Cell from './Cell'
 import axios from 'axios'
 
-class ParallaxGrid extends Component {
+class ParallaxGrid extends React.Component {
   state = { data: [] }
 
   async componentDidMount() {
