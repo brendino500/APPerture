@@ -93,7 +93,7 @@ function Register() {
               id="email"
               label="Username"
               name="username"
-              autoComplete="email"
+              autoComplete="username"
               autoFocus
               onChange={handleChange}
               value={state.username}
