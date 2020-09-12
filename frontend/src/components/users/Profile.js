@@ -125,8 +125,8 @@ class Profile extends React.Component {
               <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
               </GridListTile>
               {this.state.data.map((tile) => (
-                <GridListTile key={tile.img}>
-                  <img src={tile.img} alt={tile.title} />
+                <GridListTile key={tile.image}>
+                  <img src={tile.image} alt={tile.title} />
                   <GridListTileBar
                     title={tile.location}
                     subtitle={<span>by: {tile.location}</span>}

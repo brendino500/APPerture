@@ -72,34 +72,6 @@ function Login() {
     }
   }
 
-  const loginData = {
-    data: {
-      email: '',
-      password: ''
-    },
-    errors: ''
-  }
-
-  const [state, setState] = React.useState(loginData)
-
-  const handleChange = e => {
-    const data = { ...state.data, [e.target.name]: e.target.value }
-    console.log('Info check', state.data)
-    const errors = { ...state.errors, [e.target.name]: '' }
-    setState({ data, errors })
-  }
-  
-  const handleSubmit = async e => {
-    e.preventDefault()
-    try {
-      const res = await loginUser(state.data)
-      console.log('handle submit data ', res.data)
-    } catch (err) {
-      console.log(err)
-      setState({ errors: err.response.data.errors })
-    }
-  }
-
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
