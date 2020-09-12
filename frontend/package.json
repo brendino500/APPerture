@@ -24,6 +24,7 @@
     "react-measure": "^2.5.2",
     "react-notify-toast": "^0.5.1",
     "react-parallax": "^3.0.3",
+    "react-popupbox": "^2.0.8",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "react-spring": "^8.0.27"

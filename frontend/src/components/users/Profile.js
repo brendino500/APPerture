@@ -10,8 +10,25 @@ import Button from '@material-ui/core/Button'
 import AppsIcon from '@material-ui/icons/Apps'
 import ViewAgendaIcon from '@material-ui/icons/ViewAgenda'
 import RoomIcon from '@material-ui/icons/Room'
+import Card from '@material-ui/core/Card'
+import CardContent from '@material-ui/core/CardContent'
+// import GridListTile from '@material-ui/core/GridListTile'
+import { PopupboxManager, PopupboxContainer } from 'react-popupbox'
 
 class Profile extends React.Component {
+
+  openPopupbox() {
+    const content = (
+      <div>
+        <p className="quotes">Work like you don`t need the money.</p>
+        <p className="quotes">Dance like no one is watching.</p>
+        <p className="quotes">And love like you`ve never been hurt.</p>
+        <span className="quotes-from">― Mark Twain</span>
+      </div>
+    )
+    PopupboxManager.open({ content })
+  }
+
   render() {
     return (
       <Container maxWidth="sm">
@@ -65,8 +82,26 @@ class Profile extends React.Component {
             <Button><RoomIcon /></Button>
           </ButtonGroup>
         </Box>
+        <br />
         <Box component="span" className="photo-view">
-
+          <Card className="text" onClick={this.openPopupbox}>
+            <CardContent>
+              <Typography className="text" color="textSecondary" gutterBottom>
+          Word of the Day
+              </Typography>
+              <Typography variant="h5" component="h2">
+          Text
+              </Typography>
+              <Typography className="text" color="textSecondary">
+          adjective
+              </Typography>
+              <Typography variant="body2" component="p">
+          well meaning and kindly.
+                <br />
+                {'"a benevolent smile"'}
+              </Typography>
+            </CardContent>
+          </Card>
         </Box>
       </Container>
     )
