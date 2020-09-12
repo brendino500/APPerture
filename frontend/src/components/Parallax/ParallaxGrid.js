@@ -30,7 +30,7 @@ class ParallaxGrid extends React.Component {
         // Key accessor, instructs grid on how to fet individual keys from the data set
         keys={d => d.id}
         // Can be a fixed value or an individual data accessor
-        heights={100}
+        heights={200}
         // Number of columns
         columns={2}
         // Space between elements
