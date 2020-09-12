@@ -18,17 +18,21 @@ const useStyles = makeStyles((theme) => ({
     },
     flexGrow: 1
   },
+
   paper: {
     padding: theme.spacing(2),
     textAlign: 'center',
     color: theme.palette.text.secondary
   },
+
   '& > *': {
     margin: theme.spacing(1)
   },
+
   input: {
     display: 'none'
   },
+
   display: 'flex',
   flexWrap: 'wrap',
   textField: {
@@ -64,14 +68,12 @@ function Register() {
   const history = useHistory()
   const classes = useStyles()
   const [state, setState] = React.useState(initialState)
-
   const handleChange = e => {
     const data = { ...state.data, [e.target.name]: e.target.value }
     console.log('Info check', state.data)
     const errors = { ...state.errors, [e.target.name]: '' }
     setState({ data, errors })
   }
-
   const handleSubmit = async e => {
     e.preventDefault()
     try {
@@ -84,7 +86,7 @@ function Register() {
       popupNotification('Wrong Credentials')
     }
   }
-
+  
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -220,12 +222,9 @@ function Register() {
         </div>
       </div>
     </Container>
-    
   )
 }
-
 export default Register
-
 {/* <TextField
           required
           id="outlined-password-confirm"

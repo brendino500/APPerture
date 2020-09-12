@@ -53,7 +53,7 @@ class Profile extends React.Component {
   handleDisplayCard = e => {
     e.preventDefault()
     console.log('clicked', e.target)
-    if (e.currentTarget.variant === 'showGrid') {
+    if (e.currentTarget.name === 'showGrid') {
       this.setState({ hideMap: true, hideGrid: false })
       console.log(e.target.name)
     } else {
@@ -159,7 +159,7 @@ class Profile extends React.Component {
               </GridList>
             </section>
             <section className={`${this.state.hideMap ? 'section spot-map is-hidden' : 'spot-map'}`}>
-              <ProfileMap photos={this.state.data} />
+              <ProfileMap />
             </section>
           </div>
         </Box>
