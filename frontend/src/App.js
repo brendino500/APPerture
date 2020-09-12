@@ -11,6 +11,7 @@ import ErrorPage from './components/common/ErrorPage'
 import Profile from './components/users/Profile'
 // import ProfileEdit from './components/users/ProfileEdit'
 // import ProfileForm from './components/users/ProfileForm'
+import ProfileMap from './components/users/ProfileMap'
 
 import PhotoCard from './components/photos/PhotoCard'
 // import PhotoMap from './components/photos/PhotoMap'
@@ -24,6 +25,7 @@ const App = () => {
       <main>
         <Notification />
         <Navbar />
+        {/* <ProfileMap /> */}
         <Switch>
           <Route exact path="/" component={IntroParallax} />
           {/* <Route path="/photos/new" component={} /> */}
