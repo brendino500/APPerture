@@ -57,6 +57,5 @@ class ProfileView(APIView):
         serialized_followed_user = PopulatedUserSerializer(followed_user)
         return Response(serialized_followed_user.data)
 
-class Profile
 
 

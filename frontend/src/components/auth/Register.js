@@ -5,10 +5,11 @@ import { makeStyles, createMuiTheme } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 import Box from '@material-ui/core/Box'
 import Grid from '@material-ui/core/Grid'
-import { Container,  CssBaseline, Avatar, Typography } from '@material-ui/core'
+import { Container,  CssBaseline, Avatar, Typography, ThemeProvider } from '@material-ui/core'
 import LockIcon from '@material-ui/icons/Lock'
 import { popupNotification } from '../../lib/notification'
 import { useHistory } from 'react-router-dom'
+import ColorTheme from '../../../src/ColorTheme'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,9 +17,19 @@ const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(1),
       width: '50ch'
     },
-    flexGrow: 1
+    flexGrow: 1,
+    color: {
+      primary: 'rgba(222, 222, 222, 1)'
+    }
   },
-
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: 'red'
+    }
+  },
+  palette: {
+    primary: 'rgba(222, 222, 222, 1)'
+  },
   paper: {
     padding: theme.spacing(2),
     textAlign: 'center',
@@ -45,11 +56,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const darkTheme = createMuiTheme({
-  palette: {
-    type: 'dark'
-  }
-})
+
 
 const initialState = {
   data: {
@@ -66,7 +73,7 @@ const initialState = {
 
 function Register() {
   const history = useHistory()
-  const classes = useStyles()
+  // const classes = useStyles()
   const [state, setState] = React.useState(initialState)
   const handleChange = e => {
     const data = { ...state.data, [e.target.name]: e.target.value }
@@ -88,140 +95,148 @@ function Register() {
   }
   
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockIcon />
-        </Avatar>
-        <Typography component="h1" varient="h5">
+    <ThemeProvider theme={ColorTheme}>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <div className="{theme.paper}">
+          <Avatar className="{theme.avatar}">
+            <LockIcon />
+          </Avatar>
+          <Typography component="h1" varient="h5" color="primary">
           Register
-        </Typography>
-        <div className={classes.root}>
-          <Grid container spacing={3}>
-            <form onSubmit={handleSubmit} className={classes.root} noValidate autoComplete="off">
-              <Grid item xs={12}>
-                <TextField
+          </Typography>
+          <div className="{theme.root}">
+            <Grid container spacing={3}>
+              <form onSubmit={handleSubmit} className="{theme.root}" noValidate autoComplete="off">
+                <Grid item xs={12}>
+                  <TextField
+                    color="primary"
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="email"
+                    label="Username"
+                    name="username"
+                    autoComplete="username"
+                    autoFocus
+                    onChange={handleChange}
+                    value={state.username}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    color="primary"
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="first_name"
+                    label="First Name"
+                    name="first_name"
+                    autoComplete="first_name"
+                    autoFocus
+                    onChange={handleChange}
+                    value={state.first_name}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    color="primary"
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="last"
+                    label="Last Name"
+                    name="last_name"
+                    autoComplete="last_name"
+                    autoFocus
+                    onChange={handleChange}
+                    value={state.last_name}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    color="primary"
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="email"
+                    label="Email"
+                    name="email"
+                    autoComplete="email"
+                    autoFocus
+                    onChange={handleChange}
+                    value={state.email}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    color="primary"
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="password"
+                    label="Password"
+                    name="password"
+                    autoComplete="password"
+                    type="password"
+                    autoFocus
+                    onChange={handleChange}
+                    value={state.password}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    color="primary"
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="password_confirmation"
+                    label="Password Confirmation"
+                    name="password_confirmation"
+                    autoComplete="password_confirmation"
+                    type="password"
+                    autoFocus
+                    onChange={handleChange}
+                    value={state.password_confirmation}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <input
+                    accept="image/*"
+                    multiple
+                    type="file"
+                    required
+                    id="outlined-required"
+                    label="profile_image"
+                    autoComplete="profile-image"
+                    variant="outlined"
+                    style={{ margin: 8 }}
+                    fullWidth
+                    margin="normal"
+                    name="profile_image"
+                    onChange={handleChange}
+                    value={state.profile_image}
+                  />
+                </Grid>
+                <Button 
+                  color="primary"
+                  type="submit"
                   variant="outlined"
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="email"
-                  label="Username"
-                  name="username"
-                  autoComplete="username"
-                  autoFocus
-                  onChange={handleChange}
-                  value={state.username}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  variant="outlined"
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="first_name"
-                  label="First Name"
-                  name="first_name"
-                  autoComplete="first_name"
-                  autoFocus
-                  onChange={handleChange}
-                  value={state.first_name}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  variant="outlined"
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="last"
-                  label="Last Name"
-                  name="last_name"
-                  autoComplete="last_name"
-                  autoFocus
-                  onChange={handleChange}
-                  value={state.last_name}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  variant="outlined"
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email"
-                  name="email"
-                  autoComplete="email"
-                  autoFocus
-                  onChange={handleChange}
-                  value={state.email}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  variant="outlined"
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="password"
-                  label="Password"
-                  name="password"
-                  autoComplete="password"
-                  type="password"
-                  autoFocus
-                  onChange={handleChange}
-                  value={state.password}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  variant="outlined"
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="password_confirmation"
-                  label="Password Confirmation"
-                  name="password_confirmation"
-                  autoComplete="password_confirmation"
-                  type="password"
-                  autoFocus
-                  onChange={handleChange}
-                  value={state.password_confirmation}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <input
-                  accept="image/*"
-                  multiple
-                  type="file"
-                  required
-                  id="outlined-required"
-                  label="profile_image"
-                  autoComplete="profile-image"
-                  variant="outlined"
-                  style={{ margin: 8 }}
-                  fullWidth
-                  margin="normal"
-                  name="profile_image"
-                  onChange={handleChange}
-                  value={state.profile_image}
-                />
-              </Grid>
-              <Button 
-                className={classes.buttonStyle}
-                type="submit"
-                variant="outlined"
-              >
+                >
             Submit
-              </Button>
-            </form>
-          </Grid>
+                </Button>
+              </form>
+            </Grid>
+          </div>
         </div>
-      </div>
-    </Container>
+      </Container>
+    </ThemeProvider>
   )
 }
 export default Register

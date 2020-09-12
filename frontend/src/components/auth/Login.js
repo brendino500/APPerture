@@ -6,11 +6,12 @@ import TextField from '@material-ui/core/TextField'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
 import Grid from '@material-ui/core/Grid'
-import LockIcon from '@material-ui/icons/Lock'
+import PersonIcon from '@material-ui/icons/Person'
 import Typography from '@material-ui/core/Typography'
 import Container from '@material-ui/core/Container'
+import ColorTheme from '../../../src/ColorTheme'
 
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
 import { Link, useHistory } from 'react-router-dom'
 import { popupNotification } from '../../lib/notification'
 import { loginUser } from '../../lib/api'
@@ -73,65 +74,71 @@ function Login() {
   }
 
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
+    <ThemeProvider theme={ColorTheme}>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <div className={classes.paper}>
+          <Avatar color="primary" className={classes.grey}>
+            <PersonIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5" color="primary">
           Sign in
-        </Typography>
-        <form onSubmit={handleSubmit} className={classes.form} noValidate>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
-            autoFocus
-            onChange={handleChange}
-            value={state.email}
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-            onChange={handleChange}
-            value={state.password}
-          />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
+          </Typography>
+          <form onSubmit={handleSubmit} className={classes.form} noValidate>
+            <TextField
+              variant="outlined"
+              color="primary"
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email"
+              name="email"
+              autoComplete="email"
+              autoFocus
+              onChange={handleChange}
+              value={state.email}
+            />
+            <TextField
+              color="primary"
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+              onChange={handleChange}
+              value={state.password}
+            />
+            <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="Remember me"
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
             Sign In
-          </Button>
-          <Grid container>
-            <Grid item>
-              <Link to="/register/" variant="body2">
-                {'Don\'t have an account? Sign Up'}
-              </Link>
+            </Button>
+            <Grid container>
+              <Grid item>
+                <Link to="/register/" color="primary">
+                  <Typography color="primary">
+                    Don't have an account? Sign Up
+                  </Typography>
+                </Link>
+              </Grid>
             </Grid>
-          </Grid>
-        </form>
-      </div>
-    </Container>
+          </form>
+        </div>
+      </Container>
+    </ThemeProvider>
   )
 }
 

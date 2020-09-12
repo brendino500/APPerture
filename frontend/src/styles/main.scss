@@ -1,3 +1,14 @@
+$background-color: rgba(45, 45, 45, 1);
+$font-family: 'Libre Baskerville', serif;
+
+main {
+  background-color: $background-color;
+  font-family: $font-family;
+}
+
+
+
 @import './register';
 @import './mapPopUp';
 @import './profile';
+
