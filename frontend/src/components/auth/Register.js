@@ -1,16 +1,23 @@
 import React from 'react'
 import TextField from '@material-ui/core/TextField'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles, createMuiTheme } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
-
+import Box from '@material-ui/core/Box'
+import Grid from '@material-ui/core/Grid'
 import { registerUser } from '../../lib/api'
 
 const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
-      width: '25ch'
-    }
+      width: '50ch'
+    },
+    flexGrow: 1
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary
   },
   '& > *': {
     margin: theme.spacing(1)
@@ -24,8 +31,17 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
     width: '25ch'
+  },
+  buttonStyle: {
+    color: 'grey'
   }
 }))
+
+const darkTheme = createMuiTheme({
+  palette: {
+    type: 'dark'
+  }
+})
 
 const initialState = {
   data: {
@@ -41,8 +57,8 @@ const initialState = {
 }
 
 function Register() {
-  const classes = useStyles()
 
+  const classes = useStyles()
   const [state, setState] = React.useState(initialState)
 
   const handleChange = e => {
@@ -65,89 +81,135 @@ function Register() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className={classes.root} noValidate autoComplete="off">
-      <div>
-        <TextField
-          required
-          id="outlined-required"
-          label="Required"
-          style={{ margin: 8 }}
-          fullWidth
-          margin="normal"
-          defaultValue="Username"
-          name="username"
-          variant="outlined"
-          onChange={handleChange}
-          value={state.username}
-        />
-        <TextField
-          required
-          id="outlined-required"
-          label="Required"
-          defaultValue="First Name"
-          variant="outlined"
-          style={{ margin: 8 }}
-          fullWidth
-          margin="normal"
-          name="first_name"
-          onChange={handleChange}
-          value={state.first_name}
-        />
-        <TextField
-          required
-          id="outlined-required"
-          label="Required"
-          defaultValue="Last Name"
-          variant="outlined"
-          style={{ margin: 8 }}
-          fullWidth
-          margin="normal"
-          name="last_name"
-          onChange={handleChange}
-          value={state.last_name}
-        />
-        <TextField
-          required
-          id="outlined-required"
-          label="Required"
-          defaultValue="Email"
-          variant="outlined"
-          style={{ margin: 8 }}
-          fullWidth
-          margin="normal"
-          name="email"
-          onChange={handleChange}
-          value={state.email}
-        />
-        <TextField
-          required
-          id="outlined-password-input"
-          label="Password"
-          type="password"
-          autoComplete="current-password"
-          variant="outlined"
-          style={{ margin: 8 }}
-          fullWidth
-          margin="normal"
-          name="password"
-          onChange={handleChange}
-          value={state.password}
-        />
-        <TextField
-          required
-          id="outlined-password-confirm"
-          label="Password"
-          type="password"
-          autoComplete="current-password"
-          variant="outlined"
-          style={{ margin: 8 }}
-          fullWidth
-          margin="normal"
-          name="password_confirmation"
-          onChange={handleChange}
-          value={state.password_confirmation}
-        />
-        {/* <TextField
+    <div className={classes.root}>
+      <Grid container spacing={3}>
+        <form onSubmit={handleSubmit} className={classes.root} noValidate autoComplete="off">
+          <Grid item xs={12}>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Username"
+              name="username"
+              autoComplete="email"
+              autoFocus
+              onChange={handleChange}
+              value={state.username}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="first_name"
+              label="First Name"
+              name="first_name"
+              autoComplete="first_name"
+              autoFocus
+              onChange={handleChange}
+              value={state.first_name}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="last"
+              label="Last Name"
+              name="last_name"
+              autoComplete="last_name"
+              autoFocus
+              onChange={handleChange}
+              value={state.last_name}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email"
+              name="email"
+              autoComplete="email"
+              autoFocus
+              onChange={handleChange}
+              value={state.email}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="password"
+              label="Password"
+              name="password"
+              autoComplete="password"
+              type="password"
+              autoFocus
+              onChange={handleChange}
+              value={state.password}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="password_confirmation"
+              label="Password Confirmation"
+              name="password_confirmation"
+              autoComplete="password_confirmation"
+              type="password"
+              autoFocus
+              onChange={handleChange}
+              value={state.password_confirmation}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <input
+              accept="image/*"
+              multiple
+              type="file"
+              required
+              id="outlined-required"
+              label="profile_image"
+              autoComplete="profile-image"
+              variant="outlined"
+              style={{ margin: 8 }}
+              fullWidth
+              margin="normal"
+              name="profile_image"
+              onChange={handleChange}
+              value={state.profile_image}
+            />
+          </Grid>
+          <Button 
+            className={classes.buttonStyle}
+            type="submit"
+            variant="outlined"
+          >
+            Submit
+          </Button>
+        </form>
+      </Grid>
+    </div>
+  )
+}
+
+export default Register
+
+{/* <TextField
           required
           id="outlined-password-confirm"
           label="profile_image"
@@ -160,36 +222,8 @@ function Register() {
           onChange={handleChange}
           value={state.profile_image}
         /> */}
-        <input
-          accept="image/*"
-          multiple
-          type="file"
-          required
-          id="outlined-required"
-          label="profile_image"
-          autoComplete="profile-image"
-          variant="outlined"
-          style={{ margin: 8 }}
-          fullWidth
-          margin="normal"
-          name="profile_image"
-          onChange={handleChange}
-          value={state.profile_image}
-        />
-        {/* <label htmlFor="contained-button-file">
+{/* <label htmlFor="contained-button-file">
           <Button variant="contained" color="primary" component="span">
           Upload
           </Button>
         </label> */}
-        <Button 
-          type="submit"
-          variant="outlined"
-        >
-            Submit
-        </Button>
-      </div>
-    </form>
-  )
-}
-
-export default Register
