@@ -4,10 +4,11 @@ import 'mapbox-gl/dist/mapbox-gl.css'
 import { Popup, NavigationControl } from 'react-map-gl'
 import { Link } from 'react-router-dom'
 import { getAllPhotos } from '../../lib/api'
+import data from './data'
 
 class ProfileMap extends React.Component {
   state = {
-    photos: [],
+    data,
     viewport: {
       latitude: 51,
       longitude: 5,
@@ -35,6 +36,8 @@ class ProfileMap extends React.Component {
   }
 
   render() {
+    console.log(data)
+
     const { photos, viewport } = this.state
     return (
       <div className="profile-mapbox">
@@ -43,11 +46,29 @@ class ProfileMap extends React.Component {
           mapboxApiAccessToken={process.env.REACT_APP_MAPTOK}
           height={'100vh'}
           width={'100vh'}
-          mapStyle="mapbox://styles/heybt/ckezmztnz13f51an83rynvol6"
+          mapStyle='mapbox://styles/mapbox/dark-v10'
           onViewportChange={viewport => this.setState({ viewport })}
           zoom={viewport.zoom}
           scrollZoom={false}
         >
+          {data.map(data => {
+            return (
+              <div key={`popup${data.credit}`}>
+                <Popup
+                  latitude={data.lat}
+                  longitude={data.long}
+                  closeButton={false}
+                >
+                  <div className="text-popup" onClick={this.handlePopupShow}>
+                    <h1>{data.location}, <span role="img" aria-label="marker">📍</span></h1>
+                    <div className="popup-image">
+                      <img className="index-image" src={data.image} alt={data.location} />
+                    </div>
+                  </div>
+                </Popup>
+              </div>
+            )
+          })}
           <NavigationControl showZoom={true} showCompass={true} position="top-left" className="map-controls" />
         </MapGl>
       </div>

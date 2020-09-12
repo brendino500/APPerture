@@ -1,5 +1,5 @@
 import React from 'react'
-import { getAllPhotos } from '../../lib/api'
+import ProfileMap from './ProfileMap'
 
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
@@ -12,19 +12,22 @@ import Button from '@material-ui/core/Button'
 import AppsIcon from '@material-ui/icons/Apps'
 import ViewAgendaIcon from '@material-ui/icons/ViewAgenda'
 import RoomIcon from '@material-ui/icons/Room'
-// import Card from '@material-ui/core/Card'
-// import CardContent from '@material-ui/core/CardContent'
-// import GridListTile from '@material-ui/core/GridListTile'
-import { PopupboxManager, PopupboxContainer } from 'react-popupbox'
-import GridList from '@material-ui/core/GridList'
 import GridListTile from '@material-ui/core/GridListTile'
+import GridList from '@material-ui/core/GridList'
 import GridListTileBar from '@material-ui/core/GridListTileBar'
 import IconButton from '@material-ui/core/IconButton'
 import InfoIcon from '@material-ui/icons/Info'
-// import { makeStyles } from '@material-ui/core/styles'
+
+import { makeStyles } from '@material-ui/core/styles'
+import { getAllPhotos } from '../../lib/api'
+import { PopupboxManager, PopupboxContainer } from 'react-popupbox'
 
 class Profile extends React.Component {
-  state = { data: [] }
+  state = { 
+    data: [],
+    hideMap: true,
+    hideGrid: false
+  }
 
   async componentDidMount() {
     try {
@@ -47,26 +50,36 @@ class Profile extends React.Component {
     PopupboxManager.open({ content })
   }
 
-  // useStyles = makeStyles((theme) => ({
-  //   root: {
-  //     display: 'flex',
-  //     flexWrap: 'wrap',
-  //     justifyContent: 'space-around',
-  //     overflow: 'hidden',
-  //     backgroundColor: theme.palette.background.paper
-  //   },
-  //   gridList: {
-  //     width: 500,
-  //     height: 450
-  //   },
-  //   icon: {
-  //     color: 'rgba(255, 255, 255, 0.54)'
-  //   }
-  // }));
+  handleDisplayCard = e => {
+    e.preventDefault()
+    console.log('clicked', e.target)
+    if (e.currentTarget.variant === 'showGrid') {
+      this.setState({ hideMap: true, hideGrid: false })
+      console.log(e.target.name)
+    } else {
+      this.setState({ hideMap: false, hideGrid: true })
+    }
+  }
+
+  useStyles = makeStyles((theme) => ({
+    root: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      justifyContent: 'space-around',
+      overflow: 'hidden',
+      backgroundColor: theme.palette.background.paper
+    },
+    gridList: {
+      width: 500,
+      height: 450
+    },
+    icon: {
+      color: 'rgba(255, 255, 255, 0.54)'
+    }
+  }));
 
   render() {
     return (
-      
       <Container maxWidth="sm">
         <Box component="span" className="profile-info">
           <Grid className="profile-photo-followers">
@@ -112,33 +125,42 @@ class Profile extends React.Component {
         <br />
         <Divider />
         <Box component="span" className="view-buttons">
-          <ButtonGroup variant="text" color="primary" aria-label="text primary button group">
-            <Button><AppsIcon /></Button>
-            <Button><ViewAgendaIcon /></Button>
-            <Button><RoomIcon /></Button>
+          <ButtonGroup color="primary" aria-label="text primary button group">
+            <Button name="showGrid" onClick={this.handleDisplayCard}>
+              <AppsIcon/>
+            </Button>
+            <Button name="showMap" onClick={this.handleDisplayCard}>
+              <RoomIcon/>
+            </Button>
           </ButtonGroup>
         </Box>
         <br />
         <Box className="test">
           <div className="test">
-            <GridList cellHeight={300} className="test">
-              <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
-              </GridListTile>
-              {this.state.data.map((tile) => (
-                <GridListTile key={tile.image}>
-                  <img src={tile.image} alt={tile.title} />
-                  <GridListTileBar
-                    title={tile.location}
-                    subtitle={<span>by: {tile.location}</span>}
-                    actionIcon={
-                      <IconButton aria-label={`info about ${tile.location}`} className="test">
-                        <InfoIcon />
-                      </IconButton>
-                    }
-                  />
+            <section 
+              className={`${this.state.hideGrid ? 'section spot-grid is-hidden' : 'spot-grid'}`}>
+              <GridList cellHeight={300} className="test">
+                <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
                 </GridListTile>
-              ))}
-            </GridList>
+                {this.state.data.map((tile) => (
+                  <GridListTile key={tile.image}>
+                    <img src={tile.image} alt={tile.title} />
+                    <GridListTileBar
+                      title={tile.location}
+                      subtitle={<span>by: {tile.location}</span>}
+                      actionIcon={
+                        <IconButton aria-label={`info about ${tile.location}`} className="test">
+                          <InfoIcon />
+                        </IconButton>
+                      }
+                    />
+                  </GridListTile>
+                ))}
+              </GridList>
+            </section>
+            <section className={`${this.state.hideMap ? 'section spot-map is-hidden' : 'spot-map'}`}>
+              <ProfileMap photos={this.state.data} />
+            </section>
           </div>
         </Box>
       </Container>

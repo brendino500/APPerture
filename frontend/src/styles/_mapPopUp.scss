@@ -1,0 +1,63 @@
+.profile-mapbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+  .map-pin {
+    font-size: 20px;
+  }
+  .is-popup-hidden {
+    display: none;
+  }
+  .text-popup {
+    h1 {
+      font-family: 'Nunito', sans-serif;
+      font-size: 16px;
+    }
+    h2 {
+      display: none;
+    }
+    h3 {
+      display: none;
+    }
+    p {
+      display: none;
+    }
+    img {
+      display: none;
+    } 
+  }
+  .card-popup {
+    width: 300px;
+    padding: 15px;
+    h1 {
+      font-family: 'Nunito', sans-serif;
+      font-size: 28px;
+    }
+    h2 {
+      font-family: 'Nunito', sans-serif;
+      font-size: 28px;
+    }
+    h3 {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    p {
+      font-family: 'Nunito', sans-serif;
+      color: black;
+      font-size: 20px;
+    }
+    .popup-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      img {
+      height: 180px;
+      width: 280px;
+      } 
+    }
+  }
+  .map-controls {
+  position: absolute;
+  }

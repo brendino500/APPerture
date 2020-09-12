@@ -7,6 +7,8 @@ import Box from '@material-ui/core/Box'
 import Grid from '@material-ui/core/Grid'
 import { Container,  CssBaseline, Avatar, Typography } from '@material-ui/core'
 import LockIcon from '@material-ui/icons/Lock'
+import { popupNotification } from '../../lib/notification'
+import { useHistory } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -59,7 +61,7 @@ const initialState = {
 }
 
 function Register() {
-
+  const history = useHistory()
   const classes = useStyles()
   const [state, setState] = React.useState(initialState)
 
@@ -73,12 +75,13 @@ function Register() {
   const handleSubmit = async e => {
     e.preventDefault()
     try {
-      console.log('REACHING THIS STAGE')
       const res = await registerUser(state.data)
-      console.log('handle submit data ', res.data)
+      popupNotification(res.data.message)
+      history.push('/login')
     } catch (err) {
       console.log(err)
       setState({ errors: err.response.data.errors })
+      popupNotification('Wrong Credentials')
     }
   }
 
