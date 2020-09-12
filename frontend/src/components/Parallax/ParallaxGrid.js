@@ -1,5 +1,5 @@
 
-import React, { Component } from 'react'
+import React from 'react'
 import { config } from 'react-spring/renderprops'
 import Grid from './Grid'
 import './styles.css'

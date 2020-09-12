@@ -19,20 +19,29 @@ import IconButton from '@material-ui/core/IconButton'
 import InfoIcon from '@material-ui/icons/Info'
 
 import { makeStyles } from '@material-ui/core/styles'
-import { getAllPhotos } from '../../lib/api'
+import { getAllPhotos, getAllUsers, getUser } from '../../lib/api'
 import { PopupboxManager, PopupboxContainer } from 'react-popupbox'
+
 
 class Profile extends React.Component {
   state = { 
     data: [],
+    user: [],
     hideMap: true,
     hideGrid: false
   }
 
   async componentDidMount() {
     try {
-      const res = await getAllPhotos()
-      this.setState({ data: res.data })
+      const resPhoto = await getAllPhotos()
+      this.setState({ data: resPhoto.data })
+
+      console.log(this.props.match.params.id)
+      const resUser = await getUser(this.props.match.params.id)
+      console.log('Do You even try?!')
+      console.log(resUser.data)
+      this.setState({ user: resUser.data })
+
     } catch (err) {
       console.log(err)
     }
@@ -79,6 +88,7 @@ class Profile extends React.Component {
   }));
 
   render() {
+    console.log(this.state.user)
     return (
       <Container maxWidth="sm">
         <Box component="span" className="profile-info">

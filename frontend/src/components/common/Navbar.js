@@ -17,10 +17,10 @@ import NotificationsIcon from '@material-ui/icons/Notifications'
 import MoreIcon from '@material-ui/icons/MoreVert'
 
 import { fade, makeStyles } from '@material-ui/core/styles'
-import { Link, withRouter, useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { popupNotification } from '../../lib/notification'
 import { logout, isAuthenticated, getUserId } from '../../lib/auth'
-import { notification } from 'antd'
+// import { notification } from 'antd'
 
 const useStyles = makeStyles((theme) => ({
   grow: {
