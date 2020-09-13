@@ -66,5 +66,3 @@ class ProfileListView(APIView):
         users = User.objects.all()
         serialized_users = PopulatedUserSerializer(users, many=True)
         return Response(serialized_users.data, status=status.HTTP_200_OK)
-
-
