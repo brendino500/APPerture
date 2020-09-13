@@ -102,9 +102,20 @@ function Navbar() {
 
   const [anchorEl, setAnchorEl] = React.useState(null)
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null)
+  const [search, setSearch] = React.useState('')
 
   const isMenuOpen = Boolean(anchorEl)
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl)
+
+  const handleValueChange = e => {
+    setSearch({ [e.target.name]: e.target.value })
+    console.log('I am typing something')
+  }
+
+  const handleSearch = e => {
+    e.preventDefault()
+    history.push(`/photos?search=${this.state.search}`)
+  }
 
   const handleLogout = () => {
     
@@ -197,10 +208,12 @@ function Navbar() {
 
   console.log('User Authenticated CHECK', isAuthenticated())
 
+  console.log(search)
+
   return (
     <div className={classes.grow}>
       {/* <p>You clicked {String(isAuthenticated())} times</p> */}
-      <AppBar position="static" style={{ backgroundColor: 'transparent', color: 'black', boxShadow: '0px 0px 0px 0px' }}>
+      <AppBar position="static" style={{ backgroundColor: 'transparent', color: 'white', boxShadow: '0px 0px 0px 0px' }}>
         <Toolbar>
           <IconButton
             edge="start"
@@ -211,19 +224,23 @@ function Navbar() {
             <MenuIcon/>
           </IconButton>
           <Typography className={classes.title} variant="h6" style={{ color: 'black' }} noWrap>
-            <Link to='/' style={{ color: 'black' }}>APPerture</Link>
+            <Link to='/' style={{ color: 'white' }}>APPerture</Link>
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
             <InputBase
+              name="search"
               placeholder="Search…"
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput
               }}
               inputProps={{ 'aria-label': 'search' }}
+              onChange={handleValueChange}
+              onSubmit={handleSearch}
+              value={search}
             />
           </div>
           <div className={classes.grow} />
