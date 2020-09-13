@@ -97,9 +97,12 @@ class Profile extends React.Component {
       backgroundColor: theme.palette.background.paper,
       margin: theme.spacing(8)
     },
+    button: {
+      alignItems: 'center'
+    },
     gridList: {
       width: 500,
-      height: 450,
+      height: 450
     },
     icon: {
       color: 'rgba(255, 255, 255, 0.54)'
