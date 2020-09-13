@@ -78,67 +78,68 @@ function Login() {
     <ThemeProvider theme={ColorTheme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
-        {/* <Paper elevation={3}>
+        <Paper elevation={3} color="primary">
 
-        </Paper> */}
-        <Avatar color="primary" className={classes.grey}>
-          <PersonIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5" color="primary">
+
+          <Avatar color="primary" className={classes.grey}>
+            <PersonIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5" color="primary">
           Sign in
-        </Typography>
-        <form onSubmit={handleSubmit} className={classes.form} noValidate>
-          <TextField
-            variant="outlined"
-            color="primary"
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Email"
-            name="email"
-            autoComplete="email"
-            autoFocus
-            onChange={handleChange}
-            value={state.email}
-          />
-          <TextField
-            color="primary"
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-            onChange={handleChange}
-            value={state.password}
-          />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
+          </Typography>
+          <form onSubmit={handleSubmit} className={classes.form} noValidate>
+            <TextField
+              variant="outlined"
+              color="primary"
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email"
+              name="email"
+              autoComplete="email"
+              autoFocus
+              onChange={handleChange}
+              value={state.email}
+            />
+            <TextField
+              color="primary"
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+              onChange={handleChange}
+              value={state.password}
+            />
+            <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="Remember me"
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
             Sign In
-          </Button>
-          <Grid container>
-            <Grid item>
-              <Link to="/register/" color="primary">
-                <Typography color="primary">
+            </Button>
+            <Grid container>
+              <Grid item>
+                <Link to="/register/" color="primary">
+                  <Typography color="primary">
                     Don't have an account? Sign Up
-                </Typography>
-              </Link>
+                  </Typography>
+                </Link>
+              </Grid>
             </Grid>
-          </Grid>
-        </form>
+          </form>
+        </Paper>
       </Container>
     </ThemeProvider>
   )
