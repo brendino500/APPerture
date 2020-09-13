@@ -19,6 +19,7 @@ import InfoIcon from '@material-ui/icons/Info'
 import { makeStyles } from '@material-ui/core/styles'
 import { getAllPhotos, getAllUsers, getUser } from '../../lib/api'
 import { PopupboxManager, PopupboxContainer } from 'react-popupbox'
+
 class Profile extends React.Component {
   state = { 
     data: [],
@@ -26,10 +27,9 @@ class Profile extends React.Component {
     hideMap: true,
     hideGrid: false
   }
+
   async componentDidMount() {
     try {
-      // const resPhoto = await getAllPhotos()
-      // this.setState({ data: resPhoto.data })
       const resUser = await getUser(this.props.match.params.id)
       console.log(resUser.data)
       this.setState({ user: resUser.data })
@@ -37,6 +37,7 @@ class Profile extends React.Component {
       console.log(err)
     }
   }
+
   openPopupbox() {
     const content = (
       <div>
@@ -48,6 +49,7 @@ class Profile extends React.Component {
     )
     PopupboxManager.open({ content })
   }
+
   handleDisplayCard = e => {
     e.preventDefault()
     console.log('clicked', e.target)
@@ -58,6 +60,7 @@ class Profile extends React.Component {
       this.setState({ hideMap: false, hideGrid: true })
     }
   }
+
   useStyles = makeStyles((theme) => ({
     root: {
       display: 'flex',
@@ -73,7 +76,8 @@ class Profile extends React.Component {
     icon: {
       color: 'rgba(255, 255, 255, 0.54)'
     }
-  }));
+  }))
+
   render() {
     console.log(this.state.user)
     if (!this.state.user) return null
@@ -165,4 +169,5 @@ class Profile extends React.Component {
     )
   }
 }
+
 export default Profile 
