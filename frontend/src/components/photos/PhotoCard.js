@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export default function PhotoCard() {
+function PhotoCard() {
   const classes = useStyles()
   const [expanded, setExpanded] = React.useState(false)
 
@@ -122,3 +122,5 @@ export default function PhotoCard() {
     </Card>
   )
 }
+
+export default PhotoCard

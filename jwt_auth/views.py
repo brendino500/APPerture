@@ -3,6 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.exceptions import PermissionDenied
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework import status
 from django.contrib.auth import get_user_model
 from django.conf import settings
@@ -46,7 +47,7 @@ class ProfileView(APIView):
 
     permission_classes = (IsAuthenticated, )
 
-    def get(self, request):
+    def get(self, request, pk):
         user = User.objects.get(pk=request.user.id)
         serialized_user = PopulatedUserSerializer(user)
         return Response(serialized_user.data)
@@ -57,5 +58,13 @@ class ProfileView(APIView):
         serialized_followed_user = PopulatedUserSerializer(followed_user)
         return Response(serialized_followed_user.data)
 
+class ProfileListView(APIView):
+
+    permission_classes = (IsAuthenticatedOrReadOnly, )
+
+    def get(self, request):
+        users = User.objects.all()
+        serialized_users = PopulatedUserSerializer(users, many=True)
+        return Response(serialized_users.data, status=status.HTTP_200_OK)
 
 

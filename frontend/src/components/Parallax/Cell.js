@@ -7,7 +7,7 @@ import 'antd/dist/antd.css'
 class Cell extends Component {
 
   render() {
-    const { toggle, location, css, active, image } = this.props
+    const { toggle, location, active, image } = this.props
 
     return (
       <div

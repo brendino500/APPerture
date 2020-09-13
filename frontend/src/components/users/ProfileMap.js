@@ -2,7 +2,6 @@ import React from 'react'
 import MapGl from 'react-map-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
 import { Popup, NavigationControl } from 'react-map-gl'
-import { Link } from 'react-router-dom'
 import { getAllPhotos } from '../../lib/api'
 import data from './data'
 
@@ -36,9 +35,9 @@ class ProfileMap extends React.Component {
   }
 
   render() {
-    console.log(data)
-
-    const { photos, viewport } = this.state
+    // console.log(data)
+    // photo was destructured
+    const { viewport } = this.state
     return (
       <div className="profile-mapbox">
         <MapGl
