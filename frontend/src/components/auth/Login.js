@@ -10,6 +10,7 @@ import PersonIcon from '@material-ui/icons/Person'
 import Typography from '@material-ui/core/Typography'
 import Container from '@material-ui/core/Container'
 import ColorTheme from '../../../src/ColorTheme'
+import Paper from '@material-ui/core/Paper'
 
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
 import { Link, useHistory } from 'react-router-dom'
@@ -77,66 +78,67 @@ function Login() {
     <ThemeProvider theme={ColorTheme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
-        <div className={classes.paper}>
-          <Avatar color="primary" className={classes.grey}>
-            <PersonIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5" color="primary">
+        {/* <Paper elevation={3}>
+
+        </Paper> */}
+        <Avatar color="primary" className={classes.grey}>
+          <PersonIcon />
+        </Avatar>
+        <Typography component="h1" variant="h5" color="primary">
           Sign in
-          </Typography>
-          <form onSubmit={handleSubmit} className={classes.form} noValidate>
-            <TextField
-              variant="outlined"
-              color="primary"
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email"
-              name="email"
-              autoComplete="email"
-              autoFocus
-              onChange={handleChange}
-              value={state.email}
-            />
-            <TextField
-              color="primary"
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              onChange={handleChange}
-              value={state.password}
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
+        </Typography>
+        <form onSubmit={handleSubmit} className={classes.form} noValidate>
+          <TextField
+            variant="outlined"
+            color="primary"
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            label="Email"
+            name="email"
+            autoComplete="email"
+            autoFocus
+            onChange={handleChange}
+            value={state.email}
+          />
+          <TextField
+            color="primary"
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="password"
+            label="Password"
+            type="password"
+            id="password"
+            autoComplete="current-password"
+            onChange={handleChange}
+            value={state.password}
+          />
+          <FormControlLabel
+            control={<Checkbox value="remember" color="primary" />}
+            label="Remember me"
+          />
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
             Sign In
-            </Button>
-            <Grid container>
-              <Grid item>
-                <Link to="/register/" color="primary">
-                  <Typography color="primary">
+          </Button>
+          <Grid container>
+            <Grid item>
+              <Link to="/register/" color="primary">
+                <Typography color="primary">
                     Don't have an account? Sign Up
-                  </Typography>
-                </Link>
-              </Grid>
+                </Typography>
+              </Link>
             </Grid>
-          </form>
-        </div>
+          </Grid>
+        </form>
       </Container>
     </ThemeProvider>
   )
