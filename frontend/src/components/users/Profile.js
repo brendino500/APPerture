@@ -1,5 +1,7 @@
 import React from 'react'
 import ProfileMap from './ProfileMap'
+import ColorTheme from '../../../src/ColorTheme'
+
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import Divider from '@material-ui/core/Divider'
@@ -9,6 +11,7 @@ import Typography from '@material-ui/core/Typography'
 import ButtonGroup from '@material-ui/core/ButtonGroup'
 import Button from '@material-ui/core/Button'
 import AppsIcon from '@material-ui/icons/Apps'
+import Avatar from '@material-ui/core/Avatar'
 import ViewAgendaIcon from '@material-ui/icons/ViewAgenda'
 import RoomIcon from '@material-ui/icons/Room'
 import GridListTile from '@material-ui/core/GridListTile'
@@ -16,8 +19,10 @@ import GridList from '@material-ui/core/GridList'
 import GridListTileBar from '@material-ui/core/GridListTileBar'
 import IconButton from '@material-ui/core/IconButton'
 import InfoIcon from '@material-ui/icons/Info'
-import { makeStyles } from '@material-ui/core/styles'
-import { getAllPhotos, getAllUsers, getUser } from '../../lib/api'
+
+import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
+import { getAllPhotos, getAllUsers, getUser, followUser } from '../../lib/api'
+import { getUserId } from '../../lib/auth'
 import { PopupboxManager, PopupboxContainer } from 'react-popupbox'
 
 class Profile extends React.Component {
@@ -50,6 +55,7 @@ class Profile extends React.Component {
     PopupboxManager.open({ content })
   }
 
+
   handleDisplayCard = e => {
     e.preventDefault()
     console.log('clicked', e.target)
@@ -61,111 +67,143 @@ class Profile extends React.Component {
     }
   }
 
+  // handleFollow = async e => {
+  //   e.preventDefault()
+    
+  //   if (e.currentTarget.name === 'follow') {
+  //     console.log('clicked follow button', e.currentTarget.name)
+  //     // const followedUser = this.state.user.id
+  //     try {
+
+  //       const followedUser = await getUserId()
+  //       console.log(followedUser)
+  //       // await followUser(followedUser)
+  //       console.log('this REACHED THIS STAGE')
+
+  //     } catch (err) {
+  //       console.log(err)
+  //     }
+  //   }
+  // }
+
   useStyles = makeStyles((theme) => ({
     root: {
       display: 'flex',
+      flexGrow: 1,
       flexWrap: 'wrap',
       justifyContent: 'space-around',
       overflow: 'hidden',
-      backgroundColor: theme.palette.background.paper
+      alignItems: 'center',
+      backgroundColor: theme.palette.background.paper,
+      margin: theme.spacing(8)
     },
     gridList: {
       width: 500,
-      height: 450
+      height: 450,
     },
     icon: {
       color: 'rgba(255, 255, 255, 0.54)'
+    },
+    typography: {
+      fontFamily: 'Libre Baskerville'
+    },
+    large: {
+      width: theme.spacing(7),
+      height: theme.spacing(7)
     }
   }))
 
   render() {
     console.log(this.state.user)
+    const classes = makeStyles()
     if (!this.state.user) return null
     return (
-      <Container maxWidth="sm">
-        <Box component="span" className="profile-info">
-          <Grid className="profile-photo-followers">
-            <ButtonBase className="profile-image">
-              <img className="profile-image"/>
-            </ButtonBase>
-            <Grid className="username-info">
-              <Grid item xs container direction="column" spacing={2}>
-                <Grid item xs>
-                  <Typography varient="h5">
+      <ThemeProvider theme={ColorTheme}>
+        <Container maxWidth="md">
+          <Box component="span" className="profile-info">
+            <Grid className="profile-photo-followers">
+              <ButtonBase className="profile-image">
+                <Avatar alt="Userprofilephoto" src="/static/images/avatar/1.jpg" className="profile-avatar" />
+              </ButtonBase>
+              <Grid className="username-info">
+                <Grid item xs container direction="column" spacing={2}>
+                  <Grid item xs>
+                    <Typography varient="h5" color="primary">
                     Username
-                  </Typography>
-                  <Typography varient="subtitle1">
+                    </Typography>
+                    <Typography varient="subtitle1" color="primary">
                     First Name
-                  </Typography>
-                  <Typography varient="subtitle2">
+                    </Typography>
+                    <Typography varient="subtitle2" color="primary">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin turpis elit, tincidunt a placerat sit amet, accumsan porttitor sem. Nam sed libero maximus, eleifend dui vitae, posuere augue. 
-                  </Typography>
-                  <br />
-                  <Divider />
+                    </Typography>
+                    <br />
+                    <Divider />
+                  </Grid>
                 </Grid>
-              </Grid>
-              <Grid item xs container direction="row" spacing={2}>
-                <Grid item xs>
-                  <Typography varient="p">
+                <Button variant="outlined" color="primary" onClick={this.handleFollow}>
+                Follow
+                </Button>
+                <Button variant="outlined" color="primary">
+                Message
+                </Button>
+                <Grid item xs container direction="row" spacing={2}>
+                  <Grid item xs>
+                    <Typography varient="p" color="primary">
                     29 <br /> Posts
-                  </Typography>
-                </Grid>
-                <Grid item xs>
-                  <Typography varient="p">
+                    </Typography>
+                  </Grid>
+                  <Grid item xs>
+                    <Typography varient="p" color="primary">
                     48 <br /> Followers
-                  </Typography>
-                </Grid>
-                <Grid item xs>
-                  <Typography varient="p">
+                    </Typography>
+                  </Grid>
+                  <Grid item xs>
+                    <Typography varient="p" color="primary">
                     532 <br /> Following
-                  </Typography>
+                    </Typography>
+                  </Grid>
                 </Grid>
               </Grid>
             </Grid>
-          </Grid>
-        </Box>
-        <br />
-        <Divider />
-        <Box component="span" className="view-buttons">
-          <ButtonGroup color="primary" aria-label="text primary button group">
-            <Button name="showGrid" onClick={this.handleDisplayCard}>
-              <AppsIcon/>
-            </Button>
-            <Button name="showMap" onClick={this.handleDisplayCard}>
-              <RoomIcon/>
-            </Button>
-          </ButtonGroup>
-        </Box>
-        <br />
-        <Box className="test">
-          <div className="test">
-            <section 
-              className={`${this.state.hideGrid ? 'section spot-grid is-hidden' : 'spot-grid'}`}>
-              <GridList cellHeight={300} className="test">
-                <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
-                </GridListTile>
-                {this.state.user.created_photo.map((tile) => (
-                  <GridListTile key={tile.image}>
-                    <img src={tile.image} alt={tile.title} />
-                    <GridListTileBar
-                      title={tile.location}
-                      subtitle={<span>by: {tile.location}</span>}
-                      actionIcon={
-                        <IconButton aria-label={`info about ${tile.location}`} className="test">
-                          <InfoIcon />
-                        </IconButton>
-                      }
-                    />
+          </Box>
+          <br />
+          <Divider />
+          <Box component="span" className="view-buttons">
+            <ButtonGroup color="primary" aria-label="text primary button group">
+              <Button name="showGrid" onClick={this.handleDisplayCard}>
+                <AppsIcon/>
+              </Button>
+              <Button name="showMap" onClick={this.handleDisplayCard}>
+                <RoomIcon/>
+              </Button>
+            </ButtonGroup>
+          </Box>
+          <br />
+          <Box className="test">
+            <div className="test">
+              <section 
+                className={`${this.state.hideGrid ? 'section spot-grid is-hidden' : 'spot-grid'}`}>
+                <GridList cellHeight={300} className="test">
+                  <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
                   </GridListTile>
-                ))}
-              </GridList>
-            </section>
-            <section className={`${this.state.hideMap ? 'section spot-map is-hidden' : 'spot-map'}`}>
-              <ProfileMap />
-            </section>
-          </div>
-        </Box>
-      </Container>
+                  {this.state.user.created_photo.map((tile) => (
+                    <GridListTile key={tile.image}>
+                      <img src={tile.image} alt={tile.title} />
+                      <GridListTileBar
+                        title={tile.location}
+                      />
+                    </GridListTile>
+                  ))}
+                </GridList>
+              </section>
+              <section className={`${this.state.hideMap ? 'section spot-map is-hidden' : 'spot-map'}`}>
+                <ProfileMap />
+              </section>
+            </div>
+          </Box>
+        </Container>
+      </ThemeProvider>
     )
   }
 }

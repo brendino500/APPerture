@@ -79,8 +79,6 @@ function Login() {
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Paper elevation={3} color="primary">
-
-
           <Avatar color="primary" className={classes.grey}>
             <PersonIcon />
           </Avatar>
