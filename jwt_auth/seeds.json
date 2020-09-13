@@ -338,5 +338,80 @@
     "user_permissions": [],
     "followers": []
   }
+},{
+  "model": "jwt_auth.user",
+  "pk": 11,
+  "fields": {
+    "password": "pass",
+    "last_login": null,
+    "is_superuser": false,
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2020-09-10T16:54:28Z",
+    "email": "henrick@email.com",
+    "profile_image": "https://images.unsplash.com/photo-1529408570047-e4414fb17e95?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=640&q=80",
+    "username": "henrick",
+    "first_name": "H",
+    "last_name": "G",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "jwt_auth.user",
+  "pk": 12,
+  "fields": {
+    "password": "pass",
+    "last_login": null,
+    "is_superuser": false,
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2020-09-10T16:54:28Z",
+    "email": "ollie@email.com",
+    "profile_image": "https://images.unsplash.com/photo-1529408570047-e4414fb17e95?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=640&q=80",
+    "username": "ollie",
+    "first_name": "O",
+    "last_name": "N",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "jwt_auth.user",
+  "pk": 13,
+  "fields": {
+    "password": "pass",
+    "last_login": null,
+    "is_superuser": false,
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2020-09-10T16:54:28Z",
+    "email": "jack@email.com",
+    "profile_image": "https://images.unsplash.com/photo-1529408570047-e4414fb17e95?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=640&q=80",
+    "username": "jack",
+    "first_name": "J",
+    "last_name": "M",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "jwt_auth.user",
+  "pk": 14,
+  "fields": {
+    "password": "pass",
+    "last_login": null,
+    "is_superuser": false,
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2020-09-10T16:54:28Z",
+    "email": "ricardo@email.com",
+    "profile_image": "https://images.unsplash.com/photo-1529408570047-e4414fb17e95?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=640&q=80",
+    "username": "ricardo",
+    "first_name": "R",
+    "last_name": "X",
+    "groups": [],
+    "user_permissions": []
+  }
 }
 ]
