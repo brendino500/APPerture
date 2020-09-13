@@ -4,7 +4,7 @@ import { Parallax } from 'react-parallax'
 
 const image1 = 'https://images.unsplash.com/photo-1504293538349-0be9a181d474?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
 
-const image2 = 'https://images.unsplash.com/photo-1504293538349-0be9a181d474?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
+const image2 = 'https://images.unsplash.com/photo-1559117843-4d167969b636?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
 
 const image3 = 'https://images.unsplash.com/photo-1517909277968-946dd06adf1e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
 

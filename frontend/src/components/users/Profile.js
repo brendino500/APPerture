@@ -36,9 +36,7 @@ class Profile extends React.Component {
       const resPhoto = await getAllPhotos()
       this.setState({ data: resPhoto.data })
 
-      console.log(this.props.match.params.id)
       const resUser = await getUser(this.props.match.params.id)
-      console.log('Do You even try?!')
       console.log(resUser.data)
       this.setState({ user: resUser.data })
 

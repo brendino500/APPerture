@@ -44,13 +44,13 @@ export const loginUser = formData => {
 
 // Profile Related **************************
 export const getAllUsers = () => {
-  return axios.get(`${baseUrl}/profile`, withHeaders())
+  return axios.get(`${baseUrl}/auth/profiles`, withHeaders())
 }
 
 export const getUser = userId => {
-  return axios.get(`${baseUrl}/profile/${userId}`, withHeaders())
+  return axios.get(`${baseUrl}/auth/profile/${userId}`, withHeaders())
 }
 
 export const editUser = (userId, formData) => {
-  return axios.put(`${baseUrl}/profile/${userId}`, formData, withHeaders())
+  return axios.put(`${baseUrl}/auth/profile/${userId}`, formData, withHeaders())
 }
