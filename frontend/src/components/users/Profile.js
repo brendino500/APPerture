@@ -1,6 +1,5 @@
 import React from 'react'
 import ProfileMap from './ProfileMap'
-
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import Divider from '@material-ui/core/Divider'
@@ -17,29 +16,23 @@ import GridList from '@material-ui/core/GridList'
 import GridListTileBar from '@material-ui/core/GridListTileBar'
 import IconButton from '@material-ui/core/IconButton'
 import InfoIcon from '@material-ui/icons/Info'
-
 import { makeStyles } from '@material-ui/core/styles'
 import { getAllPhotos, getAllUsers, getUser } from '../../lib/api'
 import { PopupboxManager, PopupboxContainer } from 'react-popupbox'
 
-
 class Profile extends React.Component {
   state = { 
     data: [],
-    user: [],
+    user: null,
     hideMap: true,
     hideGrid: false
   }
 
   async componentDidMount() {
     try {
-      const resPhoto = await getAllPhotos()
-      this.setState({ data: resPhoto.data })
-
       const resUser = await getUser(this.props.match.params.id)
       console.log(resUser.data)
       this.setState({ user: resUser.data })
-
     } catch (err) {
       console.log(err)
     }
@@ -83,10 +76,11 @@ class Profile extends React.Component {
     icon: {
       color: 'rgba(255, 255, 255, 0.54)'
     }
-  }));
+  }))
 
   render() {
     console.log(this.state.user)
+    if (!this.state.user) return null
     return (
       <Container maxWidth="sm">
         <Box component="span" className="profile-info">
@@ -150,7 +144,7 @@ class Profile extends React.Component {
               <GridList cellHeight={300} className="test">
                 <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
                 </GridListTile>
-                {this.state.data.map((tile) => (
+                {this.state.user.created_photo.map((tile) => (
                   <GridListTile key={tile.image}>
                     <img src={tile.image} alt={tile.title} />
                     <GridListTileBar
