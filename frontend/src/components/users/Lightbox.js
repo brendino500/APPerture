@@ -3,8 +3,10 @@ import ColorTheme from '../../../src/ColorTheme'
 import { PopupboxManager, PopupboxContainer } from 'react-popupbox'
 import { showSinglePhoto } from '../../lib/api'
 
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
+import MessageIcon from '@material-ui/icons/Message'
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
-import { Typography, Box, Grid, Paper, Avatar } from '@material-ui/core'
+import { Typography, Box, Grid, Paper, Avatar, TextField, Divider } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 
 class Lightbox extends React.Component {
@@ -74,6 +76,13 @@ class Lightbox extends React.Component {
                   </Grid>
                 </Grid>
               </Grid>
+              <TextField
+                id="standard-multiline-static"
+                label="Multiline"
+                multiline
+                rows={4}
+                defaultValue="Default Value"
+              />
             </Paper>
           </Box>
         </div>
@@ -114,13 +123,25 @@ class Lightbox extends React.Component {
                   <Grid item xs container direction="column" spacing={2}>
                     <Grid item xs>
                       <Link to={`/profile/${photo.owner.id}`}>
-                        <Typography varient="h1">
-                          <Avatar alt="profile avatar" src={photo.owner.profile_image} /> @{photo.owner.username}
-                        </Typography>
+                        <Grid item xs direction="row">
+                          <Avatar alt="profile avatar" src={photo.owner.profile_image} />
+                          <Typography varient="h1">
+                            @{photo.owner.username}
+                          </Typography>
+                        </Grid>
                       </Link>
-                      <Typography varient="subtitle1">
+                      <Typography varient="subtitle1" color="primary">
                         {photo.location}
                       </Typography>
+                      <Divider />
+                      <FavoriteBorderIcon color="primary"/>
+                      <MessageIcon color="primary"/>
+                      <TextField 
+                        id="outlined-basic" 
+                        fullWidth
+                        color="primary"
+                        label="Add a comment..." 
+                        variant="outlined" />
                     </Grid>
                   </Grid>
                 </Grid>
