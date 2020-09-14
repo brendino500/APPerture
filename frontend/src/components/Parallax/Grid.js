@@ -92,6 +92,7 @@ export default class Grid extends React.Component {
       lockScroll,
       ...rest
     } = this.props
+
     const { lastOpen, open, width } = this.state
     let column = 0
     const columnHeights = new Array(columns).fill(0)

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Slug, Fade } from './Primitives'
+import { Link } from 'react-router-dom'
 import Icon from '@ant-design/icons'
 import './styles.css'
 import 'antd/dist/antd.css'
@@ -7,8 +8,8 @@ import 'antd/dist/antd.css'
 class Cell extends Component {
 
   render() {
-    const { toggle, location, active, image } = this.props
-
+    const { toggle, location, active, image, owner } = this.props
+    // console.log(owner.username)
     return (
       <div
         className="cell"
@@ -26,7 +27,6 @@ class Cell extends Component {
                 />
               </div>
               <h1>{location}</h1>
-              {/* <p>{description}</p> */}
             </Slug>
           </div>
         </Fade>
@@ -37,7 +37,9 @@ class Cell extends Component {
           leave={{ opacity: 0, transform: 'translate3d(0,-50px,0)' }}
           delay={active ? 0 : 400}>
           <div className="default">
-            <div style={{ zIndex: 1 }}>{location}</div>
+            <div style={{ zIndex: 1 }}>
+              {<Link style={{ color: 'white' }} to={`/profile/${owner.id}`}>{location}</Link>}
+            </div>
           </div>
         </Fade>
       </div>

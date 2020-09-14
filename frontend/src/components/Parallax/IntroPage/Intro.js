@@ -53,8 +53,8 @@ const MyComponent = () => (
               top: '50%',
               borderRadius: '50%',
               transform: 'translate(-50%,-50%)',
-              width: percentage * 500,
-              height: percentage * 500
+              width: percentage * 600,
+              height: percentage * 600
             }}
           />
         </div>

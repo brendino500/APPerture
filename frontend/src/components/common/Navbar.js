@@ -169,7 +169,7 @@ function Navbar() {
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuClose}>
-        {!userAuthenticated && <Link style={{ color: 'black' }} to={'/photos'}>Collection</Link>}
+        {<Link style={{ color: 'black' }} to={'/photos'}>Collection</Link>}
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>
         {!userAuthenticated && <Link style={{ color: 'black' }} to={'/login'}>Log In</Link>}
