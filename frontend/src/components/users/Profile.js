@@ -134,51 +134,56 @@ class Profile extends React.Component {
     return (
       <ThemeProvider theme={ColorTheme}>
         <Container maxWidth="md">
-          <Box component="span" className="profile-info">
+          <Box component="span" className="profile-info" >
             <Grid className="profile-photo-followers">
-              <ButtonBase className="profile-image">
-                <Avatar alt="Userprofilephoto" src={user.profile_image} className="profile-avatar" />
-              </ButtonBase>
-              <Grid className="username-info">
+              <Grid item md container direction="row" >
+                <ButtonBase className="profile-image">
+                  <Avatar 
+                    alt="Userprofilephoto" 
+                    src={user.profile_image} 
+                    className="profile-avatar"
+                    style={{
+                      width: '130px',
+                      height: '130px' }}
+                  />
+                </ButtonBase>
                 <Grid item xs container direction="column" spacing={2}>
-                  <Grid item xs>
-                    <Typography varient="h1" color="primary">
+                  <Typography varient="h1" color="primary">
                       @{user.username}
-                    </Typography>
-                    <Typography varient="subtitle1" color="primary">
-                      {user.first_name} {user.last_name}
-                    </Typography>
-                    <Typography varient="subtitle2" color="primary">
+                  </Typography>
+                  <Typography varient="subtitle1" color="primary">
+                    {user.first_name} {user.last_name}
+                  </Typography>
+                  <Typography varient="subtitle2" color="primary">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin turpis elit, tincidunt a placerat sit amet, accumsan porttitor sem. Nam sed libero maximus, eleifend dui vitae, posuere augue. 
-                    </Typography>
-                    <br />
-                    <Divider />
-                  </Grid>
+                  </Typography>
+                  <br />
+                  <Divider />
                 </Grid>
-                <Grid>
-                  <Button size="medium" variant="outlined" color="primary" onClick={this.handleFollow}>
+              </Grid>
+              <Grid>
+                <Button size="medium" variant="outlined" color="primary" onClick={this.handleFollow}>
                 Follow
-                  </Button>
-                  <Button variant="outlined" color="primary">
+                </Button>
+                <Button variant="outlined" color="primary">
                 Message
-                  </Button>
+                </Button>
+              </Grid>
+              <Grid item xs container direction="row" spacing={2}>
+                <Grid item xs>
+                  <Typography varient="p" color="primary">
+                    {user.created_photo.length} <br /> Posts
+                  </Typography>
                 </Grid>
-                <Grid item xs container direction="row" spacing={2}>
-                  <Grid item xs>
-                    <Typography varient="p" color="primary">
-                      {user.created_photo.length} <br /> Posts
-                    </Typography>
-                  </Grid>
-                  <Grid item xs>
-                    <Typography varient="p" color="primary">
-                      {user.followers.length} <br /> Followers
-                    </Typography>
-                  </Grid>
-                  <Grid item xs>
-                    <Typography varient="p" color="primary">
-                      {user.following.length} <br /> Following
-                    </Typography>
-                  </Grid>
+                <Grid item xs>
+                  <Typography varient="p" color="primary">
+                    {user.followers.length} <br /> Followers
+                  </Typography>
+                </Grid>
+                <Grid item xs>
+                  <Typography varient="p" color="primary">
+                    {user.following.length} <br /> Following
+                  </Typography>
                 </Grid>
               </Grid>
             </Grid>

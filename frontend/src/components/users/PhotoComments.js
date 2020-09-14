@@ -30,9 +30,9 @@ class PhotoComments extends React.Component {
     return (
       <ThemeProvider theme={ColorTheme}>
         <Grid container spacing={2}>
-          <Avatar alt="profile avatar" src="owner">
+          {/* <Avatar alt="profile avatar" src="owner">
 
-          </Avatar>
+          </Avatar> */}
         </Grid>
       </ThemeProvider>
     )

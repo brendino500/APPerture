@@ -150,6 +150,7 @@ class Lightbox extends React.Component {
       <ThemeProvider theme={ColorTheme}>
         <Container maxWidth="md" spacing={4} fixed>
           <Box
+            mx="auto"
             component="span"
             color="primary"
             bgcolor="background.paper">
