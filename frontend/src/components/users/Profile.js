@@ -21,10 +21,11 @@ import IconButton from '@material-ui/core/IconButton'
 import InfoIcon from '@material-ui/icons/Info'
 
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
-import { getAllPhotos, getAllUsers, getUser, followUser, getSingleUser } from '../../lib/api'
+import { getAllPhotos, getAllUsers, getUser, followUser } from '../../lib/api'
 import { getUserId } from '../../lib/auth'
 import { PopupboxManager, PopupboxContainer } from 'react-popupbox'
 import { Link } from 'react-router-dom'
+
 
 class Profile extends React.Component {
   state = { 
@@ -70,26 +71,19 @@ class Profile extends React.Component {
 
   handleFollow = async e => {
     e.preventDefault()
+    
+    if (e.currentTarget.name === 'follow') {
+      console.log('clicked follow button', e.currentTarget.name)
+      // const followedUser = this.state.user.id
+      try {
 
-    try {
-      // console.log(followedUser)
-      await followUser(this.props.match.params.id)
-      const resUser = await getUser(this.props.match.params.id)
-      // console.log(resUser.data)
-      this.setState({ user: resUser.data })
+        const followedUser = await getUserId()
+        console.log(followedUser)
+        // await followUser(followedUser)
+        console.log('this REACHED THIS STAGE')
 
-    } catch (err) {
-      console.log(err)
-    }
-  }
-
-  componentDidUpdate = async (prevProps) => {
-    if (prevProps.location.pathname.includes('/profile/') && this.props.location.pathname.includes('/profile/')) {
-
-      if (this.props.location.pathname !== prevProps.location.pathname) {
-        const id = this.props.match.params.id
-        const res = await getUser(id)
-        this.setState({ user: res.data })
+      } catch (err) {
+        console.log(err)
       }
     }
   }
@@ -135,7 +129,7 @@ class Profile extends React.Component {
     return (
       <ThemeProvider theme={ColorTheme}>
         <Container maxWidth="md">
-          <Box component="span" className="profile-info" alignItems="center">
+          <Grid container spacing={2} className="profile-info">
             <Grid className="profile-photo-followers">
               <ButtonBase className="profile-image">
                 <Avatar alt="Userprofilephoto" src={user.profile_image} className="profile-avatar" />
@@ -181,7 +175,7 @@ class Profile extends React.Component {
                 </Grid>
               </Grid>
             </Grid>
-          </Box>
+          </Grid>
           <br />
           <Divider />
           <Box component="span" className="view-buttons">
@@ -203,14 +197,12 @@ class Profile extends React.Component {
                   <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
                   </GridListTile>
                   {user.created_photo.map((tile) => (
-                    <Link to={`/photos/${tile.id}`} key={tile.flexGrowid}>
-                      <GridListTile key={tile.image}>
-                        <img src={tile.image} alt={tile.title} />
-                        <GridListTileBar
-                          title={tile.location}
-                        />
-                      </GridListTile>
-                    </Link>
+                    <GridListTile key={tile.id}>
+                      <img src={tile.image} alt={tile.title} />
+                      <GridListTileBar
+                        title={tile.location}
+                      />
+                    </GridListTile>
                   ))}
                 </GridList>
               </section>
