@@ -24,7 +24,7 @@ import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
 import { getAllPhotos, getAllUsers, getUser, followUser, getSingleUser } from '../../lib/api'
 import { getUserId } from '../../lib/auth'
 import { PopupboxManager, PopupboxContainer } from 'react-popupbox'
-import { Link } from '@material-ui/core/colors'
+import { Link } from 'react-router-dom'
 
 class Profile extends React.Component {
   state = { 
@@ -135,7 +135,7 @@ class Profile extends React.Component {
     return (
       <ThemeProvider theme={ColorTheme}>
         <Container maxWidth="md">
-          <Box component="span" className="profile-info">
+          <Box component="span" className="profile-info" alignItems="center">
             <Grid className="profile-photo-followers">
               <ButtonBase className="profile-image">
                 <Avatar alt="Userprofilephoto" src={user.profile_image} className="profile-avatar" />
@@ -203,12 +203,14 @@ class Profile extends React.Component {
                   <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
                   </GridListTile>
                   {user.created_photo.map((tile) => (
-                    <GridListTile key={tile.image}>
-                      <img src={tile.image} alt={tile.title} />
-                      <GridListTileBar
-                        title={tile.location}
-                      />
-                    </GridListTile>
+                    <Link to={`/photos/${tile.id}`} key={tile.flexGrowid}>
+                      <GridListTile key={tile.image}>
+                        <img src={tile.image} alt={tile.title} />
+                        <GridListTileBar
+                          title={tile.location}
+                        />
+                      </GridListTile>
+                    </Link>
                   ))}
                 </GridList>
               </section>
