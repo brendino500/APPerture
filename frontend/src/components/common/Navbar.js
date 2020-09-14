@@ -118,7 +118,6 @@ function Navbar() {
   }
 
   const handleLogout = () => {
-    
     logout()
     popupNotification('Have a creative day!')
     history.push('/')
@@ -207,7 +206,7 @@ function Navbar() {
   )
 
   console.log('User Authenticated CHECK', isAuthenticated())
-
+  console.log('USER ID', userID)
   console.log(search)
 
   return (

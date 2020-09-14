@@ -48,7 +48,7 @@ class ProfileView(APIView):
     permission_classes = (IsAuthenticated, )
 
     def get(self, request, pk):
-        user = User.objects.get(pk=request.user.id)
+        user = User.objects.get(pk=pk)
         serialized_user = PopulatedUserSerializer(user)
         return Response(serialized_user.data)
 
@@ -57,6 +57,15 @@ class ProfileView(APIView):
         followed_user.followers.add(request.user.id)
         serialized_followed_user = PopulatedUserSerializer(followed_user)
         return Response(serialized_followed_user.data)
+
+class OwnUserProfileView(APIView):
+
+    permission_classes = (IsAuthenticated, )
+
+    def get(self, request, pk):
+        user = User.objects.get(pk=request.user.id)
+        serialized_user = PopulatedUserSerializer(user)
+        return Response(serialized_user.data)
 
 class ProfileListView(APIView):
 
