@@ -12,19 +12,15 @@ import ButtonGroup from '@material-ui/core/ButtonGroup'
 import Button from '@material-ui/core/Button'
 import AppsIcon from '@material-ui/icons/Apps'
 import Avatar from '@material-ui/core/Avatar'
-import ViewAgendaIcon from '@material-ui/icons/ViewAgenda'
 import RoomIcon from '@material-ui/icons/Room'
 import GridListTile from '@material-ui/core/GridListTile'
 import GridList from '@material-ui/core/GridList'
 import GridListTileBar from '@material-ui/core/GridListTileBar'
-import IconButton from '@material-ui/core/IconButton'
-import InfoIcon from '@material-ui/icons/Info'
 
-import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
+
+import { ThemeProvider } from '@material-ui/core/styles'
 import { getAllPhotos, getAllUsers, getUser, followUser, getSingleUser } from '../../lib/api'
 import { getUserId } from '../../lib/auth'
-import { PopupboxManager, PopupboxContainer } from 'react-popupbox'
-import { pink } from '@material-ui/core/colors'
 
 class Profile extends React.Component {
   state = { 
@@ -43,19 +39,6 @@ class Profile extends React.Component {
       console.log(err)
     }
   }
-
-  openPopupbox() {
-    const content = (
-      <div>
-        <p className="quotes">Work like you don`t need the money.</p>
-        <p className="quotes">Dance like no one is watching.</p>
-        <p className="quotes">And love like you`ve never been hurt.</p>
-        <span className="quotes-from">― Mark Twain</span>
-      </div>
-    )
-    PopupboxManager.open({ content })
-  }
-
 
   handleDisplayCard = e => {
     e.preventDefault()
@@ -93,46 +76,10 @@ class Profile extends React.Component {
     }
   }
 
-  useStyles = makeStyles((theme) => ({
-    spacing: 8,
-    root: {
-      display: 'flex',
-      flexGrow: 1,
-      flexWrap: 'wrap',
-      justifyContent: 'space-around',
-      overflow: 'hidden',
-      alignItems: 'center',
-      backgroundColor: theme.palette.background.paper,
-      margin: theme.spacing(8)
-    },
-    button: {
-      alignItems: 'center'
-    },
-    gridList: {
-      width: 500,
-      height: 450
-    },
-    icon: {
-      color: 'rgba(255, 255, 255, 0.54)'
-    },
-    typography: {
-      fontFamily: 'Libre Baskerville'
-    },
-    large: {
-      width: theme.spacing(7),
-      height: theme.spacing(7)
-    }
-  }))
-
-  theme = {
-    spacing: 8
-  }
-
   render() {
     console.log(this.state.user)
 
     const { user } = this.state
-    const classes = makeStyles()
 
     if (!this.state.user) return null
 
@@ -167,11 +114,13 @@ class Profile extends React.Component {
                 </Grid>
               </Grid>
               <Grid item xs container direction="row">
-                <Button size="medium" variant="outlined" color="primary" onClick={this.handleFollow}>
-                Follow
-                </Button>
-                <Button variant="outlined" color="primary">
-                Message
+                <Button 
+                  size="medium" 
+                  fullWidth 
+                  variant="outlined" 
+                  color="primary" 
+                  onClick={this.handleFollow}>
+                • F o l l o w •
                 </Button>
               </Grid>
               <Grid item xs container direction="row" className="followers">
