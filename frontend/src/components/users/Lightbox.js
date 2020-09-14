@@ -84,7 +84,7 @@ class Lightbox extends React.Component {
           <Paper className="content">
             <Grid container spacing={2}>
               <Grid className="photo-image">
-                <img height="200px" className="photo" alt="picture" src={photo.image} />
+                <img height="500px" className="photo" alt="picture" src={photo.image} />
               </Grid>
             </Grid>
           </Paper>
