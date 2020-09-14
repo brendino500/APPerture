@@ -36,7 +36,7 @@ class Profile extends React.Component {
   async componentDidMount() {
     try {
       const resUser = await getUser(this.props.match.params.id)
-      console.log(resUser.data)
+      // console.log(resUser.data)
       this.setState({ user: resUser.data })
     } catch (err) {
       console.log(err)
@@ -67,24 +67,24 @@ class Profile extends React.Component {
     }
   }
 
-  // handleFollow = async e => {
-  //   e.preventDefault()
+  handleFollow = async e => {
+    e.preventDefault()
     
-  //   if (e.currentTarget.name === 'follow') {
-  //     console.log('clicked follow button', e.currentTarget.name)
-  //     // const followedUser = this.state.user.id
-  //     try {
+    if (e.currentTarget.name === 'follow') {
+      console.log('clicked follow button', e.currentTarget.name)
+      // const followedUser = this.state.user.id
+      try {
 
-  //       const followedUser = await getUserId()
-  //       console.log(followedUser)
-  //       // await followUser(followedUser)
-  //       console.log('this REACHED THIS STAGE')
+        const followedUser = await getUserId()
+        console.log(followedUser)
+        // await followUser(followedUser)
+        console.log('this REACHED THIS STAGE')
 
-  //     } catch (err) {
-  //       console.log(err)
-  //     }
-  //   }
-  // }
+      } catch (err) {
+        console.log(err)
+      }
+    }
+  }
 
   useStyles = makeStyles((theme) => ({
     root: {
@@ -118,24 +118,28 @@ class Profile extends React.Component {
 
   render() {
     console.log(this.state.user)
+
+    const { user } = this.state
     const classes = makeStyles()
+
     if (!this.state.user) return null
+
     return (
       <ThemeProvider theme={ColorTheme}>
         <Container maxWidth="md">
-          <Box component="span" className="profile-info">
+          <Grid container spacing={2} className="profile-info">
             <Grid className="profile-photo-followers">
               <ButtonBase className="profile-image">
-                <Avatar alt="Userprofilephoto" src="/static/images/avatar/1.jpg" className="profile-avatar" />
+                <Avatar alt="Userprofilephoto" src={user.profile_image} className="profile-avatar" />
               </ButtonBase>
               <Grid className="username-info">
                 <Grid item xs container direction="column" spacing={2}>
                   <Grid item xs>
                     <Typography varient="h5" color="primary">
-                    Username
+                      @{user.username}
                     </Typography>
                     <Typography varient="subtitle1" color="primary">
-                    First Name
+                      {user.first_name} {user.last_name}
                     </Typography>
                     <Typography varient="subtitle2" color="primary">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin turpis elit, tincidunt a placerat sit amet, accumsan porttitor sem. Nam sed libero maximus, eleifend dui vitae, posuere augue. 
@@ -153,23 +157,23 @@ class Profile extends React.Component {
                 <Grid item xs container direction="row" spacing={2}>
                   <Grid item xs>
                     <Typography varient="p" color="primary">
-                    29 <br /> Posts
+                      {user.created_photo.length} <br /> Posts
                     </Typography>
                   </Grid>
                   <Grid item xs>
                     <Typography varient="p" color="primary">
-                    48 <br /> Followers
+                      {user.followers.length} <br /> Followers
                     </Typography>
                   </Grid>
                   <Grid item xs>
                     <Typography varient="p" color="primary">
-                    532 <br /> Following
+                      {user.following.length} <br /> Following
                     </Typography>
                   </Grid>
                 </Grid>
               </Grid>
             </Grid>
-          </Box>
+          </Grid>
           <br />
           <Divider />
           <Box component="span" className="view-buttons">
@@ -190,7 +194,7 @@ class Profile extends React.Component {
                 <GridList cellHeight={300} className="test">
                   <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
                   </GridListTile>
-                  {this.state.user.created_photo.map((tile) => (
+                  {user.created_photo.map((tile) => (
                     <GridListTile key={tile.image}>
                       <img src={tile.image} alt={tile.title} />
                       <GridListTileBar

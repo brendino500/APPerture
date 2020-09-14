@@ -48,7 +48,8 @@ class ProfileView(APIView):
     permission_classes = (IsAuthenticated, )
 
     def get(self, request, pk):
-        user = User.objects.get(pk=request.user.id)
+        print(pk)
+        user = User.objects.get(pk=pk)
         serialized_user = PopulatedUserSerializer(user)
         return Response(serialized_user.data)
 
