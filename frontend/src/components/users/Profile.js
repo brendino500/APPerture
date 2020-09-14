@@ -142,7 +142,7 @@ class Profile extends React.Component {
               <Grid className="username-info">
                 <Grid item xs container direction="column" spacing={2}>
                   <Grid item xs>
-                    <Typography varient="h5" color="primary">
+                    <Typography varient="h1" color="primary">
                       @{user.username}
                     </Typography>
                     <Typography varient="subtitle1" color="primary">
@@ -155,12 +155,14 @@ class Profile extends React.Component {
                     <Divider />
                   </Grid>
                 </Grid>
-                <Button variant="outlined" color="primary" onClick={this.handleFollow}>
+                <Grid>
+                  <Button size="medium" variant="outlined" color="primary" onClick={this.handleFollow}>
                 Follow
-                </Button>
-                <Button variant="outlined" color="primary">
+                  </Button>
+                  <Button variant="outlined" color="primary">
                 Message
-                </Button>
+                  </Button>
+                </Grid>
                 <Grid item xs container direction="row" spacing={2}>
                   <Grid item xs>
                     <Typography varient="p" color="primary">
