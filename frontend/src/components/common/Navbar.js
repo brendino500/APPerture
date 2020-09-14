@@ -17,7 +17,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications'
 import MoreIcon from '@material-ui/icons/MoreVert'
 
 import { fade, makeStyles } from '@material-ui/core/styles'
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useHistory, useLocation } from 'react-router-dom'
 import { popupNotification } from '../../lib/notification'
 import { logout, isAuthenticated, getUserId } from '../../lib/auth'
 import { TripOriginSharp } from '@material-ui/icons'
@@ -98,6 +98,8 @@ const useStyles = makeStyles((theme) => ({
 function Navbar() {
 
   const history = useHistory()
+  const location = useLocation()
+  console.log(location)
   const userID = getUserId()
   const classes = useStyles()
   const userAuthenticated = isAuthenticated()
@@ -105,21 +107,20 @@ function Navbar() {
   const [anchorEl, setAnchorEl] = React.useState(null)
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null)
 
-  const [photos, setPhotos] = React.useState([])
   const [search, setSearch] = React.useState('')
 
   const isMenuOpen = Boolean(anchorEl)
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl)
 
   React.useEffect(() => {
-    const getData = async () => {
-      const res = await getAllPhotos()
-      setPhotos(res.data)
+    console.log('this is re running')
+    // if you aren't redirecting to a /photo
+    if (!location.pathname.startsWith('/photo')) {
+      // set state to
+      setSearch('')
     }
-    getData()
-  }, [])
-
-  
+  }, [location.pathname])
+  // if this ever changes, run this code
 
   const handleValueChange = e => {
     setSearch(e.target.value)

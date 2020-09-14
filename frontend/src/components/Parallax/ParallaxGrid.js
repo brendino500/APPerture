@@ -19,14 +19,25 @@ class ParallaxGrid extends React.Component {
     }
   }
 
-  render() {
-    console.log(this.state.data)
+  filtered = () => {
+    // console.log(this.props)
+    const searchTerm = this.props.location.search.replace('?search=', '')
+    console.log(searchTerm)
 
+    const re = new RegExp(searchTerm, 'i')
+    return this.state.data.filter(country => (
+      re.test(country.location)
+    ))
+  }
+
+  render() {
+    // console.log(this.state.data)
+    console.log(this.filtered())
     return (
       <Grid
         className="grid"
         // Arbitrary data, should contain keys, possibly heights, etc.
-        data={this.state.data}
+        data={this.filtered()}
         // Key accessor, instructs grid on how to fet individual keys from the data set
         keys={d => d.id}
         // Can be a fixed value or an individual data accessor
