@@ -83,10 +83,14 @@ class Profile extends React.Component {
     }
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.userID !== prevProps.userID) {
-      this.fetchData(this.props.userID)
+  componentDidUpdate = async (prevProps) => {
+    if (prevProps.location.pathname.includes('/profile/') && this.props.location.pathname.includes('/profile/')) {
 
+      if (this.props.location.pathname !== prevProps.location.pathname) {
+        const id = this.props.match.params.id
+        const res = await getUser(id)
+        this.setState({ user: res.data })
+      }
     }
   }
 
