@@ -24,7 +24,7 @@ import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
 import { getAllPhotos, getAllUsers, getUser, followUser, getSingleUser } from '../../lib/api'
 import { getUserId } from '../../lib/auth'
 import { PopupboxManager, PopupboxContainer } from 'react-popupbox'
-import { pink } from '@material-ui/core/colors'
+import { Link } from '@material-ui/core/colors'
 
 class Profile extends React.Component {
   state = { 
