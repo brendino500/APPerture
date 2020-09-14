@@ -71,19 +71,26 @@ class Profile extends React.Component {
 
   handleFollow = async e => {
     e.preventDefault()
-    
-    if (e.currentTarget.name === 'follow') {
-      console.log('clicked follow button', e.currentTarget.name)
-      // const followedUser = this.state.user.id
-      try {
 
-        const followedUser = await getUserId()
-        console.log(followedUser)
-        // await followUser(followedUser)
-        console.log('this REACHED THIS STAGE')
+    try {
+      // console.log(followedUser)
+      await followUser(this.props.match.params.id)
+      const resUser = await getUser(this.props.match.params.id)
+      // console.log(resUser.data)
+      this.setState({ user: resUser.data })
 
-      } catch (err) {
-        console.log(err)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  componentDidUpdate = async (prevProps) => {
+    if (prevProps.location.pathname.includes('/profile/') && this.props.location.pathname.includes('/profile/')) {
+
+      if (this.props.location.pathname !== prevProps.location.pathname) {
+        const id = this.props.match.params.id
+        const res = await getUser(id)
+        this.setState({ user: res.data })
       }
     }
   }
