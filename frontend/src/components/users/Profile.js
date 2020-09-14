@@ -94,6 +94,7 @@ class Profile extends React.Component {
   }
 
   useStyles = makeStyles((theme) => ({
+    spacing: 8,
     root: {
       display: 'flex',
       flexGrow: 1,
@@ -122,6 +123,10 @@ class Profile extends React.Component {
       height: theme.spacing(7)
     }
   }))
+
+  theme = {
+    spacing: 8
+  }
 
   render() {
     console.log(this.state.user)
@@ -161,7 +166,7 @@ class Profile extends React.Component {
                   <Divider />
                 </Grid>
               </Grid>
-              <Grid>
+              <Grid item xs container direction="row">
                 <Button size="medium" variant="outlined" color="primary" onClick={this.handleFollow}>
                 Follow
                 </Button>
@@ -169,7 +174,7 @@ class Profile extends React.Component {
                 Message
                 </Button>
               </Grid>
-              <Grid item xs container direction="row" spacing={2}>
+              <Grid item xs container direction="row" className="followers">
                 <Grid item xs>
                   <Typography varient="p" color="primary">
                     {user.created_photo.length} <br /> Posts
