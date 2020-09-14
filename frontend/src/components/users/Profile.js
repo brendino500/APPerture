@@ -127,7 +127,7 @@ class Profile extends React.Component {
     return (
       <ThemeProvider theme={ColorTheme}>
         <Container maxWidth="md">
-          <Grid container spacing={2} className="profile-info">
+          <Box component="span" className="profile-info">
             <Grid className="profile-photo-followers">
               <ButtonBase className="profile-image">
                 <Avatar alt="Userprofilephoto" src={user.profile_image} className="profile-avatar" />
@@ -173,7 +173,7 @@ class Profile extends React.Component {
                 </Grid>
               </Grid>
             </Grid>
-          </Grid>
+          </Box>
           <br />
           <Divider />
           <Box component="span" className="view-buttons">

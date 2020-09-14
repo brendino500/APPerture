@@ -8,6 +8,7 @@ import Register from './components/auth/Register'
 import Login from './components/auth/Login'
 import ErrorPage from './components/common/ErrorPage'
 
+import Lightbox from './components/users/Lightbox'
 import Profile from './components/users/Profile'
 // import ProfileEdit from './components/users/ProfileEdit'
 // import ProfileForm from './components/users/ProfileForm'
@@ -26,7 +27,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={IntroParallax} />
           {/* <Route path="/photos/new" component={} /> */}
-          <Route path="/photos/:id/" component={PhotoCard} />
+          <Route path="/photos/:id/" component={Lightbox} />
           <Route path="/photos/" component={ParallaxGrid} />
           <Route exact path="/profile/:id" component={Profile} />
           <Route path="/register/" component={Register} />
