@@ -5,14 +5,14 @@ import Grid from './Grid'
 import './styles.css'
 import 'antd/dist/antd.css'
 import Cell from './Cell'
-import axios from 'axios'
+import { getAllPhotos } from '../../lib/api'
 
 class ParallaxGrid extends React.Component {
   state = { data: [] }
 
   async componentDidMount() {
     try {
-      const res = await axios.get('/api/photos')
+      const res = await getAllPhotos()
       this.setState({ data: res.data })
     } catch (err) {
       console.log(err)
@@ -41,15 +41,15 @@ class ParallaxGrid extends React.Component {
         // Key accessor, instructs grid on how to fet individual keys from the data set
         keys={d => d.id}
         // Can be a fixed value or an individual data accessor
-        heights={200}
+        heights={450}
         // Number of columns
-        columns={2}
+        columns={4}
         // Space between elements
         margin={30}
         // Removes the possibility to scroll away from a maximized element
         lockScroll={false}
         // Delay when active elements (blown up) are minimized again
-        closeDelay={500}
+        closeDelay={400}
         // Regular react-spring configs
         config={config.slow}>{(data, active, toggle) => (
           <Cell {...data} active={active} toggle={toggle} />

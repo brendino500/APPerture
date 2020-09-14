@@ -7,8 +7,8 @@ import 'antd/dist/antd.css'
 class Cell extends Component {
 
   render() {
-    const { toggle, location, active, image } = this.props
-
+    const { toggle, location, active, image, owner } = this.props
+    // console.log(owner.username)
     return (
       <div
         className="cell"
@@ -26,7 +26,6 @@ class Cell extends Component {
                 />
               </div>
               <h1>{location}</h1>
-              {/* <p>{description}</p> */}
             </Slug>
           </div>
         </Fade>
