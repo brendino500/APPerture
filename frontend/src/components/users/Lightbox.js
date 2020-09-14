@@ -1,10 +1,11 @@
 import React from 'react'
+import ColorTheme from '../../../src/ColorTheme'
 import { PopupboxManager, PopupboxContainer } from 'react-popupbox'
 import { showSinglePhoto } from '../../lib/api'
 
-import { makeStyles } from '@material-ui/core/styles'
-import Paper from '@material-ui/core/Paper'
-import Grid from '@material-ui/core/Grid'
+import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
+import { Typography, Box, Grid, Paper, Avatar } from '@material-ui/core'
+import { Link } from 'react-router-dom'
 
 class Lightbox extends React.Component {
   state = {
@@ -48,15 +49,35 @@ class Lightbox extends React.Component {
     // const classes = useStyles()
     const { photo } = this.state
     const content = (
-      <div className="box">
-        <Paper className="content">
-          <Grid container spacing={2}>
-            <Grid className="photo-image">
-              <img className="photo" alt="picture" src={photo.image}></img>
-            </Grid>
-          </Grid>
-        </Paper>
-      </div>
+      <ThemeProvider theme={ColorTheme}>
+        <div className="box">
+          <Box
+            color="primary"
+            bgcolor="background.paper">
+            <Paper className="content">
+              <Grid container spacing={2}>
+                <Grid className="photo-image">
+                  <img className="photo" alt="picture" src={photo.image}></img>
+                </Grid>
+                <Grid item xs={12} sm container>
+                  <Grid item xs container direction="column" spacing={2}>
+                    <Grid item xs>
+                      <Typography varient="h1" color="primary">
+                        {photo.owner.username}
+                        {photo.owner.location}
+                      </Typography>
+                      <br />
+                      <Typography>
+                        {photo.comments}
+                      </Typography>
+                    </Grid>
+                  </Grid>
+                </Grid>
+              </Grid>
+            </Paper>
+          </Box>
+        </div>
+      </ThemeProvider>
     )
     PopupboxManager.open({ content })
   }
@@ -79,18 +100,35 @@ class Lightbox extends React.Component {
     }
 
     return (
-      <div>
+      <ThemeProvider theme={ColorTheme}>
         <div className="box">
-          <Paper className="content">
-            <Grid container spacing={2}>
-              <Grid className="photo-image">
-                <img height="500px" className="photo" alt="picture" src={photo.image} />
+          <Box
+            color="primary"
+            bgcolor="background.paper">
+            <Paper className="content">
+              <Grid container spacing={2}>
+                <Grid className="photo-image">
+                  <img className="photo" alt="picture" height="400px" src={photo.image} />
+                </Grid>
+                <Grid item xs={12} sm container>
+                  <Grid item xs container direction="column" spacing={2}>
+                    <Grid item xs>
+                      <Link to={`/profile/${photo.owner.id}`}>
+                        <Typography varient="h1">
+                          <Avatar alt="profile avatar" src={photo.owner.profile_image} /> @{photo.owner.username}
+                        </Typography>
+                      </Link>
+                      <Typography varient="subtitle1">
+                        {photo.location}
+                      </Typography>
+                    </Grid>
+                  </Grid>
+                </Grid>
               </Grid>
-            </Grid>
-          </Paper>
+            </Paper>
+          </Box>
         </div>
-        <PopupboxContainer { ...popupboxConfig }/>
-      </div>
+      </ThemeProvider>
     )
   }
 }
