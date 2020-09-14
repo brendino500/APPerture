@@ -20,6 +20,8 @@ import { fade, makeStyles } from '@material-ui/core/styles'
 import { Link, useHistory } from 'react-router-dom'
 import { popupNotification } from '../../lib/notification'
 import { logout, isAuthenticated, getUserId } from '../../lib/auth'
+import { TripOriginSharp } from '@material-ui/icons'
+import { getAllPhotos } from '../../lib/api'
 // import { notification } from 'antd'
 
 const useStyles = makeStyles((theme) => ({
@@ -103,11 +105,34 @@ function Navbar() {
   const [anchorEl, setAnchorEl] = React.useState(null)
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null)
 
+  const [photos, setPhotos] = React.useState([])
+  const [search, setSearch] = React.useState('')
+
   const isMenuOpen = Boolean(anchorEl)
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl)
 
+  React.useEffect(() => {
+    const getData = async () => {
+      const res = await getAllPhotos()
+      setPhotos(res.data)
+    }
+    getData()
+  }, [])
+
+  
+
+  const handleValueChange = e => {
+    setSearch(e.target.value)
+  }
+
+  const handleSearch = e => {    
+    if (e.keyCode === 13) {
+      console.log('enter is pressed')
+      history.push(`/photos?search=${search}`)
+    }
+  }
+
   const handleLogout = () => {
-    
     logout()
     popupNotification('Have a creative day!')
     history.push('/')
@@ -129,6 +154,7 @@ function Navbar() {
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget)
   }
+
 
   const menuId = 'primary-search-account-menu'
   const renderMenu = (
@@ -196,11 +222,13 @@ function Navbar() {
   )
 
   console.log('User Authenticated CHECK', isAuthenticated())
+  console.log('USER ID', userID)
+  console.log(search)
 
   return (
     <div className={classes.grow}>
       {/* <p>You clicked {String(isAuthenticated())} times</p> */}
-      <AppBar position="static" style={{ backgroundColor: 'transparent', color: 'black', boxShadow: '0px 0px 0px 0px' }}>
+      <AppBar position="static" style={{ backgroundColor: 'transparent', color: 'white', boxShadow: '0px 0px 0px 0px' }}>
         <Toolbar>
           <IconButton
             edge="start"
@@ -211,19 +239,23 @@ function Navbar() {
             <MenuIcon/>
           </IconButton>
           <Typography className={classes.title} variant="h6" style={{ color: 'black' }} noWrap>
-            <Link to='/' style={{ color: 'black' }}>APPerture</Link>
+            <Link to='/' style={{ color: 'white' }}>APPerture</Link>
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
             <InputBase
+              name="search"
               placeholder="Search…"
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput
               }}
               inputProps={{ 'aria-label': 'search' }}
+              onChange={handleValueChange}
+              onKeyDown={handleSearch}
+              value={search}
             />
           </div>
           <div className={classes.grow} />

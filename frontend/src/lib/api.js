@@ -47,12 +47,16 @@ export const getAllUsers = () => {
   return axios.get(`${baseUrl}/auth/profiles`, withHeaders())
 }
 
+// export const getSingleUser = (pk) => {
+//   return axios.get(`${baseUrl}/auth/profile/${pk}`, withHeaders())
+// }
+
 export const getUser = userId => {
   return axios.get(`${baseUrl}/auth/profile/${userId}`, withHeaders())
 }
 
 export const followUser = followedUserId => {
-  return axios.get(`${baseUrl}/profile/${followedUserId}`, withHeaders())
+  return axios.post(`${baseUrl}/auth/profile/${followedUserId}/`, null, withHeaders())
 }
 
 export const editUser = (userId, formData) => {
