@@ -58,6 +58,15 @@ class ProfileView(APIView):
         serialized_followed_user = PopulatedUserSerializer(followed_user)
         return Response(serialized_followed_user.data)
 
+    def put(self, request, pk):
+        user_to_update = User.objects.get(pk=pk)
+        # user_to_update.is_user_owner(user_to_update, request.user)
+        updated_user = UserSerializer(user_to_update, data=request.data)
+        if updated_user.is_valid():
+            updated_user.save()
+            return Response(updated_user.data, status=status.HTTP_202_ACCEPTED)
+        return Response(updated_user.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+
 class OwnUserProfileView(APIView):
 
     permission_classes = (IsAuthenticated, )

@@ -54,7 +54,6 @@ function Login() {
 
   const handleChange = e => {
     const data = { ...state.data, [e.target.name]: e.target.value }
-    console.log('Info check', state.data)
     const errors = { ...state.errors, [e.target.name]: '' }
     setState({ data, errors })
   }

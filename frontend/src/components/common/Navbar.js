@@ -101,7 +101,6 @@ function Navbar() {
 
   const history = useHistory()
   const location = useLocation()
-  console.log(location)
   const userID = getUserId()
   const classes = useStyles()
   const userAuthenticated = isAuthenticated()
@@ -115,7 +114,6 @@ function Navbar() {
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl)
 
   React.useEffect(() => {
-    console.log('this is re running')
     // if you aren't redirecting to a /photo
     if (!location.pathname.startsWith('/photo')) {
       // set state to
@@ -228,9 +226,9 @@ function Navbar() {
     </ThemeProvider>
   )
 
-  console.log('User Authenticated CHECK', isAuthenticated())
-  console.log('USER ID', userID)
-  console.log(search)
+  // console.log('User Authenticated CHECK', isAuthenticated())
+  // console.log('USER ID', userID)
+  // console.log(search)
 
   return (
     <div className={classes.grow}>

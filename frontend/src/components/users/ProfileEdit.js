@@ -18,7 +18,7 @@ class ProfileEdit extends React.Component {
             <Typography component="h1" color="primary">
               Edit Profile
             </Typography>
-
+              
           </Paper>
         </Container>
       </ThemeProvider>
