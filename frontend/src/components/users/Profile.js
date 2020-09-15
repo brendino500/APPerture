@@ -17,7 +17,7 @@ import GridListTile from '@material-ui/core/GridListTile'
 import GridList from '@material-ui/core/GridList'
 import GridListTileBar from '@material-ui/core/GridListTileBar'
 
-
+import { Link } from 'react-router-dom'
 import { ThemeProvider } from '@material-ui/core/styles'
 import { getAllPhotos, getAllUsers, getUser, followUser, getSingleUser } from '../../lib/api'
 import { getUserId } from '../../lib/auth'
@@ -164,11 +164,14 @@ class Profile extends React.Component {
                   </GridListTile>
                   {user.created_photo.map((tile) => (
                     <GridListTile key={tile.image}>
-                      <img src={tile.image} alt={tile.title} />
-                      <GridListTileBar
-                        title={tile.location}
-                      />
+                      <Link to={`/photos/${tile.id}`}>
+                        <img src={tile.image} alt={tile.title} />
+                        <GridListTileBar
+                          title={tile.location}
+                        />
+                      </Link>
                     </GridListTile>
+                    
                   ))}
                 </GridList>
               </section>

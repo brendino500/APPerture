@@ -1,18 +1,22 @@
+$font-family: 'Libre Baskerville', serif;
+
+
 .profile-mapbox {
   display: flex;
   justify-content: center;
   align-items: center;
 }
   .map-pin {
-    font-size: 20px;
+    font-size: 15px;
   }
   .is-popup-hidden {
     display: none;
+    
   }
   .text-popup {
     h1 {
-      font-family: 'Nunito', sans-serif;
-      font-size: 16px;
+      font-family: $font-family;
+      font-size: 12px;
     }
     h2 {
       display: none;
@@ -28,25 +32,17 @@
     } 
   }
   .card-popup {
-    width: 300px;
+    width: 270px;
     padding: 15px;
     h1 {
-      font-family: 'Nunito', sans-serif;
-      font-size: 28px;
+      font-family: $font-family;
+      font-size: 12px;
     }
     h2 {
-      font-family: 'Nunito', sans-serif;
-      font-size: 28px;
+      font-family: $font-family;
+      font-size: 12px;
     }
-    h3 {
-      font-size: 16px;
-      margin-bottom: 10px;
-    }
-    p {
-      font-family: 'Nunito', sans-serif;
-      color: black;
-      font-size: 20px;
-    }
+
     .popup-image {
       display: flex;
       justify-content: center;
