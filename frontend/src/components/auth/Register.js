@@ -109,120 +109,120 @@ function Register() {
           <Grid container spacing={3}>
             <form onSubmit={handleSubmit} noValidate autoComplete="off">
               {/* <Grid item xs={12}> */}
-                <TextField
-                  color="primary"
-                  variant="outlined"
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="email"
-                  label="Username"
-                  name="username"
-                  autoComplete="username"
-                  autoFocus
-                  onChange={handleChange}
-                  value={state.username}
-                />
+              <TextField
+                color="primary"
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Username"
+                name="username"
+                autoComplete="username"
+                autoFocus
+                onChange={handleChange}
+                value={state.username}
+              />
               {/* </Grid> */}
               {/* <Grid item xs={12}> */}
-                <TextField
-                  color="primary"
-                  variant="outlined"
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="first_name"
-                  label="First Name"
-                  name="first_name"
-                  autoComplete="first_name"
-                  autoFocus
-                  onChange={handleChange}
-                  value={state.first_name}
-                />
+              <TextField
+                color="primary"
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="first_name"
+                label="First Name"
+                name="first_name"
+                autoComplete="first_name"
+                autoFocus
+                onChange={handleChange}
+                value={state.first_name}
+              />
               {/* </Grid>
               <Grid item xs={12}> */}
-                <TextField
-                  color="primary"
-                  variant="outlined"
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="last"
-                  label="Last Name"
-                  name="last_name"
-                  autoComplete="last_name"
-                  autoFocus
-                  onChange={handleChange}
-                  value={state.last_name}
-                />
+              <TextField
+                color="primary"
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="last"
+                label="Last Name"
+                name="last_name"
+                autoComplete="last_name"
+                autoFocus
+                onChange={handleChange}
+                value={state.last_name}
+              />
               {/* </Grid>
               <Grid item xs={12}> */}
-                <TextField
-                  color="primary"
-                  variant="outlined"
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email"
-                  name="email"
-                  autoComplete="email"
-                  autoFocus
-                  onChange={handleChange}
-                  value={state.email}
-                />
+              <TextField
+                color="primary"
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email"
+                name="email"
+                autoComplete="email"
+                autoFocus
+                onChange={handleChange}
+                value={state.email}
+              />
               {/* </Grid>
               <Grid item xs={12}> */}
-                <TextField
-                  color="primary"
-                  variant="outlined"
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="password"
-                  label="Password"
-                  name="password"
-                  autoComplete="password"
-                  type="password"
-                  autoFocus
-                  onChange={handleChange}
-                  value={state.password}
-                />
+              <TextField
+                color="primary"
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="password"
+                label="Password"
+                name="password"
+                autoComplete="password"
+                type="password"
+                autoFocus
+                onChange={handleChange}
+                value={state.password}
+              />
               {/* </Grid>
               <Grid item xs={12}> */}
-                <TextField
-                  color="primary"
-                  variant="outlined"
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="password_confirmation"
-                  label="Password Confirmation"
-                  name="password_confirmation"
-                  autoComplete="password_confirmation"
-                  type="password"
-                  autoFocus
-                  onChange={handleChange}
-                  value={state.password_confirmation}
-                />
+              <TextField
+                color="primary"
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="password_confirmation"
+                label="Password Confirmation"
+                name="password_confirmation"
+                autoComplete="password_confirmation"
+                type="password"
+                autoFocus
+                onChange={handleChange}
+                value={state.password_confirmation}
+              />
               {/* </Grid>
               <Grid item xs={12}> */}
-                <input
-                  accept="image/*"
-                  multiple
-                  type="file"
-                  required
-                  id="outlined-required"
-                  label="profile_image"
-                  autoComplete="profile-image"
-                  variant="outlined"
-                  style={{ margin: 8 }}
-                  fullWidth
-                  margin="normal"
-                  name="profile_image"
-                  onChange={handleChange}
-                  value={state.profile_image}
-                />
+              <input
+                accept="image/*"
+                multiple
+                type="file"
+                required
+                id="outlined-required"
+                label="profile_image"
+                autoComplete="profile-image"
+                variant="outlined"
+                style={{ margin: 8 }}
+                fullWidth
+                margin="normal"
+                name="profile_image"
+                onChange={handleChange}
+                value={state.profile_image}
+              />
               {/* </Grid> */}
               <Button 
                 color="primary"
