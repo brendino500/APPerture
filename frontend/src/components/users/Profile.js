@@ -21,6 +21,7 @@ import EditIcon from '@material-ui/icons/Edit'
 import { Link } from 'react-router-dom'
 import { ThemeProvider } from '@material-ui/core/styles'
 import { getUser, followUser } from '../../lib/api'
+import { getUserId } from '../../lib/auth'
 
 
 class Profile extends React.Component {
@@ -28,14 +29,16 @@ class Profile extends React.Component {
     data: [],
     user: null,
     hideMap: true,
-    hideGrid: false
+    hideGrid: false,
+    isViewersProfile: false
   }
 
   async componentDidMount() {
     try {
       const resUser = await getUser(this.props.match.params.id)
       // console.log(resUser.data)
-      this.setState({ user: resUser.data })
+      console.log('this.props etc', this.props.match.params.id, getUserId())
+      this.setState({ user: resUser.data, isViewersProfile: parseInt(this.props.match.params.id) === getUserId() })
     } catch (err) {
       console.log(err)
     }
@@ -78,7 +81,8 @@ class Profile extends React.Component {
   }
 
   render() {
-    console.log(this.state.user)
+    // console.log(this.state.user)
+    console.log('Are you this person?', this.state.isViewersProfile)
 
     const { user } = this.state
 
@@ -100,11 +104,12 @@ class Profile extends React.Component {
                       height: '130px' }}
                   />
                 </ButtonBase>
+                {this.state.isViewersProfile &&                 
                 <ButtonBase className="edit profile">
                   <Link to={`/profile/${user.id}/edit`}>
                     <EditIcon color="primary" />
                   </Link>
-                </ButtonBase>
+                </ButtonBase>}
                 <Grid item xs container direction="column" spacing={2}>
                   <Typography varient="h1" color="primary">
                       @{user.username}

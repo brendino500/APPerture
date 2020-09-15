@@ -93,3 +93,19 @@ function PhotoComments()  {
 }
 
 export default PhotoComments
+
+
+
+// const myFunction = () =>{
+//   console.log('hello bebe')
+// }
+
+// myFunction();
+
+// addEventListener('click', myFunction)
+
+
+// (() => {
+//   console.log('hello bebe')
+// })()
+
