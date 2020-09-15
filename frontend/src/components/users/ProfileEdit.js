@@ -50,22 +50,22 @@ function ProfileEdit() {
 
   const handleChange = e => {
     const data = { ...state.data, [e.target.name]: e.target.value }
-    console.log('Info check', state.data)
+    // console.log('Info check', state.data)
     const errors = { ...state.errors, [e.target.name]: '' }
     setState({ data, errors })
   }
 
-  console.log('state', state.data)
+  // console.log('state', state.data)
   const handleSubmit = async e => {
     e.preventDefault()
     const currentUserId = getUserId()
     try {
       const res = editUser(currentUserId, state.data)
       console.log(res.data)
-      popupNotification(res.data.message)
-      history.push('/profile')
+      // popupNotification(res.data.message)
+      history.push(`/profile/${currentUserId}`)
     } catch (err) {
-      console.log(err)
+      // console.log('err', err)
       // setState({ errors: err.response.data.errors })
       popupNotification('All fields are needed or wrong inputs')
     }
@@ -124,6 +124,20 @@ function ProfileEdit() {
               autoFocus
               onChange={handleChange}
               value={state.last_name}
+            />
+            <TextField
+              color="primary"
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Confirm Email"
+              name="email"
+              autoComplete="email"
+              autoFocus
+              onChange={handleChange}
+              value={state.email}
             />
             <TextField
               color="primary"
