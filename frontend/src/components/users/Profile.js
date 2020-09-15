@@ -16,6 +16,7 @@ import RoomIcon from '@material-ui/icons/Room'
 import GridListTile from '@material-ui/core/GridListTile'
 import GridList from '@material-ui/core/GridList'
 import GridListTileBar from '@material-ui/core/GridListTileBar'
+import EditIcon from '@material-ui/icons/Edit'
 
 import { Link } from 'react-router-dom'
 import { ThemeProvider } from '@material-ui/core/styles'
@@ -98,6 +99,11 @@ class Profile extends React.Component {
                       width: '130px',
                       height: '130px' }}
                   />
+                </ButtonBase>
+                <ButtonBase className="edit profile">
+                  <Link to={`/profile/${user.id}/edit`}>
+                    <EditIcon color="primary" />
+                  </Link>
                 </ButtonBase>
                 <Grid item xs container direction="column" spacing={2}>
                   <Typography varient="h1" color="primary">

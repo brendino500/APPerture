@@ -10,7 +10,7 @@ import ErrorPage from './components/common/ErrorPage'
 
 import Lightbox from './components/users/Lightbox'
 import Profile from './components/users/Profile'
-// import ProfileEdit from './components/users/ProfileEdit'
+import ProfileEdit from './components/users/ProfileEdit'
 // import ProfileForm from './components/users/ProfileForm'
 import IntroParallax from './components/parallax/introPage/Intro'
 
@@ -27,6 +27,7 @@ const App = () => {
           <Route path="/photos/:id/" component={Lightbox} />
           <Route path="/photos/" component={ParallaxGrid} />
           <Route exact path="/profile/:id" component={Profile} />
+          <Route path="/profile/:id/edit" component={ProfileEdit} />
           <Route path="/register/" component={Register} />
           <Route path="/login" component={Login} />
           <Route path="/*" component={ErrorPage} />
