@@ -1,23 +1,21 @@
 import React from 'react'
 import ColorTheme from '../../../src/ColorTheme'
 import { getUserId } from '../../lib/auth'
-import { getUser, addPhotoComment } from '../../lib/api'
+import { getUser, addPhotoComment, showSinglePhoto } from '../../lib/api'
 import { isAuthenticated } from '../../lib/auth'
-import { Typography, Avatar, Grid, TextField, IconButton } from '@material-ui/core'
+import { Typography, Avatar, Grid, TextField, IconButton, Box } from '@material-ui/core'
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
 import { useParams } from 'react-router-dom'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
 import MessageIcon from '@material-ui/icons/Message'
 
 
-
 function PhotoComments()  {
-
   const [comments, setComments] = React.useState('')
-  const [profile_image, setProfile_image] = React.useState('')
-  const [username, setUsername] = React.useState('')
-
+  const [commentData, setCommentData] = React.useState('')
+  // const { photoComments } = this.props
   const { id: currentPhotoId } = useParams()
+
   
   React.useEffect(() => {
     const currentUserId = getUserId()
@@ -28,6 +26,10 @@ function PhotoComments()  {
       const res = getUser(currentUserId)
       setComments(res.data)
     }
+
+    // const commentRes = showSinglePhoto(currentUserId)
+    // console.log('commentRes', commentRes)
+
   },[])
 
   const handleChange = e => {
@@ -40,34 +42,33 @@ function PhotoComments()  {
     }
   }
 
-  // console.log('use params', useParams())
-
-  // const { comments, profile_image } = this.state
-  // const { comment, errors } = this.props
-  
-  console.log(comments)
+  console.log('comments', comments)
 
   return (
     <>
       <ThemeProvider theme={ColorTheme}>
         <Grid container spacing={2}>
-          <IconButton aria-label="favourite">
-            <FavoriteBorderIcon 
-              color="secondary"
+          <Box className="photo comments">
+            {}
+
+            <IconButton aria-label="favourite">
+              <FavoriteBorderIcon 
+                color="secondary"
               // onClick={this.handleOnClick}
-            />
-          </IconButton>
-          <IconButton aria-label="comment">
-            <MessageIcon color="secondary"/>
-          </IconButton>
-          <TextField 
-            id="outlined-basic" 
-            fullWidth
-            color="primary"
-            label="Add a comment..." 
-            onChange={handleChange}
-            onKeyDown={handleSubmit}
-            variant="outlined" />
+              />
+            </IconButton>
+            <IconButton aria-label="comment">
+              <MessageIcon color="secondary"/>
+            </IconButton>
+            <TextField 
+              id="outlined-basic" 
+              fullWidth
+              color="primary"
+              label="Add a comment..." 
+              onChange={handleChange}
+              onKeyDown={handleSubmit}
+              variant="outlined" />
+          </Box>
         </Grid>
       </ThemeProvider>
 

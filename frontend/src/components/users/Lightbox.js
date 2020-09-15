@@ -12,7 +12,8 @@ import { Link } from 'react-router-dom'
 
 class Lightbox extends React.Component {
   state = {
-    photo: null
+    photo: null,
+    comments: null
   }
 
   useStyles = makeStyles((theme) => ({
@@ -41,54 +42,12 @@ class Lightbox extends React.Component {
     console.log('state user', this.state)
     try {
       const res = await showSinglePhoto(user)
-      this.setState({ photo: res.data })
+      this.setState({ photo: res.data, comments: res.data })
       console.log(this.state)
     } catch (err) {
       this.props.history.push('/notfound')
     }
   }
-
-  // openPopupbox() {
-  //   // const classes = useStyles()
-  //   const { photo } = this.state
-  //   const content = (
-  //     <ThemeProvider theme={ColorTheme}>
-  //       <div className="box">
-  //         <Box
-  //           color="primary"
-  //           bgcolor="background.paper">
-  //           <Paper className="content">
-  //             <Grid container spacing={2}>
-  //               <Grid className="photo-image">
-  //                 <img className="photo" alt="picture" src={photo.image}></img>
-  //               </Grid>
-  //               <Grid item xs={12} sm container>
-  //                 <Grid item xs container direction="column" spacing={2}>
-  //                   <Grid item xs>
-  //                     <Typography varient="h1" color="primary">
-  //                       {photo.owner.username}
-  //                       {photo.owner.location}
-  //                     </Typography>
-  //                     <br />
-  //                     <PhotoComments />
-  //                   </Grid>
-  //                 </Grid>
-  //               </Grid>
-  //             </Grid>
-  //             <TextField
-  //               id="standard-multiline-static"
-  //               label="Multiline"
-  //               multiline
-  //               rows={4}
-  //               defaultValue="Default Value"
-  //             />
-  //           </Paper>
-  //         </Box>
-  //       </div>
-  //     </ThemeProvider>
-  //   )
-  //   PopupboxManager.open({ content })
-  // }
 
   handleOnClick() {
     let color = 'primary'
@@ -146,6 +105,7 @@ class Lightbox extends React.Component {
     //   fadeInSpeed: 500
     // }
 
+    console.log('lightbox comments', this.state.comments)
     return (
       <ThemeProvider theme={ColorTheme}>
         <Container maxWidth="md" spacing={4} fixed>
@@ -178,7 +138,7 @@ class Lightbox extends React.Component {
                         {photo.location}
                       </Typography>
                       <Divider />
-                      <PhotoComments />
+                      <PhotoComments photoComments={this.state.comments} />
                     </Grid>
                   </Grid>
                 </Grid>
