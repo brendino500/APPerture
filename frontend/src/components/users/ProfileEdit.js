@@ -1,6 +1,5 @@
 import React from 'react'
 import ColorTheme from '../../../src/ColorTheme'
-
 import { ThemeProvider, Container, CssBaseline, Avatar, Paper, Typography, TextField, Button } from '@material-ui/core'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
 // import CloudUploadIcon from '@material-ui/icons/CloudUpload'
@@ -10,7 +9,6 @@ import { getUserId } from '../../lib/auth'
 import { editUser, getUser } from '../../lib/api'
 import { popupNotification } from '../../lib/notification'
 import { useHistory } from 'react-router-dom'
-
 const initialState = {
   data: {
     username: '',
@@ -23,14 +21,10 @@ const initialState = {
   },
   errors: {}
 }
-
 function ProfileEdit() {
-  
   const history = useHistory()
-
   const [state, setState] = React.useState(initialState)
   // console.log('state data', state.data)
-
   React.useEffect(() => {
     const currentUserId = getUserId()
     console.log('Current User ID is: ', currentUserId)
@@ -47,33 +41,28 @@ function ProfileEdit() {
       getCurrentUser()
     }
   }, [])
-
   const handleChange = e => {
     const data = { ...state.data, [e.target.name]: e.target.value }
-    console.log('Info check', state.data)
+    // console.log('Info check', state.data)
     const errors = { ...state.errors, [e.target.name]: '' }
     setState({ data, errors })
   }
-
-  console.log('state', state.data)
+  // console.log('state', state.data)
   const handleSubmit = async e => {
     e.preventDefault()
     const currentUserId = getUserId()
     try {
       const res = editUser(currentUserId, state.data)
       console.log(res.data)
-      popupNotification(res.data.message)
-      history.push('/profile')
+      // popupNotification(res.data.message)
+      history.push(`/profile/${currentUserId}`)
     } catch (err) {
-      console.log(err)
+      // console.log('err', err)
       // setState({ errors: err.response.data.errors })
       popupNotification('All fields are needed or wrong inputs')
     }
   }
-
-
   console.log(initialState)
-
   return (
     <ThemeProvider theme={ColorTheme}>
       <Container component="main" maxWidth="xs">
@@ -124,6 +113,20 @@ function ProfileEdit() {
               autoFocus
               onChange={handleChange}
               value={state.last_name}
+            />
+            <TextField
+              color="primary"
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Confirm Email"
+              name="email"
+              autoComplete="email"
+              autoFocus
+              onChange={handleChange}
+              value={state.email}
             />
             <TextField
               color="primary"
@@ -185,5 +188,4 @@ function ProfileEdit() {
     </ThemeProvider>
   )
 }
-
 export default ProfileEdit
