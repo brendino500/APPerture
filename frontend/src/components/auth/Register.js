@@ -82,6 +82,7 @@ function Register() {
     const errors = { ...state.errors, [e.target.name]: '' }
     setState({ data, errors })
   }
+
   const handleSubmit = async e => {
     e.preventDefault()
     try {
@@ -171,8 +172,6 @@ function Register() {
                 onChange={handleChange}
                 value={state.email}
               />
-              {/* </Grid>
-              <Grid item xs={12}> */}
               <TextField
                 color="primary"
                 variant="outlined"
@@ -188,8 +187,6 @@ function Register() {
                 onChange={handleChange}
                 value={state.password}
               />
-              {/* </Grid>
-              <Grid item xs={12}> */}
               <TextField
                 color="primary"
                 variant="outlined"
@@ -205,8 +202,6 @@ function Register() {
                 onChange={handleChange}
                 value={state.password_confirmation}
               />
-              {/* </Grid>
-              <Grid item xs={12}> */}
               <input
                 accept="image/*"
                 multiple
@@ -223,7 +218,7 @@ function Register() {
                 onChange={handleChange}
                 value={state.profile_image}
               />
-              {/* </Grid> */}
+
               <Button 
                 color="primary"
                 type="submit"
