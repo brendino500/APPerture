@@ -20,8 +20,8 @@ import EditIcon from '@material-ui/icons/Edit'
 
 import { Link } from 'react-router-dom'
 import { ThemeProvider } from '@material-ui/core/styles'
-import { getAllPhotos, getAllUsers, getUser, followUser, getSingleUser } from '../../lib/api'
-import { getUserId } from '../../lib/auth'
+import { getUser, followUser } from '../../lib/api'
+
 
 class Profile extends React.Component {
   state = { 
