@@ -9,7 +9,7 @@ export default createMuiTheme({
     secondary: {
       main: grey[700]
     }
-    // // primary: { 400: '#bdbdbd' },
+    // primary: { 400: '#bdbdbd' },
     // primary2Color: { 400: '#bdbdbd' },
     // primary3Color: { 400: '#bdbdbd' },
     // secondary: { 700: '#616161' },
