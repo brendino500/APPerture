@@ -1,6 +1,8 @@
 import React from 'react'
 // import { render } from 'react-dom'
 import { Parallax } from 'react-parallax'
+import GitHubIcon from '@material-ui/icons/GitHub'
+import { IconButton } from '@material-ui/core'
 
 const image1 = 'https://images.unsplash.com/photo-1506574723610-7fe0f0c7f9ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80'
 
@@ -97,6 +99,9 @@ const MyComponent = () => (
         <div style={insideStyles}>
           By Brenda Ty & Julien Xemard
           <br />
+          <IconButton aria-label="github link" href="https://github.com/brendino500/APPerture">
+            <GitHubIcon />
+          </IconButton>
         </div>
       </div>
     </Parallax>
