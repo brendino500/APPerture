@@ -1,7 +1,7 @@
 import React from 'react'
 import ColorTheme from '../../../src/ColorTheme'
 
-import { ThemeProvider, Container, CssBaseline, Avatar, Paper, Typography } from '@material-ui/core'
+import { ThemeProvider, Container, CssBaseline, Avatar, Paper, Typography, TextField } from '@material-ui/core'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
 
 class ProfileEdit extends React.Component {
@@ -18,7 +18,11 @@ class ProfileEdit extends React.Component {
             <Typography component="h1" color="primary">
               Edit Profile
             </Typography>
-              
+            <form onSubmit="submit function" noValidate>
+              <TextField 
+                
+              />
+            </form>
           </Paper>
         </Container>
       </ThemeProvider>
