@@ -1,0 +1,87 @@
+html,
+body,
+#root {
+  background-color: #030303bf;
+}
+
+body {
+  
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, ubuntu, roboto, noto, segoe ui, arial, sans-serif;
+  background: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+
+#root {
+  overflow: hidden;
+  background: #030303bf;
+}
+
+.card1,
+.card2,
+.card3,
+.card4,
+.card5 {
+  position: absolute;
+  border-radius: 300px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  will-change: transform;
+}
+
+.card1 {
+  margin-top: 60%;
+  min-width: 80ch;
+  min-height: 80ch;
+  width: 45vw;
+  height: 45vw;
+  max-width: 100ch;
+  max-height: 100ch;
+  background-image: url(https://images.squarespace-cdn.com/content/v1/561628dfe4b09b3c0d81d97d/1515268987797-J72TE6BB33UY30S9B63J/ke17ZwdGBToddI8pDm48kEaNshZGGPxmi3J_HBShd7V7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QHyNOqBUUEtDDsRWrJLTmbAPWDwNhuSEKyCuGePwJdpE9y3FNqNxpKP-BD4B0YQiXSHIOdshjnfJzCvyv5Fe3/Alan+Schaller+-+Street+Photographer+-+Dogs+21.jpg?format=750w);
+}
+
+.card2 {
+  margin-top: 85%;
+  opacity: 0.6;
+  width: 25ch;
+  height: 25ch;
+  background-image: url(https://pngriver.com/wp-content/uploads/2017/12/download-number-zero-0-png-transparent-images-transparent-backgrounds-e4324a69ebe1ae3406a6872008fd9cba.png);
+}
+
+.card3 {
+  /* opacity: 0.9; */
+  margin-top: 60%;
+  width: 35ch;
+  height: 35ch;
+  background-image: url(./pictures/4.png);
+}
+
+.card4 {
+  margin-top: 90%;
+  width: 35ch;
+  height: 35ch;
+  background-image: url(./pictures/4.png);
+}
+
+.card5 {
+  margin-top: 205%;
+  margin-left: 60%;
+  width: 35ch;
+  height: 35ch;
+  font-size: 60px;
+  color: rgb(5, 5, 5);
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

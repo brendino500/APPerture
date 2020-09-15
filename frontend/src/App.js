@@ -6,7 +6,7 @@ import ParallaxGrid from './components/parallax/ParallaxGrid'
 import Navbar from './components/common/Navbar'
 import Register from './components/auth/Register'
 import Login from './components/auth/Login'
-import ErrorPage from './components/common/ErrorPage'
+import ErrorPage from './components/parallax/errorPage/ErrorPage'
 
 import Lightbox from './components/users/Lightbox'
 import Profile from './components/users/Profile'
