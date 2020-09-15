@@ -7,10 +7,12 @@ import { Typography, Avatar, Grid, TextField, IconButton, Box } from '@material-
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
 import { useParams } from 'react-router-dom'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
+import FavoriteIcon from '@material-ui/icons/Favorite'
 import MessageIcon from '@material-ui/icons/Message'
 
 
 function PhotoComments()  {
+  let [like, setLike] = React.useState(false)
   const [comments, setComments] = React.useState('')
   const [commentData, setCommentData] = React.useState('')
   // const { photoComments } = this.props
@@ -42,6 +44,10 @@ function PhotoComments()  {
     }
   }
 
+  const handleToggle = () => {
+    setLike(!like)
+  }
+
   console.log('comments', comments)
 
   return (
@@ -52,10 +58,19 @@ function PhotoComments()  {
             {}
 
             <IconButton aria-label="favourite">
-              <FavoriteBorderIcon 
-                color="secondary"
-              // onClick={this.handleOnClick}
-              />
+              {(() => {
+                if (like) {
+                  return <FavoriteIcon
+                    color="secondary"
+                    onClick={handleToggle}
+                  />
+                } else {
+                  return <FavoriteBorderIcon 
+                    color="secondary"
+                    onClick={handleToggle}
+                  />
+                }
+              })()}
             </IconButton>
             <IconButton aria-label="comment">
               <MessageIcon color="secondary"/>
