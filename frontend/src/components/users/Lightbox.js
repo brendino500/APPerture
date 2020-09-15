@@ -154,7 +154,7 @@ class Lightbox extends React.Component {
             component="span"
             color="primary"
             bgcolor="background.paper">
-            <Paper elevation={3} color="primary" >
+            <Paper elevation={3} color="primary">
               <Grid container spacing={1}>
                 <Grid className="photo-image">
                   <img 
@@ -167,7 +167,7 @@ class Lightbox extends React.Component {
                   <Grid item xs container direction="column" spacing={2}>
                     <Grid item xs>
                       <Link to={`/profile/${photo.owner.id}`}>
-                        <Grid item xs direction="row">
+                        <Grid item xs>
                           <Avatar alt="profile avatar" src={photo.owner.profile_image} />
                           <Typography varient="h1" color="secondary">
                             @{photo.owner.username}
@@ -178,21 +178,7 @@ class Lightbox extends React.Component {
                         {photo.location}
                       </Typography>
                       <Divider />
-                      <IconButton aria-label="favourite">
-                        <FavoriteBorderIcon 
-                          color="secondary"
-                          onClick={this.handleOnClick} />
-                      </IconButton>
-                      <IconButton aria-label="comment">
-                        <MessageIcon color="secondary"/>
-                      </IconButton>
                       <PhotoComments />
-                      <TextField 
-                        id="outlined-basic" 
-                        fullWidth
-                        color="primary"
-                        label="Add a comment..." 
-                        variant="outlined" />
                     </Grid>
                   </Grid>
                 </Grid>

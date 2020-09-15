@@ -8,7 +8,11 @@ export default createMuiTheme({
     },
     secondary: {
       main: grey[700]
+    },
+    typography: {
+      fontFamily: '\'Libre Baskerville\', serif'
     }
+
     // primary: { 400: '#bdbdbd' },
     // primary2Color: { 400: '#bdbdbd' },
     // primary3Color: { 400: '#bdbdbd' },

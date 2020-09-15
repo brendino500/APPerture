@@ -75,6 +75,7 @@ function Register() {
   const history = useHistory()
   // const classes = useStyles()
   const [state, setState] = React.useState(initialState)
+
   const handleChange = e => {
     const data = { ...state.data, [e.target.name]: e.target.value }
     console.log('Info check', state.data)
