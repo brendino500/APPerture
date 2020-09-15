@@ -9,6 +9,7 @@ import { getUserId } from '../../lib/auth'
 import { editUser, getUser } from '../../lib/api'
 import { popupNotification } from '../../lib/notification'
 import { useHistory } from 'react-router-dom'
+
 const initialState = {
   data: {
     username: '',
@@ -21,6 +22,7 @@ const initialState = {
   },
   errors: {}
 }
+
 function ProfileEdit() {
   const history = useHistory()
   const [state, setState] = React.useState(initialState)
@@ -41,6 +43,7 @@ function ProfileEdit() {
       getCurrentUser()
     }
   }, [])
+
   const handleChange = e => {
     const data = { ...state.data, [e.target.name]: e.target.value }
     // console.log('Info check', state.data)
@@ -62,7 +65,9 @@ function ProfileEdit() {
       popupNotification('All fields are needed or wrong inputs')
     }
   }
-  console.log(initialState)
+
+  // console.log(initialState)
+
   return (
     <ThemeProvider theme={ColorTheme}>
       <Container component="main" maxWidth="xs">

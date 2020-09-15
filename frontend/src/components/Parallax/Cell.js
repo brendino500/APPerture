@@ -26,7 +26,12 @@ class Cell extends Component {
                   onClick={toggle}
                 />
               </div>
-              <h1>{location}</h1>
+              <h1>
+                {<Link to={`/profile/${owner.id}`}>{location}</Link>}
+              </h1>
+              <h2>
+                {<Link style={{ color: 'black' }} to={`/profile/${owner.id}`}>{owner.username}</Link>}
+              </h2>
             </Slug>
           </div>
         </Fade>
