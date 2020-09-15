@@ -1,22 +1,14 @@
 import React from 'react'
-import Avatar from '@material-ui/core/Avatar'
-import Button from '@material-ui/core/Button'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import TextField from '@material-ui/core/TextField'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import Checkbox from '@material-ui/core/Checkbox'
-import Grid from '@material-ui/core/Grid'
-import PersonIcon from '@material-ui/icons/Person'
-import Typography from '@material-ui/core/Typography'
-import Container from '@material-ui/core/Container'
 import ColorTheme from '../../../src/ColorTheme'
-import Paper from '@material-ui/core/Paper'
-
-import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
-import { Link, useHistory } from 'react-router-dom'
 import { popupNotification } from '../../lib/notification'
 import { loginUser } from '../../lib/api'
 import { setToken } from '../../lib/auth'
+
+import PersonIcon from '@material-ui/icons/Person'
+import { Avatar, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Grid, Typography, Container, Paper } from '@material-ui/core'
+import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
+import { Link, useHistory } from 'react-router-dom'
+
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -78,10 +70,10 @@ function Login() {
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Paper elevation={3} color="primary">
-          <Avatar color="primary" className={classes.grey}>
+          <Avatar align="center" color="primary" className={classes.grey} >
             <PersonIcon />
           </Avatar>
-          <Typography component="h1" variant="h5" color="primary">
+          <Typography align="center" component="h1" variant="h5" color="secondary">
           Sign in
           </Typography>
           <form onSubmit={handleSubmit} className={classes.form} noValidate>
@@ -129,7 +121,7 @@ function Login() {
             <Grid container>
               <Grid item>
                 <Link to="/register/" color="primary">
-                  <Typography color="primary">
+                  <Typography color="secondary" align="center" varient="subtitle2">
                     Don't have an account? Sign Up
                   </Typography>
                 </Link>

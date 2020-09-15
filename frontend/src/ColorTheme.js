@@ -10,9 +10,9 @@ export default createMuiTheme({
       main: grey[700]
     },
     typography: {
-      fontFamily: '\'Libre Baskerville\', serif'
+      fontFamily: '\'Libre Baskerville\', serif',
+      textTransform: 'none'
     }
-
     // primary: { 400: '#bdbdbd' },
     // primary2Color: { 400: '#bdbdbd' },
     // primary3Color: { 400: '#bdbdbd' },
