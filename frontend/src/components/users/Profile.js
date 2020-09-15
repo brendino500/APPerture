@@ -30,18 +30,28 @@ class Profile extends React.Component {
     user: null,
     hideMap: true,
     hideGrid: false,
-    isViewersProfile: false
+    isViewersProfile: false,
+    isFollowing: false
   }
 
   async componentDidMount() {
     try {
       const resUser = await getUser(this.props.match.params.id)
-      // console.log(resUser.data)
-      console.log('this.props etc', this.props.match.params.id, getUserId())
-      this.setState({ user: resUser.data, isViewersProfile: parseInt(this.props.match.params.id) === getUserId() })
+      // console.log('this.props etc', this.props.match.params.id, getUserId())
+      this.setState({ 
+        user: resUser.data, 
+        isViewersProfile: parseInt(this.props.match.params.id) === getUserId(), 
+        isFollowing: this.checkIsFollowing(resUser) 
+      })
     } catch (err) {
       console.log(err)
     }
+  }
+
+  checkIsFollowing = resUser => {
+    return resUser.data.followers.some(followerId => { 
+      return followerId === getUserId() 
+    })
   }
 
   handleDisplayCard = e => {
@@ -59,11 +69,12 @@ class Profile extends React.Component {
     e.preventDefault()
 
     try {
-      // console.log(followedUser)
       await followUser(this.props.match.params.id)
       const resUser = await getUser(this.props.match.params.id)
-      // console.log(resUser.data)
-      this.setState({ user: resUser.data })
+      this.setState({ 
+        user: resUser.data, 
+        isFollowing: this.checkIsFollowing(resUser) 
+      })
 
     } catch (err) {
       console.log(err)
@@ -83,6 +94,7 @@ class Profile extends React.Component {
   render() {
     // console.log(this.state.user)
     console.log('Are you this person?', this.state.isViewersProfile)
+    console.log('Are you following?', this.state.isFollowing)
 
     const { user } = this.state
 
@@ -125,13 +137,14 @@ class Profile extends React.Component {
                 </Grid>
               </Grid>
               <Grid item xs container direction="row">
+
                 <Button 
                   size="medium" 
                   fullWidth 
                   variant="outlined" 
                   color="primary" 
                   onClick={this.handleFollow}>
-                • F o l l o w •
+                  {this.state.isFollowing ? '• U n f o l l o w •' : '• F o l l o w •'}
                 </Button>
               </Grid>
               <Grid item xs container direction="row" className="followers">
