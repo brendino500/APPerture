@@ -3,11 +3,11 @@ import ColorTheme from '../../../src/ColorTheme'
 
 import { ThemeProvider, Container, CssBaseline, Avatar, Paper, Typography, TextField, Button } from '@material-ui/core'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
-import CloudUploadIcon from '@material-ui/icons/CloudUpload'
+// import CloudUploadIcon from '@material-ui/icons/CloudUpload'
 import SaveIcon from '@material-ui/icons/Save'
 import { isAuthenticated } from '../../lib/auth'
 import { getUserId } from '../../lib/auth'
-import { editUser } from '../../lib/api'
+import { editUser, getUser } from '../../lib/api'
 import { popupNotification } from '../../lib/notification'
 import { useHistory } from 'react-router-dom'
 
@@ -29,6 +29,7 @@ function ProfileEdit() {
   const history = useHistory()
 
   const [state, setState] = React.useState(initialState)
+  // console.log('state data', state.data)
 
   React.useEffect(() => {
     const currentUserId = getUserId()
@@ -37,9 +38,13 @@ function ProfileEdit() {
     if (!loggedIn) {
       setState('')
     } else {
-      const res = editUser(currentUserId)
-      setState(res.data)
-      console.log(res)
+      const getCurrentUser = async () => {
+        const res = await getUser(currentUserId)
+        // console.log('res data', res.data)
+        setState({ data: res.data })
+        // console.log('res', res)
+      }
+      getCurrentUser()
     }
   }, [])
 
@@ -50,25 +55,27 @@ function ProfileEdit() {
     setState({ data, errors })
   }
 
+  console.log('state', state.data)
   const handleSubmit = async e => {
-    console.log(e.target.value)
     e.preventDefault()
+    const currentUserId = getUserId()
     try {
-      const res = await editUser(state.data)
+      const res = editUser(currentUserId, state.data)
       console.log(res.data)
       popupNotification(res.data.message)
       history.push('/profile')
     } catch (err) {
       console.log(err)
-      setState({ errors: err.response.data.errors })
+      // setState({ errors: err.response.data.errors })
       popupNotification('All fields are needed or wrong inputs')
     }
   }
 
+
   console.log(initialState)
 
   return (
-    <ThemeProvider them={ColorTheme}>
+    <ThemeProvider theme={ColorTheme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Paper elevation={3} color="primary">
@@ -90,7 +97,7 @@ function ProfileEdit() {
               autoComplete="username"
               autoFocus
               onChange={handleChange}
-              value="USERNAME VALUE"
+              value={state.username}
             />
             <TextField
               color="primary"
@@ -103,7 +110,7 @@ function ProfileEdit() {
               autoComplete="first_name"
               autoFocus
               onChange={handleChange}
-              value="FIRSTNAME VALUE"
+              value={state.first_name}
             />
             <TextField
               color="primary"
@@ -116,7 +123,7 @@ function ProfileEdit() {
               autoComplete="last_name"
               autoFocus
               onChange={handleChange}
-              // value="LASTNAME VALUE"
+              value={state.last_name}
             />
             <TextField
               color="primary"
@@ -131,7 +138,7 @@ function ProfileEdit() {
               type="password"
               autoFocus
               onChange={handleChange}
-              // value={state.password}
+              value={state.password}
             />
             <TextField
               color="primary"
@@ -146,30 +153,29 @@ function ProfileEdit() {
               type="password"
               autoFocus
               onChange={handleChange}
-              // value={state.password_confirmation}
+              value={state.password_confirmation}
             />
-            <input
-              accept="image/*"
-              multiple
-              type="file"
-              required
-              id="outlined-required"
-              label="profile_image"
-              autoComplete="profile-image"
+            <TextField
+              color="primary"
               variant="outlined"
-              style={{ margin: 8 }}
-              fullWidth
               margin="normal"
+              required
+              fullWidth
+              id="profile_image"
+              label="Profile Image"
               name="profile_image"
+              autoComplete="profile_image"
+              type="profile_image"
+              autoFocus
               onChange={handleChange}
-              // value={state.profile_image}
+              value={state.profile_image}
             />
             <Button
+              type="submit"
               variant="contained"
               color="primary"
               fullWidth
               startIcon={<SaveIcon />}
-
             >
               Save
             </Button>

@@ -60,8 +60,9 @@ class ProfileView(APIView):
 
     def put(self, request, pk):
         user_to_update = User.objects.get(pk=pk)
-        # user_to_update.is_user_owner(user_to_update, request.user)
+        # self.is_user_owner(user_to_update, request.user)
         updated_user = UserSerializer(user_to_update, data=request.data)
+        print(updated_user)
         if updated_user.is_valid():
             updated_user.save()
             return Response(updated_user.data, status=status.HTTP_202_ACCEPTED)

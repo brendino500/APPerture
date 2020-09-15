@@ -61,5 +61,5 @@ export const followUser = followedUserId => {
 }
 
 export const editUser = (userId, formData) => {
-  return axios.put(`${baseUrl}/auth/profile/${userId}`, formData, withHeaders())
+  return axios.put(`${baseUrl}/auth/profile/${userId}/`, formData, withHeaders())
 }
