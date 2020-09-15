@@ -12,9 +12,6 @@ import Lightbox from './components/users/Lightbox'
 import Profile from './components/users/Profile'
 // import ProfileEdit from './components/users/ProfileEdit'
 // import ProfileForm from './components/users/ProfileForm'
-
-import PhotoCard from './components/photos/PhotoCard'
-
 import IntroParallax from './components/parallax/introPage/Intro'
 
 const App = () => {
