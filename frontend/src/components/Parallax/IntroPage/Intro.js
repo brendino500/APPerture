@@ -1,8 +1,10 @@
 import React from 'react'
+import ColorTheme from '../../../../src/ColorTheme'
 // import { render } from 'react-dom'
 import { Parallax } from 'react-parallax'
 import GitHubIcon from '@material-ui/icons/GitHub'
 import { IconButton } from '@material-ui/core'
+import { ThemeProvider } from '@material-ui/core/styles'
 
 const image1 = 'https://images.unsplash.com/photo-1506574723610-7fe0f0c7f9ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80'
 
@@ -31,81 +33,86 @@ const insideStyles = {
 
 const MyComponent = () => (
 
-  <div style={styles}>
-    <Parallax bgImage={image1} strength={500}>
-      <div style={{ height: 600 }}>
-        <div style={insideStyles}>Monochrome Photography</div>
-      </div>
-    </Parallax>
-    <h1 style={{ color: 'white' }}>| | |</h1>
-    <Parallax
-      bgImage={image2}
-      strength={200}
-      renderLayer={percentage => (
-        <div>
-          <div
-            style={{
-              position: 'absolute',
-              background: `rgba(255, 255, 255, ${percentage * 1})`,
-              left: '50%',
-              top: '50%',
-              borderRadius: '50%',
-              transform: 'translate(-50%,-50%)',
-              width: percentage * 600,
-              height: percentage * 600
-            }}
-          />
+  <ThemeProvider theme={ColorTheme}>
+    <div style={styles}>
+      <Parallax bgImage={image1} strength={500}>
+        <div style={{ height: 600 }}>
+          <div style={insideStyles}>Monochrome Photography</div>
         </div>
-      )}
-    >
-      <div style={{ height: 600 }}>
-        {/* <div style={insideStyles}>renderProp</div> */}
-      </div>
-    </Parallax>
-    <h1 style={{ color: 'white' }}>| | |</h1>
-    <Parallax bgImage={image3} strength={500}>
-      <div style={{ height: 600 }}>
-        <div style={insideStyles}>It's all about our typos</div>
-      </div>
-    </Parallax>
-    <h1 style={{ color: 'white' }}>| | |</h1>
-    <Parallax
-      bgImage={image4}
-      strength={200}
-      renderLayer={percentage => (
-        <div>
-          <div
-            style={{
-              position: 'absolute',
-              background: `rgba(255, 255, 255, ${percentage * 1})`,
-              left: '50%',
-              top: '50%',
-              borderRadius: '50%',
-              transform: 'translate(-50%,-50%)',
-              width: percentage * 500,
-              height: percentage * 500
-            }}
-          />
+      </Parallax>
+      <h1 style={{ color: 'white' }}>| | |</h1>
+      <Parallax
+        bgImage={image2}
+        strength={200}
+        renderLayer={percentage => (
+          <div>
+            <div
+              style={{
+                position: 'absolute',
+                background: `rgba(255, 255, 255, ${percentage * 1})`,
+                left: '50%',
+                top: '50%',
+                borderRadius: '50%',
+                transform: 'translate(-50%,-50%)',
+                width: percentage * 600,
+                height: percentage * 600
+              }}
+            />
+          </div>
+        )}
+      >
+        <div style={{ height: 600 }}>
+          {/* <div style={insideStyles}>renderProp</div> */}
         </div>
-      )}
-    >
-      <div style={{ height: 600 }}>
-        {/* <div style={insideStyles}>renderProp</div> */}
-      </div>
-    </Parallax>
-    <h1 style={{ color: 'white' }}>| | |</h1>
-    <Parallax bgImage={image5} strength={500}>
-      <div style={{ height: 600 }}>
-        <div style={insideStyles}>
+      </Parallax>
+      <h1 style={{ color: 'white' }}>| | |</h1>
+      <Parallax bgImage={image3} strength={500}>
+        <div style={{ height: 600 }}>
+          <div style={insideStyles}>It's all aoubt our tpyos</div>
+        </div>
+      </Parallax>
+      <h1 style={{ color: 'white' }}>| | |</h1>
+      <Parallax
+        bgImage={image4}
+        strength={200}
+        renderLayer={percentage => (
+          <div>
+            <div
+              style={{
+                position: 'absolute',
+                background: `rgba(255, 255, 255, ${percentage * 1})`,
+                left: '50%',
+                top: '50%',
+                borderRadius: '50%',
+                transform: 'translate(-50%,-50%)',
+                width: percentage * 500,
+                height: percentage * 500
+              }}
+            />
+          </div>
+        )}
+      >
+        <div style={{ height: 600 }}>
+          {/* <div style={insideStyles}>renderProp</div> */}
+        </div>
+      </Parallax>
+      <h1 style={{ color: 'white' }}>| | |</h1>
+      <Parallax bgImage={image5} strength={500}>
+        <div style={{ height: 600 }}>
+          <div style={insideStyles}>
           By Brenda Ty & Julien Xemard
-          <br />
-          <IconButton aria-label="github link" href="https://github.com/brendino500/APPerture">
-            <GitHubIcon />
-          </IconButton>
+            <br />
+            <IconButton 
+              color="primary" 
+              aria-label="github link" 
+              href="https://github.com/brendino500/APPerture">
+              <GitHubIcon color="secondary"/>
+            </IconButton>
+          </div>
         </div>
-      </div>
-    </Parallax>
-  </div>
+      </Parallax>
+    </div>
+  </ThemeProvider>
 )
 
 export default MyComponent

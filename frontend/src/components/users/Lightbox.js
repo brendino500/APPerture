@@ -7,7 +7,7 @@ import { showSinglePhoto } from '../../lib/api'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
 import MessageIcon from '@material-ui/icons/Message'
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
-import { Typography, Box, Grid, Paper, Avatar, TextField, Divider, IconButton } from '@material-ui/core'
+import { Typography, Box, Grid, Paper, Avatar, TextField, Divider, IconButton, Container } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 
 class Lightbox extends React.Component {
@@ -98,6 +98,36 @@ class Lightbox extends React.Component {
       return color = 'primary'
     }
   }
+
+  useStyles = makeStyles((theme) => ({
+    root: {
+      display: 'flex',
+      flexGrow: 1,
+      flexWrap: 'wrap',
+      justifyContent: 'space-around',
+      overflow: 'hidden',
+      alignItems: 'center',
+      backgroundColor: theme.palette.background.paper,
+      margin: theme.spacing(8)
+    },
+    button: {
+      alignItems: 'center'
+    },
+    gridList: {
+      width: 500,
+      height: 450
+    },
+    icon: {
+      color: 'rgba(255, 255, 255, 0.54)'
+    },
+    typography: {
+      fontFamily: 'Libre Baskerville'
+    },
+    large: {
+      width: theme.spacing(7),
+      height: theme.spacing(7)
+    }
+  }))
   
   render() {
     const { photo } = this.state
@@ -118,14 +148,20 @@ class Lightbox extends React.Component {
 
     return (
       <ThemeProvider theme={ColorTheme}>
-        <div className="box">
+        <Container maxWidth="md" spacing={4} fixed>
           <Box
+            mx="auto"
+            component="span"
             color="primary"
             bgcolor="background.paper">
-            <Paper className="content">
-              <Grid container spacing={2}>
+            <Paper elevation={3} color="primary" >
+              <Grid container spacing={1}>
                 <Grid className="photo-image">
-                  <img className="photo" alt="picture" height="400px" src={photo.image} />
+                  <img 
+                    className="photo" 
+                    alt="picture" 
+                    width="550px" 
+                    src={photo.image} />
                 </Grid>
                 <Grid item xs={12} sm container>
                   <Grid item xs container direction="column" spacing={2}>
@@ -133,22 +169,22 @@ class Lightbox extends React.Component {
                       <Link to={`/profile/${photo.owner.id}`}>
                         <Grid item xs direction="row">
                           <Avatar alt="profile avatar" src={photo.owner.profile_image} />
-                          <Typography varient="h1">
+                          <Typography varient="h1" color="secondary">
                             @{photo.owner.username}
                           </Typography>
                         </Grid>
                       </Link>
-                      <Typography varient="subtitle1" color="primary">
+                      <Typography varient="subtitle1" color="secondary">
                         {photo.location}
                       </Typography>
                       <Divider />
                       <IconButton aria-label="favourite">
                         <FavoriteBorderIcon 
-                          color="primary"
+                          color="secondary"
                           onClick={this.handleOnClick} />
                       </IconButton>
                       <IconButton aria-label="comment">
-                        <MessageIcon color="primary"/>
+                        <MessageIcon color="secondary"/>
                       </IconButton>
                       <PhotoComments />
                       <TextField 
@@ -163,7 +199,7 @@ class Lightbox extends React.Component {
               </Grid>
             </Paper>
           </Box>
-        </div>
+        </Container>
       </ThemeProvider>
     )
   }

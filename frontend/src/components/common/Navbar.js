@@ -1,4 +1,5 @@
 import React from 'react'
+import ColorTheme from '../../../src/ColorTheme'
 
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
@@ -16,6 +17,7 @@ import MailIcon from '@material-ui/icons/Mail'
 import NotificationsIcon from '@material-ui/icons/Notifications'
 import MoreIcon from '@material-ui/icons/MoreVert'
 
+import { ThemeProvider } from '@material-ui/core/styles'
 import { fade, makeStyles } from '@material-ui/core/styles'
 import { Link, useHistory, useLocation } from 'react-router-dom'
 import { popupNotification } from '../../lib/notification'
@@ -159,67 +161,71 @@ function Navbar() {
 
   const menuId = 'primary-search-account-menu'
   const renderMenu = (
-    <Menu
-      anchorEl={anchorEl}
-      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-      id={menuId}
-      keepMounted
-      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-      open={isMenuOpen}
-      onClose={handleMenuClose}
-    >
-      <MenuItem onClick={handleMenuClose}>
-        {<Link style={{ color: 'black' }} to={'/photos'}>Collection</Link>}
-      </MenuItem>
-      <MenuItem onClick={handleMenuClose}>
-        {!userAuthenticated && <Link style={{ color: 'black' }} to={'/login'}>Log In</Link>}
-      </MenuItem>
-      <MenuItem onClick={handleMenuClose}>
-        {userAuthenticated && <Link style={{ color: 'black' }} to={`/profile/${userID}`}>Profile</Link>}
-      </MenuItem>
-      {userAuthenticated && <MenuItem onClick={handleLogout}>Log Out</MenuItem>}
-    </Menu>
+    <ThemeProvider theme={ColorTheme}>
+      <Menu
+        anchorEl={anchorEl}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+        id={menuId}
+        keepMounted
+        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+        open={isMenuOpen}
+        onClose={handleMenuClose}
+      >
+        <MenuItem onClick={handleMenuClose}>
+          {<Link style={{ color: 'black' }} to={'/photos'}>Collection</Link>}
+        </MenuItem>
+        <MenuItem onClick={handleMenuClose}>
+          {!userAuthenticated && <Link style={{ color: 'black' }} to={'/login'}>Log In</Link>}
+        </MenuItem>
+        <MenuItem onClick={handleMenuClose}>
+          {userAuthenticated && <Link style={{ color: 'black' }} to={`/profile/${userID}`}>Profile</Link>}
+        </MenuItem>
+        {userAuthenticated && <MenuItem onClick={handleLogout}>Log Out</MenuItem>}
+      </Menu>
+    </ThemeProvider>
   )
 
   const mobileMenuId = 'primary-search-account-menu-mobile'
   const renderMobileMenu = (
-    <Menu
-      anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-      id={mobileMenuId}
-      keepMounted
-      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-      open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}
-    >
-      <MenuItem>
-        <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="secondary">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem>
-    </Menu>
+    <ThemeProvider theme={ColorTheme}>
+      <Menu
+        anchorEl={mobileMoreAnchorEl}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+        id={mobileMenuId}
+        keepMounted
+        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+        open={isMobileMenuOpen}
+        onClose={handleMobileMenuClose}
+      >
+        <MenuItem>
+          <IconButton aria-label="show 4 new mails" color="inherit">
+            <Badge badgeContent={4} color="secondary">
+              <MailIcon />
+            </Badge>
+          </IconButton>
+          <p>Messages</p>
+        </MenuItem>
+        <MenuItem>
+          <IconButton aria-label="show 11 new notifications" color="secondary">
+            <Badge badgeContent={11} color="primary">
+              <NotificationsIcon />
+            </Badge>
+          </IconButton>
+          <p>Notifications</p>
+        </MenuItem>
+        <MenuItem onClick={handleProfileMenuOpen}>
+          <IconButton
+            aria-label="account of current user"
+            aria-controls="primary-search-account-menu"
+            aria-haspopup="true"
+            color="inherit"
+          >
+            <AccountCircle />
+          </IconButton>
+          <p>Profile</p>
+        </MenuItem>
+      </Menu>
+    </ThemeProvider>
   )
 
   console.log('User Authenticated CHECK', isAuthenticated())

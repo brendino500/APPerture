@@ -12,19 +12,15 @@ import ButtonGroup from '@material-ui/core/ButtonGroup'
 import Button from '@material-ui/core/Button'
 import AppsIcon from '@material-ui/icons/Apps'
 import Avatar from '@material-ui/core/Avatar'
-import ViewAgendaIcon from '@material-ui/icons/ViewAgenda'
 import RoomIcon from '@material-ui/icons/Room'
 import GridListTile from '@material-ui/core/GridListTile'
 import GridList from '@material-ui/core/GridList'
 import GridListTileBar from '@material-ui/core/GridListTileBar'
-import IconButton from '@material-ui/core/IconButton'
-import InfoIcon from '@material-ui/icons/Info'
 
-import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
+
+import { ThemeProvider } from '@material-ui/core/styles'
 import { getAllPhotos, getAllUsers, getUser, followUser, getSingleUser } from '../../lib/api'
 import { getUserId } from '../../lib/auth'
-import { PopupboxManager, PopupboxContainer } from 'react-popupbox'
-import { pink } from '@material-ui/core/colors'
 
 class Profile extends React.Component {
   state = { 
@@ -43,19 +39,6 @@ class Profile extends React.Component {
       console.log(err)
     }
   }
-
-  openPopupbox() {
-    const content = (
-      <div>
-        <p className="quotes">Work like you don`t need the money.</p>
-        <p className="quotes">Dance like no one is watching.</p>
-        <p className="quotes">And love like you`ve never been hurt.</p>
-        <span className="quotes-from">― Mark Twain</span>
-      </div>
-    )
-    PopupboxManager.open({ content })
-  }
-
 
   handleDisplayCard = e => {
     e.preventDefault()
@@ -93,90 +76,68 @@ class Profile extends React.Component {
     }
   }
 
-  useStyles = makeStyles((theme) => ({
-    root: {
-      display: 'flex',
-      flexGrow: 1,
-      flexWrap: 'wrap',
-      justifyContent: 'space-around',
-      overflow: 'hidden',
-      alignItems: 'center',
-      backgroundColor: theme.palette.background.paper,
-      margin: theme.spacing(8)
-    },
-    button: {
-      alignItems: 'center'
-    },
-    gridList: {
-      width: 500,
-      height: 450
-    },
-    icon: {
-      color: 'rgba(255, 255, 255, 0.54)'
-    },
-    typography: {
-      fontFamily: 'Libre Baskerville'
-    },
-    large: {
-      width: theme.spacing(7),
-      height: theme.spacing(7)
-    }
-  }))
-
   render() {
     console.log(this.state.user)
 
     const { user } = this.state
-    const classes = makeStyles()
 
     if (!this.state.user) return null
 
     return (
       <ThemeProvider theme={ColorTheme}>
         <Container maxWidth="md">
-          <Box component="span" className="profile-info">
+          <Box component="span" className="profile-info" >
             <Grid className="profile-photo-followers">
-              <ButtonBase className="profile-image">
-                <Avatar alt="Userprofilephoto" src={user.profile_image} className="profile-avatar" />
-              </ButtonBase>
-              <Grid className="username-info">
+              <Grid item md container direction="row" >
+                <ButtonBase className="profile-image">
+                  <Avatar 
+                    alt="Userprofilephoto" 
+                    src={user.profile_image} 
+                    className="profile-avatar"
+                    style={{
+                      width: '130px',
+                      height: '130px' }}
+                  />
+                </ButtonBase>
                 <Grid item xs container direction="column" spacing={2}>
-                  <Grid item xs>
-                    <Typography varient="h5" color="primary">
+                  <Typography varient="h1" color="primary">
                       @{user.username}
-                    </Typography>
-                    <Typography varient="subtitle1" color="primary">
-                      {user.first_name} {user.last_name}
-                    </Typography>
-                    <Typography varient="subtitle2" color="primary">
+                  </Typography>
+                  <Typography varient="subtitle1" color="primary">
+                    {user.first_name} {user.last_name}
+                  </Typography>
+                  <Typography varient="subtitle2" color="primary">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin turpis elit, tincidunt a placerat sit amet, accumsan porttitor sem. Nam sed libero maximus, eleifend dui vitae, posuere augue. 
-                    </Typography>
-                    <br />
-                    <Divider />
-                  </Grid>
+                  </Typography>
+                  <br />
+                  <Divider />
                 </Grid>
-                <Button variant="outlined" color="primary" onClick={this.handleFollow}>
-                Follow
+              </Grid>
+              <Grid item xs container direction="row">
+                <Button 
+                  size="medium" 
+                  fullWidth 
+                  variant="outlined" 
+                  color="primary" 
+                  onClick={this.handleFollow}>
+                • F o l l o w •
                 </Button>
-                <Button variant="outlined" color="primary">
-                Message
-                </Button>
-                <Grid item xs container direction="row" spacing={2}>
-                  <Grid item xs>
-                    <Typography varient="p" color="primary">
-                      {user.created_photo.length} <br /> Posts
-                    </Typography>
-                  </Grid>
-                  <Grid item xs>
-                    <Typography varient="p" color="primary">
-                      {user.followers.length} <br /> Followers
-                    </Typography>
-                  </Grid>
-                  <Grid item xs>
-                    <Typography varient="p" color="primary">
-                      {user.following.length} <br /> Following
-                    </Typography>
-                  </Grid>
+              </Grid>
+              <Grid item xs container direction="row" className="followers">
+                <Grid item xs>
+                  <Typography varient="p" color="primary">
+                    {user.created_photo.length} <br /> Posts
+                  </Typography>
+                </Grid>
+                <Grid item xs>
+                  <Typography varient="p" color="primary">
+                    {user.followers.length} <br /> Followers
+                  </Typography>
+                </Grid>
+                <Grid item xs>
+                  <Typography varient="p" color="primary">
+                    {user.following.length} <br /> Following
+                  </Typography>
                 </Grid>
               </Grid>
             </Grid>

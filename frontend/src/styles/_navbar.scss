@@ -1,0 +1,18 @@
+$font-family: 'Libre Baskerville', serif;
+
+p, a, #primary-search-account-menu > div.MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded > ul > li:nth-child(4) {
+  font-family: $font-family;
+  font-size: 13px;
+}
+
+#root > main > div.makeStyles-grow-1 > header > div > h6 > a, #root > main > div.makeStyles-grow-1 > header > div > div.makeStyles-search-4 > div.MuiInputBase-root.makeStyles-inputRoot-6 > input {
+  font-family: $font-family;
+}
+
+#root > main > div.makeStyles-grow-1 > header > div > h6 {
+  font-size: 20px;
+}
+
+#root > main > div.makeStyles-grow-1 > header > div > h6 > a {
+  font-size: 25px;
+}
