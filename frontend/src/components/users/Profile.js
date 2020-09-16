@@ -98,7 +98,8 @@ class Profile extends React.Component {
     console.log('Are you following?', this.state.isFollowing)
 
     const { user } = this.state
-    if (!this.state.user) return null
+
+    if (!user) return null
 
     return (
       <ThemeProvider theme={ColorTheme}>
