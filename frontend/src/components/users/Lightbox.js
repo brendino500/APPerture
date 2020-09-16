@@ -1,13 +1,10 @@
 import React from 'react'
 import ColorTheme from '../../../src/ColorTheme'
 import PhotoComments from './PhotoComments'
-import { PopupboxManager, PopupboxContainer } from 'react-popupbox'
 import { showSinglePhoto } from '../../lib/api'
 
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
-import MessageIcon from '@material-ui/icons/Message'
-import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
-import { Typography, Box, Grid, Paper, Avatar, TextField, Divider, IconButton, Container } from '@material-ui/core'
+import { ThemeProvider } from '@material-ui/core/styles'
+import { Typography, Box, Grid, Paper, Avatar, Divider, Container } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 
 class Lightbox extends React.Component {
@@ -15,27 +12,6 @@ class Lightbox extends React.Component {
     photo: null,
     comments: null
   }
-
-  useStyles = makeStyles((theme) => ({
-    root: {
-      flexGrow: 1
-    },
-    paper: {
-      padding: theme.spacing(3),
-      margin: 'auto',
-      maxWidth: 600
-    },
-    image: {
-      width: 128,
-      height: 128
-    },
-    img: {
-      margin: 'auto',
-      display: 'block',
-      maxWidth: '100%',
-      maxHeight: '100%'
-    }
-  }));
 
   async componentDidMount() {
     const photoID = this.props.match.params.id
@@ -57,45 +33,12 @@ class Lightbox extends React.Component {
       return color = 'primary'
     }
   }
-
-  useStyles = makeStyles((theme) => ({
-    root: {
-      display: 'flex',
-      flexGrow: 1,
-      flexWrap: 'wrap',
-      justifyContent: 'space-around',
-      overflow: 'hidden',
-      alignItems: 'center',
-      backgroundColor: theme.palette.background.paper,
-      margin: theme.spacing(8)
-    },
-    button: {
-      alignItems: 'center'
-    },
-    gridList: {
-      width: 500,
-      height: 450
-    },
-    icon: {
-      color: 'rgba(255, 255, 255, 0.54)'
-    },
-    typography: {
-      fontFamily: 'Libre Baskerville'
-    },
-    large: {
-      width: theme.spacing(7),
-      height: theme.spacing(7)
-    }
-  }))
   
   render() {
     const { photo } = this.state
-    console.log(this.state)
-    console.log('state IMAGE', photo)
 
     if (!this.state.photo) return null
 
-    console.log('lightbox comments', this.state.comments)
     return (
       <ThemeProvider theme={ColorTheme}>
         <Container maxWidth="lg" spacing={4} fixed>
@@ -136,6 +79,7 @@ class Lightbox extends React.Component {
             </Paper>
           </Box>
         </Container>
+        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
       </ThemeProvider>
     )
   }

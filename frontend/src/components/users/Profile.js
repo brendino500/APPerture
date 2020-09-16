@@ -19,7 +19,7 @@ import GridListTileBar from '@material-ui/core/GridListTileBar'
 import EditIcon from '@material-ui/icons/Edit'
 
 import { Link } from 'react-router-dom'
-import { ThemeProvider,  createMuiTheme } from '@material-ui/core/styles'
+import { ThemeProvider } from '@material-ui/core/styles'
 import { getUser, followUser } from '../../lib/api'
 import { getUserId } from '../../lib/auth'
 
@@ -103,69 +103,76 @@ class Profile extends React.Component {
 
     return (
       <ThemeProvider theme={ColorTheme}>
-        <Container maxWidth="md">
-          <Box component="span" className="profile-info" >
-            <Grid className="profile-photo-followers">
-              <Grid item md container direction="row" >
-                <ButtonBase className="profile-image">
-                  <Avatar 
-                    alt="Userprofilephoto" 
-                    src={user.profile_image} 
-                    className="profile-avatar"
-                    style={{
-                      width: '130px',
-                      height: '130px' }}
-                  />
-                </ButtonBase>
-                {this.state.isViewersProfile &&                 
+        <Container maxWidth="md" spacing={4}>
+          <Box component="span" className="profile-info">
+            <div className="profile-info">
+              <Grid className="profile-photo-followers">
+                <Grid item md container direction="row"  spacing={1} p={3}>
+                  <ButtonBase className="profile-image">
+                    <Avatar 
+                      alt="Userprofilephoto" 
+                      src={user.profile_image} 
+                      className="profile-avatar"
+                      style={{
+                        width: '130px',
+                        height: '130px' }}
+                    />
+                  </ButtonBase>
+                  {this.state.isViewersProfile &&                 
                 <ButtonBase className="edit profile">
                   <Link to={`/profile/${user.id}/edit`}>
                     <EditIcon color="primary" />
                   </Link>
                 </ButtonBase>}
-                <Grid item xs container direction="column" spacing={2}>
-                  <Typography varient="h1" color="primary" className={ColorTheme.typography}>
+                  <Grid item xs container direction="column" spacing={2}>
+                    <Typography varient="h1" color="primary" className={ColorTheme.typography}>
                       @{user.username}
-                  </Typography>
-                  <Typography varient="subtitle1" color="primary">
-                    {user.first_name} {user.last_name}
-                  </Typography>
-                  <Typography varient="subtitle2" color="primary">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin turpis elit, tincidunt a placerat sit amet, accumsan porttitor sem. Nam sed libero maximus, eleifend dui vitae, posuere augue. 
-                  </Typography>
-                  <br />
-                  <Divider />
+                    </Typography>
+                    <Typography varient="subtitle1" color="primary">
+                      {user.first_name} {user.last_name}
+                    </Typography>
+                    <Typography varient="subtitle2" color="primary">
+                    📍 London, UK
+                      <br />
+                    📷 Fuji XT1 | Canon AV-1
+                      <br />
+                    😎 I like taking photos
+                    </Typography>
+                    <br />
+                  </Grid>
                 </Grid>
+                <Divider />
+                <Grid item xs container direction="row">
+                  <Button 
+                    size="medium" 
+                    fullWidth 
+                    variant="outlined" 
+                    color="primary" 
+                    onClick={this.handleFollow}>
+                    {this.state.isFollowing ? '• U n f o l l o w •' : '• F o l l o w •'}
+                  </Button>
+                </Grid>
+                <Box className="followers">
+                  <Grid item xs container direction="row" className="followers">
+                    <Grid item xs>
+                      <Typography varient="p" color="primary">
+                        {user.created_photo.length} <br /> Posts
+                      </Typography>
+                    </Grid>
+                    <Grid item xs>
+                      <Typography varient="p" color="primary">
+                        {user.followers.length} <br /> Followers
+                      </Typography>
+                    </Grid>
+                    <Grid item xs>
+                      <Typography varient="p" color="primary">
+                        {user.following.length} <br /> Following
+                      </Typography>
+                    </Grid>
+                  </Grid>
+                </Box>
               </Grid>
-              <Grid item xs container direction="row">
-
-                <Button 
-                  size="medium" 
-                  fullWidth 
-                  variant="outlined" 
-                  color="primary" 
-                  onClick={this.handleFollow}>
-                  {this.state.isFollowing ? '• U n f o l l o w •' : '• F o l l o w •'}
-                </Button>
-              </Grid>
-              <Grid item xs container direction="row" className="followers">
-                <Grid item xs>
-                  <Typography varient="p" color="primary">
-                    {user.created_photo.length} <br /> Posts
-                  </Typography>
-                </Grid>
-                <Grid item xs>
-                  <Typography varient="p" color="primary">
-                    {user.followers.length} <br /> Followers
-                  </Typography>
-                </Grid>
-                <Grid item xs>
-                  <Typography varient="p" color="primary">
-                    {user.following.length} <br /> Following
-                  </Typography>
-                </Grid>
-              </Grid>
-            </Grid>
+            </div>
           </Box>
           <br />
           <Divider />
@@ -206,6 +213,7 @@ class Profile extends React.Component {
             </div>
           </Box>
         </Container>
+        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
       </ThemeProvider>
     )
   }

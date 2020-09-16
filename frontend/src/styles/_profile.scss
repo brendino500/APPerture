@@ -50,3 +50,15 @@
 #root > main > div.MuiContainer-root.MuiContainer-maxWidthMd > div > div > section.spot-grid > ul > li > div > a > img {
   max-width: 500px;
 }
+
+#root > main > div.MuiContainer-root.MuiContainer-maxWidthMd {
+  margin-top: 5%;
+}
+
+#root > main > div.MuiContainer-root.MuiContainer-maxWidthMd > span.MuiBox-root.MuiBox-root-10.profile-info > div {
+  padding: 20px;
+}
+
+#root > main > div.MuiContainer-root.MuiContainer-maxWidthMd > span.MuiBox-root.MuiBox-root-10.profile-info > div > div > div.MuiGrid-root.MuiGrid-container.MuiGrid-spacing-xs-1.MuiGrid-item.MuiGrid-grid-md-true > button.MuiButtonBase-root.profile-image {
+  margin: 10px;
+}

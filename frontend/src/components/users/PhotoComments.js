@@ -30,7 +30,6 @@ function PhotoComments({ photoComments })  {
     getData()
   },[])
 
-
   const handleSubmit = async e => {
     if (e.keyCode === 13) {
       await addPhotoComment({ text: e.target.value, photo: currentPhotoId })
@@ -41,7 +40,6 @@ function PhotoComments({ photoComments })  {
   const handleToggle = () => {
     setLike(!like)
   }
-
 
   console.log(comments)
 
