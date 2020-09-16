@@ -51,6 +51,7 @@ function ProfileEdit() {
     setState({ data, errors })
   }
   // console.log('state', state.data)
+  
   const handleSubmit = async e => {
     e.preventDefault()
     const currentUserId = getUserId()

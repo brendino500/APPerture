@@ -18,6 +18,9 @@ import GridListTile from '@material-ui/core/GridListTile'
 import GridList from '@material-ui/core/GridList'
 import GridListTileBar from '@material-ui/core/GridListTileBar'
 import EditIcon from '@material-ui/icons/Edit'
+import PhotoCamera from '@material-ui/icons/PhotoCamera'
+
+
 import Modal from '@material-ui/core/Modal'
 import Backdrop from '@material-ui/core/Backdrop'
 import Fade from '@material-ui/core/Fade'
@@ -132,7 +135,6 @@ class Profile extends React.Component {
                       <EditIcon 
                         color="primary"
                         style={{
-                          padding: '10px',
                           margin: '10px'
                         }}/>
                     </Link>
@@ -173,6 +175,18 @@ class Profile extends React.Component {
                 </Grid>
               </Grid>
               <div className="follow-button">
+                <Link to={`/profile/${user.id}/addNewPhoto`}>
+                  <Button 
+                    size="medium" 
+                    fullWidth 
+                    variant="outlined" 
+                    color="primary" 
+                    style={{
+                      marginBottom: '5px'
+                    }}>
+                    Add a photo
+                  </Button>
+                </Link>
                 <Grid item xs container direction="row">
                   <Button 
                     size="medium" 

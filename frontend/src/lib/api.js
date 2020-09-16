@@ -21,6 +21,10 @@ export const deletePhoto = id => {
   return axios.delete(`${baseUrl}/photos/${id}`)
 }
 
+export const addNewPhoto = (id, formData) => {
+  return axios.post(`${baseUrl}/photos/`, formData, withHeaders())
+}
+
 
 // Comment Related **********************
 export const addPhotoComment = (formData) => {
