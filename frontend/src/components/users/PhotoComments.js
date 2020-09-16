@@ -10,7 +10,6 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
 import FavoriteIcon from '@material-ui/icons/Favorite'
 import MessageIcon from '@material-ui/icons/Message'
 
-
 function PhotoComments({ photoComments })  {
 
   console.log('OBJECT', photoComments)
@@ -96,9 +95,7 @@ function PhotoComments({ photoComments })  {
         </Grid>
       </ThemeProvider>
     </>
-
   )
 }
 
 export default PhotoComments
-

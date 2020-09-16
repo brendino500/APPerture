@@ -12,51 +12,26 @@ import { useHistory } from 'react-router-dom'
 import ColorTheme from '../../../src/ColorTheme'
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    '& .MuiTextField-root': {
-      margin: theme.spacing(1),
-      width: '50ch'
-    },
-    flexGrow: 1,
-    color: {
-      primary: 'rgba(222, 222, 222, 1)'
-    }
-  },
-  '& .MuiOutlinedInput-root': {
-    '& fieldset': {
-      borderColor: 'red'
-    }
-  },
-  palette: {
-    primary: 'rgba(222, 222, 222, 1)'
+  typography: {
+    fontFamily: 'Libre Baskerville'
   },
   paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary
+    marginTop: theme.spacing(8),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
   },
-
-  '& > *': {
+  avatar: {
     margin: theme.spacing(1)
   },
-
-  input: {
-    display: 'none'
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(1)
   },
-
-  display: 'flex',
-  flexWrap: 'wrap',
-  textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
-    width: '25ch'
-  },
-  buttonStyle: {
-    color: 'grey'
+  submit: {
+    margin: theme.spacing(3, 0, 2)
   }
 }))
-
-
 
 const initialState = {
   data: {
@@ -73,7 +48,7 @@ const initialState = {
 
 function Register() {
   const history = useHistory()
-  // const classes = useStyles()
+  const classes = useStyles()
   const [state, setState] = React.useState(initialState)
 
   const handleChange = e => {
@@ -101,15 +76,18 @@ function Register() {
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Paper elevation={3} color="primary">
-          <Avatar className="{theme.avatar}">
-            <LockIcon />
-          </Avatar>
-          <Typography component="h1" varient="h5" color="primary">
-          Register
-          </Typography>
-          <Grid container spacing={3}>
-            <form onSubmit={handleSubmit} noValidate autoComplete="off">
-              {/* <Grid item xs={12}> */}
+          <div className={classes.paper}>
+            <Avatar className={classes.avatar}>
+              <LockIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+        Register
+            </Typography>
+            <form 
+              className={classes.form} 
+              noValidate
+              onSubmit={handleSubmit}  
+              autoComplete="off">
               <TextField
                 color="primary"
                 variant="outlined"
@@ -124,8 +102,6 @@ function Register() {
                 onChange={handleChange}
                 value={state.username}
               />
-              {/* </Grid> */}
-              {/* <Grid item xs={12}> */}
               <TextField
                 color="primary"
                 variant="outlined"
@@ -140,8 +116,6 @@ function Register() {
                 onChange={handleChange}
                 value={state.first_name}
               />
-              {/* </Grid>
-              <Grid item xs={12}> */}
               <TextField
                 color="primary"
                 variant="outlined"
@@ -156,8 +130,6 @@ function Register() {
                 onChange={handleChange}
                 value={state.last_name}
               />
-              {/* </Grid>
-              <Grid item xs={12}> */}
               <TextField
                 color="primary"
                 variant="outlined"
@@ -218,37 +190,21 @@ function Register() {
                 onChange={handleChange}
                 value={state.profile_image}
               />
-
-              <Button 
-                color="primary"
+              <Button
                 type="submit"
-                variant="outlined"
+                fullWidth
+                variant="contained"
+                color="secondary"
+                className="button"
               >
-            Submit
+            Register
               </Button>
             </form>
-          </Grid>
+          </div>
         </Paper>
       </Container>
     </ThemeProvider>
+
   )
 }
 export default Register
-{/* <TextField
-          required
-          id="outlined-password-confirm"
-          label="profile_image"
-          autoComplete="profile-image"
-          variant="outlined"
-          style={{ margin: 8 }}
-          fullWidth
-          margin="normal"
-          name="profile_image"
-          onChange={handleChange}
-          value={state.profile_image}
-        /> */}
-{/* <label htmlFor="contained-button-file">
-          <Button variant="contained" color="primary" component="span">
-          Upload
-          </Button>
-        </label> */}

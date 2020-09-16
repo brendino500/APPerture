@@ -7,7 +7,7 @@ main {
 }
 
 body {
-  font-family: 'Libre Baskerville', serif;
+  font-family: $font-family;
 }
 
 @import './register';
