@@ -46,3 +46,7 @@
 .MuiTypography-h1 {
   font-family: $font-family;
 }
+
+#root > main > div.MuiContainer-root.MuiContainer-maxWidthMd > div > div > section.spot-grid > ul > li > div > a > img {
+  max-width: 500px;
+}
