@@ -1,3 +1,5 @@
+$font-family: 'Libre Baskerville', serif;
+
 #root > main > main > div {
   margin-top: 25%;
   padding: 10px;
@@ -5,4 +7,23 @@
 
 #root > main > main > div {
   align-items: center;
+}
+
+#root > main > main > div > h1 {
+  font-family: $font-family;
+}
+
+#root > main > main > div > form > div.MuiGrid-root.MuiGrid-container > div > a > p {
+  align-items: center;
+}
+
+#root > main > main > div > form > label > span.MuiTypography-root.MuiFormControlLabel-label.MuiTypography-body1 {
+  font-family: $font-family;
+  font-size: 12px;
+}
+
+#root > main > main > div > form > div.MuiGrid-root.MuiGrid-container > div > a > p {
+  font-family: $font-family;
+  font-size: 14px;
+  color: #575757;
 }

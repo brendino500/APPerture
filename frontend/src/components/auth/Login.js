@@ -19,7 +19,11 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main
+    backgroundColor: theme.palette.secondary.main,
+    alignItems: 'center'
+  },
+  marginAutoItem: {
+    margin: 'auto'
   },
   form: {
     width: '100%', // Fix IE 11 issue.
@@ -70,9 +74,10 @@ function Login() {
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Paper elevation={3} color="primary">
-          <Avatar align="center" color="primary" className={classes.grey} >
+          <Avatar align={classes.avatar.align} color="primary">
             <PersonIcon />
           </Avatar>
+
           <Typography align="center" component="h1" variant="h5" color="secondary">
           Sign in
           </Typography>
@@ -113,7 +118,7 @@ function Login() {
               type="submit"
               fullWidth
               variant="contained"
-              color="primary"
+              color="secondary"
               className={classes.submit}
             >
             Sign In
@@ -121,8 +126,8 @@ function Login() {
             <Grid container>
               <Grid item>
                 <Link to="/register/" color="primary">
-                  <Typography color="secondary" align="center" varient="subtitle2">
-                    Don't have an account? Sign Up
+                  <Typography color="secondary" alignItems="center" varient="subtitle2">
+                    Don't have an account? Register here
                   </Typography>
                 </Link>
               </Grid>
