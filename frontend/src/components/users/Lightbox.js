@@ -21,9 +21,9 @@ class Lightbox extends React.Component {
       flexGrow: 1
     },
     paper: {
-      padding: theme.spacing(2),
+      padding: theme.spacing(3),
       margin: 'auto',
-      maxWidth: 500
+      maxWidth: 600
     },
     image: {
       width: 128,
@@ -98,7 +98,7 @@ class Lightbox extends React.Component {
     console.log('lightbox comments', this.state.comments)
     return (
       <ThemeProvider theme={ColorTheme}>
-        <Container maxWidth="md" spacing={4} fixed>
+        <Container maxWidth="lg" spacing={4} fixed>
           <Box
             mx="auto"
             component="span"

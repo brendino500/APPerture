@@ -5,7 +5,7 @@ import { getUser, addPhotoComment, showSinglePhoto } from '../../lib/api'
 import { isAuthenticated } from '../../lib/auth'
 import { Typography, Avatar, Grid, TextField, IconButton, Box } from '@material-ui/core'
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
 import FavoriteIcon from '@material-ui/icons/Favorite'
 import MessageIcon from '@material-ui/icons/Message'
@@ -42,27 +42,40 @@ function PhotoComments({ photoComments })  {
     setLike(!like)
   }
 
+
   console.log(comments)
 
   return (
-    <>
-      <ThemeProvider theme={ColorTheme}>
-        <Grid container spacing={2}>
-          <Box className="photo comments">
+    <ThemeProvider theme={ColorTheme}>
+      <Grid container spacing={2}>
+        <Box className="photo comments">
+          <Grid className="comments">
             <Grid item md container direction="column" >
               {comments.map(comment => (
                 <div key={comment.id}>
-                  <Avatar 
-                    alt="Userprofilephoto" 
-                    src={comment.owner.profile_image} 
-                    className="profile-avatar"
-                  />
-                  <Typography>
-                    @{comment.owner.username}
-                  </Typography>
-                  <Typography>
-                    {comment.text}
-                  </Typography>
+                  <Box p={1}>
+                    <Grid container wrap="nowrap" spacing={2}>
+                      <Grid item>
+                        <Link to={`/profile/${comment.owner.id}`}>
+                          <Avatar 
+                            alt="Userprofilephoto" 
+                            src={comment.owner.profile_image} 
+                            className="profile-avatar"
+                          />
+                        </Link>
+                      </Grid>
+                      <Grid item md zeroMinWidth spacing={2}>
+                        <Link to={`/profile/${comment.owner.id}`}>
+                          <Typography color="secondary" spacing={8} varient="subtitle1">
+                            @{comment.owner.username}
+                          </Typography>
+                        </Link>
+                        <Typography color="secondary" spacing={2}>
+                          {comment.text}
+                        </Typography>
+                      </Grid>
+                    </Grid>
+                  </Box>
                 </div>
               ))}
             </Grid>
@@ -91,10 +104,10 @@ function PhotoComments({ photoComments })  {
               label="Add a comment..." 
               onKeyDown={handleSubmit}
               variant="outlined" />
-          </Box>
-        </Grid>
-      </ThemeProvider>
-    </>
+          </Grid>
+        </Box>
+      </Grid>
+    </ThemeProvider>
   )
 }
 
