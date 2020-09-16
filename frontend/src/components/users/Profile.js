@@ -175,6 +175,7 @@ class Profile extends React.Component {
                 </Grid>
               </Grid>
               <div className="follow-button">
+                {this.state.isViewersProfile &&  
                 <Link to={`/profile/${user.id}/addNewPhoto`}>
                   <Button 
                     size="medium" 
@@ -182,21 +183,31 @@ class Profile extends React.Component {
                     variant="outlined" 
                     color="primary" 
                     style={{
-                      marginBottom: '5px'
+                      marginBottom: '5px',
+                      fontSize: '15px',
+                      letterSpacing: '5px'
                     }}>
-                    Add a photo
+                    Add Your Photo
                   </Button>
-                </Link>
+                </Link> 
+                }
+                {!this.state.isViewersProfile &&
                 <Grid item xs container direction="row">
                   <Button 
                     size="medium" 
                     fullWidth 
                     variant="outlined" 
-                    color="primary" 
+                    color="primary"
+                    style={{
+                      marginBottom: '5px',
+                      fontSize: '15px',
+                      letterSpacing: '5px'
+                    }} 
                     onClick={this.handleFollow}>
-                    {this.state.isFollowing ? '• U n f o l l o w •' : '• F o l l o w •'}
+                    {this.state.isFollowing ? '• UNFOLLOW •' : '• FOLLOW •'}
                   </Button>
                 </Grid>
+                }
               </div>
               <div className="follow-info">
                 <Grid 

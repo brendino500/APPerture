@@ -1,7 +1,6 @@
 import React from 'react'
 import ColorTheme from '../../../src/ColorTheme'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
-// import CloudUploadIcon from '@material-ui/icons/CloudUpload'
 import SaveIcon from '@material-ui/icons/Save'
 import { ThemeProvider, Container, CssBaseline, Avatar, Paper, Typography, TextField, Button } from '@material-ui/core'
 import { isAuthenticated } from '../../lib/auth'
@@ -51,7 +50,7 @@ function ProfileEdit() {
     setState({ data, errors })
   }
   // console.log('state', state.data)
-  
+
   const handleSubmit = async e => {
     e.preventDefault()
     const currentUserId = getUserId()

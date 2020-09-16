@@ -83,7 +83,7 @@ function AddNewPhoto() {
               <PhotoCameraIcon />
             </Avatar>
             <Typography align="center" component="h1" variant="h5" color="secondary">
-          Sign in
+          Add Your Photo
             </Typography>
             <form 
               onSubmit={handleSubmit} 
