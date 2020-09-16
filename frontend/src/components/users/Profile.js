@@ -1,6 +1,7 @@
 import React from 'react'
 import ProfileMap from './ProfileMap'
 import ColorTheme from '../../../src/ColorTheme'
+import Lightbox from '../users/Lightbox'
 
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
@@ -17,7 +18,11 @@ import GridListTile from '@material-ui/core/GridListTile'
 import GridList from '@material-ui/core/GridList'
 import GridListTileBar from '@material-ui/core/GridListTileBar'
 import EditIcon from '@material-ui/icons/Edit'
+import Modal from '@material-ui/core/Modal'
+import Backdrop from '@material-ui/core/Backdrop'
+import Fade from '@material-ui/core/Fade'
 
+import { makeStyles } from '@material-ui/core/styles'
 import { Link } from 'react-router-dom'
 import { ThemeProvider } from '@material-ui/core/styles'
 import { getUser, followUser } from '../../lib/api'
@@ -91,16 +96,14 @@ class Profile extends React.Component {
     }
   }
 
-
   render() {
-    // console.log(this.state.user)
     console.log('Are you this person?', this.state.isViewersProfile)
     console.log('Are you following?', this.state.isFollowing)
 
     const { user } = this.state
 
     if (!user) return null
-
+  
     return (
       <ThemeProvider theme={ColorTheme}>
         <Container maxWidth="md" spacing={4}>
@@ -203,7 +206,6 @@ class Profile extends React.Component {
                         />
                       </Link>
                     </GridListTile>
-                    
                   ))}
                 </GridList>
               </section>
