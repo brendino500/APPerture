@@ -24,6 +24,7 @@ import Fade from '@material-ui/core/Fade'
 
 import { makeStyles } from '@material-ui/core/styles'
 import { Link } from 'react-router-dom'
+import { popupNotification } from '../../lib/notification'
 import { ThemeProvider } from '@material-ui/core/styles'
 import { getUser, followUser } from '../../lib/api'
 import { getUserId } from '../../lib/auth'
@@ -50,6 +51,9 @@ class Profile extends React.Component {
       })
     } catch (err) {
       console.log(err)
+      popupNotification('Login to access Profiles')
+      this.props.history.push('/login')
+
     }
   }
 
@@ -122,11 +126,11 @@ class Profile extends React.Component {
                     />
                   </ButtonBase>
                   {this.state.isViewersProfile &&                 
-                <ButtonBase className="edit profile">
-                  <Link to={`/profile/${user.id}/edit`}>
-                    <EditIcon color="primary" />
-                  </Link>
-                </ButtonBase>}
+                  <ButtonBase className="edit profile">
+                    <Link to={`/profile/${user.id}/edit`}>
+                      <EditIcon color="primary" />
+                    </Link>
+                  </ButtonBase>}
                   <Grid item xs container direction="column" spacing={2}>
                     <Typography varient="h1" color="primary" className={ColorTheme.typography}>
                       @{user.username}
@@ -143,37 +147,35 @@ class Profile extends React.Component {
                     </Typography>
                     <br />
                   </Grid>
+                  <Divider />
                 </Grid>
-                <Divider />
-                <Grid item xs container direction="row">
-                  <Button 
-                    size="medium" 
-                    fullWidth 
-                    variant="outlined" 
-                    color="primary" 
-                    onClick={this.handleFollow}>
-                    {this.state.isFollowing ? '• U n f o l l o w •' : '• F o l l o w •'}
-                  </Button>
+              </Grid>
+              <Grid item xs container direction="row">
+                <Button 
+                  size="medium" 
+                  fullWidth 
+                  variant="outlined" 
+                  color="primary" 
+                  onClick={this.handleFollow}>
+                  {this.state.isFollowing ? '• U n f o l l o w •' : '• F o l l o w •'}
+                </Button>
+              </Grid>
+              <Grid item xs container direction="row" className="followers">
+                <Grid item xs>
+                  <Typography varient="p" color="primary">
+                    {user.created_photo.length} <br /> Posts
+                  </Typography>
                 </Grid>
-                <Box className="followers">
-                  <Grid item xs container direction="row" className="followers">
-                    <Grid item xs>
-                      <Typography varient="p" color="primary">
-                        {user.created_photo.length} <br /> Posts
-                      </Typography>
-                    </Grid>
-                    <Grid item xs>
-                      <Typography varient="p" color="primary">
-                        {user.followers.length} <br /> Followers
-                      </Typography>
-                    </Grid>
-                    <Grid item xs>
-                      <Typography varient="p" color="primary">
-                        {user.following.length} <br /> Following
-                      </Typography>
-                    </Grid>
-                  </Grid>
-                </Box>
+                <Grid item xs>
+                  <Typography varient="p" color="primary">
+                    {user.followers.length} <br /> Followers
+                  </Typography>
+                </Grid>
+                <Grid item xs>
+                  <Typography varient="p" color="primary">
+                    {user.following.length} <br /> Following
+                  </Typography>
+                </Grid>
               </Grid>
             </div>
           </Box>

@@ -2,8 +2,7 @@ import React from 'react'
 import ColorTheme from '../../../src/ColorTheme'
 import PhotoComments from './PhotoComments'
 import { showSinglePhoto } from '../../lib/api'
-
-import { ThemeProvider } from '@material-ui/core/styles'
+import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
 import { Typography, Box, Grid, Paper, Avatar, Divider, Container } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 

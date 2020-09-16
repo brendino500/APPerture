@@ -1,8 +1,7 @@
 import React from 'react'
 import ColorTheme from '../../../../src/ColorTheme'
-// import { render } from 'react-dom'
-import { Parallax } from 'react-parallax'
 import GitHubIcon from '@material-ui/icons/GitHub'
+import { Parallax } from 'react-parallax'
 import { IconButton } from '@material-ui/core'
 import { ThemeProvider } from '@material-ui/core/styles'
 

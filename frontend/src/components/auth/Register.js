@@ -1,33 +1,35 @@
 import React from 'react'
 import { registerUser } from '../../lib/api'
-import TextField from '@material-ui/core/TextField'
-import { makeStyles, createMuiTheme } from '@material-ui/core/styles'
-import Button from '@material-ui/core/Button'
-import Box from '@material-ui/core/Box'
-import Grid from '@material-ui/core/Grid'
+import { makeStyles } from '@material-ui/core/styles'
 import { Container,  CssBaseline, Avatar, Typography, ThemeProvider, Paper } from '@material-ui/core'
-import LockIcon from '@material-ui/icons/Lock'
 import { popupNotification } from '../../lib/notification'
 import { useHistory } from 'react-router-dom'
 import ColorTheme from '../../../src/ColorTheme'
+import LockIcon from '@material-ui/icons/Lock'
+import Button from '@material-ui/core/Button'
+import TextField from '@material-ui/core/TextField'
 
 const useStyles = makeStyles((theme) => ({
   typography: {
     fontFamily: 'Libre Baskerville'
   },
+
   paper: {
     marginTop: theme.spacing(8),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center'
   },
+
   avatar: {
     margin: theme.spacing(1)
   },
+
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: '100%',
     marginTop: theme.spacing(1)
   },
+  
   submit: {
     margin: theme.spacing(3, 0, 2)
   }
