@@ -98,7 +98,7 @@ class Profile extends React.Component {
 
     const { user } = this.state
 
-    if (!this.state.user) return null
+    if (!user) return null
 
     return (
       <ThemeProvider theme={ColorTheme}>

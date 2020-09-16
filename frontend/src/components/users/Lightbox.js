@@ -38,12 +38,12 @@ class Lightbox extends React.Component {
   }));
 
   async componentDidMount() {
-    const user = this.props.match.params.id
+    const photoID = this.props.match.params.id
     console.log('state user', this.state)
     try {
-      const res = await showSinglePhoto(user)
+      const res = await showSinglePhoto(photoID)
       this.setState({ photo: res.data, comments: res.data })
-      console.log(this.state)
+      // console.log(this.state)
     } catch (err) {
       this.props.history.push('/notfound')
     }
@@ -94,16 +94,6 @@ class Lightbox extends React.Component {
     console.log('state IMAGE', photo)
 
     if (!this.state.photo) return null
-  
-
-    // const popupboxConfig = {
-    //   titleBar: {
-    //     enable: true,
-    //     text: 'Popupbox Demo'
-    //   },
-    //   fadeIn: true,
-    //   fadeInSpeed: 500
-    // }
 
     console.log('lightbox comments', this.state.comments)
     return (

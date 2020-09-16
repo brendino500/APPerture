@@ -11,36 +11,31 @@ import FavoriteIcon from '@material-ui/icons/Favorite'
 import MessageIcon from '@material-ui/icons/Message'
 
 
-function PhotoComments()  {
-  let [like, setLike] = React.useState(false)
-  const [comments, setComments] = React.useState('')
-  const [commentData, setCommentData] = React.useState('')
-  // const { photoComments } = this.props
+function PhotoComments({ photoComments })  {
+
+  console.log('OBJECT', photoComments)
+
+  const [like, setLike] = React.useState(false)
+  const [comments, setComments] = React.useState([])
   const { id: currentPhotoId } = useParams()
 
-  
+
+  const getData = async () => {
+    const res = await showSinglePhoto(photoComments.id)
+    // console.log('CHECK RESPONSE', res.data)
+    setComments(res.data.comments)
+    console.log('RESPONSE', res.data.comments)
+  }
+
   React.useEffect(() => {
-    const currentUserId = getUserId()
-    const loggedIn = isAuthenticated()
-    if (!loggedIn) {
-      setComments('')
-    } else {
-      const res = getUser(currentUserId)
-      setComments(res.data)
-    }
-
-    // const commentRes = showSinglePhoto(currentUserId)
-    // console.log('commentRes', commentRes)
-
+    getData()
   },[])
 
-  const handleChange = e => {
-    setComments(e.target.value)
-  }
 
   const handleSubmit = async e => {
     if (e.keyCode === 13) {
       await addPhotoComment({ text: e.target.value, photo: currentPhotoId })
+      getData()
     }
   }
 
@@ -48,15 +43,30 @@ function PhotoComments()  {
     setLike(!like)
   }
 
-  console.log('comments', comments)
+  console.log(comments)
 
   return (
     <>
       <ThemeProvider theme={ColorTheme}>
         <Grid container spacing={2}>
           <Box className="photo comments">
-            {}
-
+            <Grid item md container direction="column" >
+              {comments.map(comment => (
+                <div key={comment.id}>
+                  <Avatar 
+                    alt="Userprofilephoto" 
+                    src={comment.owner.profile_image} 
+                    className="profile-avatar"
+                  />
+                  <Typography>
+                    @{comment.owner.username}
+                  </Typography>
+                  <Typography>
+                    {comment.text}
+                  </Typography>
+                </div>
+              ))}
+            </Grid>
             <IconButton aria-label="favourite">
               {(() => {
                 if (like) {
@@ -80,32 +90,15 @@ function PhotoComments()  {
               fullWidth
               color="primary"
               label="Add a comment..." 
-              onChange={handleChange}
               onKeyDown={handleSubmit}
               variant="outlined" />
           </Box>
         </Grid>
       </ThemeProvider>
-
     </>
 
   )
 }
 
 export default PhotoComments
-
-
-
-// const myFunction = () =>{
-//   console.log('hello bebe')
-// }
-
-// myFunction();
-
-// addEventListener('click', myFunction)
-
-
-// (() => {
-//   console.log('hello bebe')
-// })()
 
