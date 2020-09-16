@@ -17,17 +17,19 @@ $font-family: 'Libre Baskerville', serif;
   align-items: center;
 }
 
-#root > main > main > div > form > label > span.MuiTypography-root.MuiFormControlLabel-label.MuiTypography-body1 {
+#root > main > main > div > div > form > label > span.MuiTypography-root.MuiFormControlLabel-label.MuiTypography-body1 {
   font-family: $font-family;
   font-size: 12px;
 }
 
-#root > main > main > div > form > div.MuiGrid-root.MuiGrid-container > div > a > p {
+#root > main > main > div > div > form > div.MuiGrid-root.MuiGrid-container > div > a > p {
   font-family: $font-family;
   font-size: 14px;
   color: #575757;
+  text-align: center;
 }
 
 #root > main > main > div > form > button > span.MuiButton-label{
   font-family: $font-family;
 }
+

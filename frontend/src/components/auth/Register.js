@@ -71,17 +71,12 @@ function Register() {
   return (
     <ThemeProvider theme={ColorTheme}>
       <Container component="main" maxWidth="xs">
-
-
         <CssBaseline />
         <Paper elevation={3} color="primary">
-
-        
           <div className={classes.paper}>
             <Avatar className={classes.avatar}>
               <LockIcon />
             </Avatar>
-      
             <Typography component="h1" variant="h5">
         Register
             </Typography>

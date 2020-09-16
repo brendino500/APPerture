@@ -74,65 +74,69 @@ function Login() {
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Paper elevation={3} color="primary">
-          <Avatar align={classes.avatar.align} color="primary">
-            <PersonIcon />
-          </Avatar>
-
-          <Typography align="center" component="h1" variant="h5" color="secondary">
+          <div className={classes.paper}>
+            <Avatar align={classes.avatar} color="primary">
+              <PersonIcon />
+            </Avatar>
+            <Typography align="center" component="h1" variant="h5" color="secondary">
           Sign in
-          </Typography>
-          <form onSubmit={handleSubmit} className={classes.form} noValidate>
-            <TextField
-              variant="outlined"
-              color="primary"
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email"
-              name="email"
-              autoComplete="email"
-              autoFocus
-              onChange={handleChange}
-              value={state.email}
-            />
-            <TextField
-              color="primary"
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              onChange={handleChange}
-              value={state.password}
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="secondary"
-              className={classes.submit}
-            >
+            </Typography>
+            <form 
+              onSubmit={handleSubmit} 
+              className={classes.form} 
+              noValidate>
+              <TextField
+                variant="outlined"
+                color="primary"
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email"
+                name="email"
+                autoComplete="email"
+                autoFocus
+                onChange={handleChange}
+                value={state.email}
+              />
+              <TextField
+                color="primary"
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                onChange={handleChange}
+                value={state.password}
+              />
+              <FormControlLabel
+                control={<Checkbox value="remember" color="primary" />}
+                label="Remember me"
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="secondary"
+                className={classes.submit}
+              >
             Sign In
-            </Button>
-            <Grid container>
-              <Grid item>
-                <Link to="/register/" color="primary">
-                  <Typography color="secondary" alignItems="center" varient="subtitle2">
+              </Button>
+              <Grid container>
+                <Grid item>
+                  <Link to="/register/" color="primary">
+                    <Typography color="secondary" alignItems="center" varient="subtitle2">
                     Don't have an account? Register here
-                  </Typography>
-                </Link>
+                    </Typography>
+                  </Link>
+                </Grid>
               </Grid>
-            </Grid>
-          </form>
+            </form>
+          </div>
         </Paper>
       </Container>
     </ThemeProvider>
