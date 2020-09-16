@@ -12,6 +12,13 @@ export default createMuiTheme({
     typography: {
       fontFamily: '\'Libre Baskerville\', serif',
       textTransform: 'none'
+    },
+    overrides: {
+      MuiTypography: {
+        text: {
+          fontFamily: 'Libre Baskerville'
+        }
+      }
     }
     // primary: { 400: '#bdbdbd' },
     // primary2Color: { 400: '#bdbdbd' },

@@ -19,7 +19,7 @@ import GridListTileBar from '@material-ui/core/GridListTileBar'
 import EditIcon from '@material-ui/icons/Edit'
 
 import { Link } from 'react-router-dom'
-import { ThemeProvider } from '@material-ui/core/styles'
+import { ThemeProvider,  createMuiTheme } from '@material-ui/core/styles'
 import { getUser, followUser } from '../../lib/api'
 import { getUserId } from '../../lib/auth'
 
@@ -91,13 +91,13 @@ class Profile extends React.Component {
     }
   }
 
+
   render() {
     // console.log(this.state.user)
     console.log('Are you this person?', this.state.isViewersProfile)
     console.log('Are you following?', this.state.isFollowing)
 
     const { user } = this.state
-
     if (!this.state.user) return null
 
     return (
@@ -123,7 +123,7 @@ class Profile extends React.Component {
                   </Link>
                 </ButtonBase>}
                 <Grid item xs container direction="column" spacing={2}>
-                  <Typography varient="h1" color="primary">
+                  <Typography varient="h1" color="primary" className={ColorTheme.typography}>
                       @{user.username}
                   </Typography>
                   <Typography varient="subtitle1" color="primary">
