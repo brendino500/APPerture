@@ -61,12 +61,24 @@ class Lightbox extends React.Component {
                       <Link to={`/profile/${photo.owner.id}`}>
                         <Grid item xs>
                           <Avatar alt="profile avatar" src={photo.owner.profile_image} />
-                          <Typography varient="h1" color="secondary">
+                          <Typography 
+                            varient="h1" 
+                            color="secondary"
+                            style={{
+                              fontSize: '18px',
+                              marginTop: '5px',
+                              fontFamily: 'Libre Baskerville' }}>
                             @{photo.owner.username}
                           </Typography>
                         </Grid>
                       </Link>
-                      <Typography varient="subtitle1" color="secondary">
+                      <Typography 
+                        varient="subtitle1" 
+                        color="secondary"
+                        style={{
+                          marginTop: '5px',
+                          fontSize: '12px',
+                          fontFamily: 'Libre Baskerville' }}>
                         {photo.location}
                       </Typography>
                       <Divider />

@@ -1,37 +1,16 @@
 import React from 'react'
 import ProfileMap from './ProfileMap'
 import ColorTheme from '../../../src/ColorTheme'
-import Lightbox from '../users/Lightbox'
-
-import Container from '@material-ui/core/Container'
-import Grid from '@material-ui/core/Grid'
-import Divider from '@material-ui/core/Divider'
-import Box from '@material-ui/core/Box'
-import ButtonBase from '@material-ui/core/ButtonBase'
-import Typography from '@material-ui/core/Typography'
-import ButtonGroup from '@material-ui/core/ButtonGroup'
-import Button from '@material-ui/core/Button'
-import AppsIcon from '@material-ui/icons/Apps'
-import Avatar from '@material-ui/core/Avatar'
-import RoomIcon from '@material-ui/icons/Room'
-import GridListTile from '@material-ui/core/GridListTile'
-import GridList from '@material-ui/core/GridList'
-import GridListTileBar from '@material-ui/core/GridListTileBar'
-import EditIcon from '@material-ui/icons/Edit'
-import PhotoCamera from '@material-ui/icons/PhotoCamera'
-
-
-import Modal from '@material-ui/core/Modal'
-import Backdrop from '@material-ui/core/Backdrop'
-import Fade from '@material-ui/core/Fade'
-
-import { makeStyles } from '@material-ui/core/styles'
 import { Link } from 'react-router-dom'
 import { popupNotification } from '../../lib/notification'
-import { ThemeProvider } from '@material-ui/core/styles'
 import { getUser, followUser } from '../../lib/api'
 import { getUserId } from '../../lib/auth'
 
+import { ThemeProvider } from '@material-ui/core/styles'
+import { Container, Grid, Divider, Box, ButtonBase, Typography, ButtonGroup, Button, Avatar, GridListTile, GridList, GridListTileBar } from '@material-ui/core'
+import EditIcon from '@material-ui/icons/Edit'
+import AppsIcon from '@material-ui/icons/Apps'
+import RoomIcon from '@material-ui/icons/Room'
 
 class Profile extends React.Component {
   state = { 
