@@ -137,7 +137,12 @@ class Profile extends React.Component {
                         }}/>
                     </Link>
                   </ButtonBase>}
-                  <Grid item xs container direction="column" spacing={2}>
+                  <Grid 
+                    item xs container 
+                    direction="column" 
+                    style={{
+                      padding: '10px'
+                    }}>
                     <Typography 
                       color="primary" 
                       className={ColorTheme.typography}
@@ -180,19 +185,47 @@ class Profile extends React.Component {
                 </Grid>
               </div>
               <div className="follow-info">
-                <Grid item xs container direction="row" className="followers">
+                <Grid 
+                  item 
+                  xs 
+                  container 
+                  direction="row" 
+                  className="followers"
+                  style={{
+                    padding: '8px'
+                  }}>
                   <Grid item xs>
-                    <Typography varient="p" color="primary">
+                    <Typography 
+                      color="primary"
+                      style={{
+                        fontSize: '18px',
+                        textAlign: 'center',
+                        fontFamily: 'Libre Baskerville'
+                      }}>
                       {user.created_photo.length} <br /> Posts
                     </Typography>
                   </Grid>
                   <Grid item xs>
-                    <Typography varient="p" color="primary">
+                    <Typography 
+                      varient="p" 
+                      color="primary"
+                      style={{
+                        fontSize: '18px',
+                        fontFamily: 'Libre Baskerville',
+                        textAlign: 'center'
+                      }}>
                       {user.followers.length} <br /> Followers
                     </Typography>
                   </Grid>
                   <Grid item xs>
-                    <Typography varient="p" color="primary">
+                    <Typography 
+                      varient="p" 
+                      color="primary"
+                      style={{
+                        fontSize: '18px',
+                        fontFamily: 'Libre Baskerville',
+                        textAlign: 'center'
+                      }}>
                       {user.following.length} <br /> Following
                     </Typography>
                   </Grid>
@@ -225,6 +258,10 @@ class Profile extends React.Component {
                       <Link to={`/photos/${tile.id}`}>
                         <img src={tile.image} alt={tile.title} />
                         <GridListTileBar
+                          style={{
+                            fontSize: '18px',
+                            fontFamily: 'Libre Baskerville'
+                          }}
                           title={tile.location}
                         />
                       </Link>
