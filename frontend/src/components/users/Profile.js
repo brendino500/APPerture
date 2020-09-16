@@ -114,7 +114,7 @@ class Profile extends React.Component {
           <Box component="span" className="profile-info">
             <div className="profile-info">
               <Grid className="profile-photo-followers">
-                <Grid item md container direction="row"  spacing={1} p={3}>
+                <Grid item md container direction="row">
                   <ButtonBase className="profile-image">
                     <Avatar 
                       alt="Userprofilephoto" 
@@ -122,20 +122,37 @@ class Profile extends React.Component {
                       className="profile-avatar"
                       style={{
                         width: '130px',
-                        height: '130px' }}
+                        height: '130px', 
+                        margin: '10px' }}
                     />
                   </ButtonBase>
                   {this.state.isViewersProfile &&                 
                   <ButtonBase className="edit profile">
                     <Link to={`/profile/${user.id}/edit`}>
-                      <EditIcon color="primary" />
+                      <EditIcon 
+                        color="primary"
+                        style={{
+                          padding: '10px',
+                          margin: '10px'
+                        }}/>
                     </Link>
                   </ButtonBase>}
                   <Grid item xs container direction="column" spacing={2}>
-                    <Typography varient="h1" color="primary" className={ColorTheme.typography}>
+                    <Typography 
+                      color="primary" 
+                      className={ColorTheme.typography}
+                      style={{
+                        fontSize: '26px',
+                        fontFamily: 'Libre Baskerville'
+                      }}>
                       @{user.username}
                     </Typography>
-                    <Typography varient="subtitle1" color="primary">
+                    <Typography 
+                      varient="subtitle1" 
+                      color="primary"
+                      style={{
+                        fontSize: '20px'
+                      }}>
                       {user.first_name} {user.last_name}
                     </Typography>
                     <Typography varient="subtitle2" color="primary">
@@ -150,33 +167,37 @@ class Profile extends React.Component {
                   <Divider />
                 </Grid>
               </Grid>
-              <Grid item xs container direction="row">
-                <Button 
-                  size="medium" 
-                  fullWidth 
-                  variant="outlined" 
-                  color="primary" 
-                  onClick={this.handleFollow}>
-                  {this.state.isFollowing ? '• U n f o l l o w •' : '• F o l l o w •'}
-                </Button>
-              </Grid>
-              <Grid item xs container direction="row" className="followers">
-                <Grid item xs>
-                  <Typography varient="p" color="primary">
-                    {user.created_photo.length} <br /> Posts
-                  </Typography>
+              <div className="follow-button">
+                <Grid item xs container direction="row">
+                  <Button 
+                    size="medium" 
+                    fullWidth 
+                    variant="outlined" 
+                    color="primary" 
+                    onClick={this.handleFollow}>
+                    {this.state.isFollowing ? '• U n f o l l o w •' : '• F o l l o w •'}
+                  </Button>
                 </Grid>
-                <Grid item xs>
-                  <Typography varient="p" color="primary">
-                    {user.followers.length} <br /> Followers
-                  </Typography>
+              </div>
+              <div className="follow-info">
+                <Grid item xs container direction="row" className="followers">
+                  <Grid item xs>
+                    <Typography varient="p" color="primary">
+                      {user.created_photo.length} <br /> Posts
+                    </Typography>
+                  </Grid>
+                  <Grid item xs>
+                    <Typography varient="p" color="primary">
+                      {user.followers.length} <br /> Followers
+                    </Typography>
+                  </Grid>
+                  <Grid item xs>
+                    <Typography varient="p" color="primary">
+                      {user.following.length} <br /> Following
+                    </Typography>
+                  </Grid>
                 </Grid>
-                <Grid item xs>
-                  <Typography varient="p" color="primary">
-                    {user.following.length} <br /> Following
-                  </Typography>
-                </Grid>
-              </Grid>
+              </div>
             </div>
           </Box>
           <br />

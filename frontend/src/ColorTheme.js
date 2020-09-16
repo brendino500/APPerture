@@ -11,7 +11,16 @@ export default createMuiTheme({
     },
     typography: {
       fontFamily: '\'Libre Baskerville\', serif',
-      textTransform: 'none'
+      textTransform: 'none',
+      h1: {
+        fontSize: 20
+      },
+      p: {
+        fontSize: 10
+      },
+      subtitle1: {
+        fontSize: 15
+      }
     },
     overrides: {
       MuiTypography: {
