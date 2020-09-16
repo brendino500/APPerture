@@ -22,9 +22,6 @@ import { fade, makeStyles } from '@material-ui/core/styles'
 import { Link, useHistory, useLocation } from 'react-router-dom'
 import { popupNotification } from '../../lib/notification'
 import { logout, isAuthenticated, getUserId } from '../../lib/auth'
-import { TripOriginSharp } from '@material-ui/icons'
-import { getAllPhotos } from '../../lib/api'
-// import { notification } from 'antd'
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -226,13 +223,8 @@ function Navbar() {
     </ThemeProvider>
   )
 
-  // console.log('User Authenticated CHECK', isAuthenticated())
-  // console.log('USER ID', userID)
-  // console.log(search)
-
   return (
     <div className={classes.grow}>
-      {/* <p>You clicked {String(isAuthenticated())} times</p> */}
       <AppBar position="static" style={{ backgroundColor: 'transparent', color: 'white', boxShadow: '0px 0px 0px 0px' }}>
         <Toolbar>
           <IconButton
@@ -252,7 +244,7 @@ function Navbar() {
             </div>
             <InputBase
               name="search"
-              placeholder="Search…"
+              placeholder="Search by location..."
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput

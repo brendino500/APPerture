@@ -1,10 +1,9 @@
 import React from 'react'
 import ColorTheme from '../../../src/ColorTheme'
+import PersonIcon from '@material-ui/icons/Person'
 import { popupNotification } from '../../lib/notification'
 import { loginUser } from '../../lib/api'
 import { setToken } from '../../lib/auth'
-
-import PersonIcon from '@material-ui/icons/Person'
 import { Avatar, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Grid, Typography, Container, Paper } from '@material-ui/core'
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
 import { Link, useHistory } from 'react-router-dom'
@@ -17,18 +16,22 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center'
   },
+
   avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
     alignItems: 'center'
   },
+
   marginAutoItem: {
     margin: 'auto'
   },
+
   form: {
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(1)
   },
+  
   submit: {
     margin: theme.spacing(3, 0, 2)
   }

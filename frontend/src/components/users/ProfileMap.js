@@ -36,7 +36,6 @@ class ProfileMap extends React.Component {
 
   render() {
     // console.log(data)
-    // photo was destructured
     const { viewport } = this.state
     return (
       <div className="profile-mapbox">

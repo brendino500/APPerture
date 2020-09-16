@@ -1,11 +1,11 @@
 
 import React from 'react'
 import { config } from 'react-spring/renderprops'
+import { getAllPhotos } from '../../lib/api'
 import Grid from './Grid'
+import Cell from './Cell'
 import './styles.css'
 import 'antd/dist/antd.css'
-import Cell from './Cell'
-import { getAllPhotos } from '../../lib/api'
 
 class ParallaxGrid extends React.Component {
   state = { data: [] }

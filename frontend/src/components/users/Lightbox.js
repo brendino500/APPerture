@@ -1,13 +1,9 @@
 import React from 'react'
 import ColorTheme from '../../../src/ColorTheme'
 import PhotoComments from './PhotoComments'
-import { PopupboxManager, PopupboxContainer } from 'react-popupbox'
 import { showSinglePhoto } from '../../lib/api'
-
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
-import MessageIcon from '@material-ui/icons/Message'
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
-import { Typography, Box, Grid, Paper, Avatar, TextField, Divider, IconButton, Container } from '@material-ui/core'
+import { Typography, Box, Grid, Paper, Avatar, Divider, Container } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 
 class Lightbox extends React.Component {

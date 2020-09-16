@@ -1,10 +1,8 @@
 import React from 'react'
 import ColorTheme from '../../../src/ColorTheme'
-import { getUserId } from '../../lib/auth'
-import { getUser, addPhotoComment, showSinglePhoto } from '../../lib/api'
-import { isAuthenticated } from '../../lib/auth'
+import { addPhotoComment, showSinglePhoto } from '../../lib/api'
 import { Typography, Avatar, Grid, TextField, IconButton, Box } from '@material-ui/core'
-import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
+import { ThemeProvider } from '@material-ui/core/styles'
 import { useParams, Link } from 'react-router-dom'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
 import FavoriteIcon from '@material-ui/icons/Favorite'
@@ -30,7 +28,6 @@ function PhotoComments({ photoComments })  {
     getData()
   },[])
 
-
   const handleSubmit = async e => {
     if (e.keyCode === 13) {
       await addPhotoComment({ text: e.target.value, photo: currentPhotoId })
@@ -41,7 +38,6 @@ function PhotoComments({ photoComments })  {
   const handleToggle = () => {
     setLike(!like)
   }
-
 
   console.log(comments)
 

@@ -19,7 +19,8 @@ import GridListTileBar from '@material-ui/core/GridListTileBar'
 import EditIcon from '@material-ui/icons/Edit'
 
 import { Link } from 'react-router-dom'
-import { ThemeProvider,  createMuiTheme } from '@material-ui/core/styles'
+import { popupNotification } from '../../lib/notification'
+import { ThemeProvider } from '@material-ui/core/styles'
 import { getUser, followUser } from '../../lib/api'
 import { getUserId } from '../../lib/auth'
 
@@ -45,6 +46,9 @@ class Profile extends React.Component {
       })
     } catch (err) {
       console.log(err)
+      popupNotification('Login to access Profiles')
+      this.props.history.push('/login')
+
     }
   }
 
@@ -90,7 +94,6 @@ class Profile extends React.Component {
       }
     }
   }
-
 
   render() {
     // console.log(this.state.user)
@@ -138,7 +141,6 @@ class Profile extends React.Component {
                 </Grid>
               </Grid>
               <Grid item xs container direction="row">
-
                 <Button 
                   size="medium" 
                   fullWidth 
@@ -196,7 +198,6 @@ class Profile extends React.Component {
                         />
                       </Link>
                     </GridListTile>
-                    
                   ))}
                 </GridList>
               </section>
