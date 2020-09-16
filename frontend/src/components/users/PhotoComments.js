@@ -62,11 +62,21 @@ function PhotoComments({ photoComments })  {
                       </Grid>
                       <Grid item md zeroMinWidth spacing={2}>
                         <Link to={`/profile/${comment.owner.id}`}>
-                          <Typography color="secondary" spacing={8} varient="subtitle1">
+                          <Typography 
+                            color="secondary"  
+                            style={{
+                              fontWeight: 'bold',
+                              fontFamily: 'Libre Baskerville' }}
+                          >
                             @{comment.owner.username}
                           </Typography>
                         </Link>
-                        <Typography color="secondary" spacing={2}>
+                        <Typography 
+                          color="secondary" 
+                          spacing={2}
+                          style={{
+                            fontSize: '16px'
+                          }}>
                           {comment.text}
                         </Typography>
                       </Grid>
@@ -75,31 +85,40 @@ function PhotoComments({ photoComments })  {
                 </div>
               ))}
             </Grid>
-            <IconButton aria-label="favourite">
-              {(() => {
-                if (like) {
-                  return <FavoriteIcon
-                    color="secondary"
-                    onClick={handleToggle}
-                  />
-                } else {
-                  return <FavoriteBorderIcon 
-                    color="secondary"
-                    onClick={handleToggle}
-                  />
-                }
-              })()}
-            </IconButton>
-            <IconButton aria-label="comment">
-              <MessageIcon color="secondary"/>
-            </IconButton>
-            <TextField 
-              id="outlined-basic" 
-              fullWidth
-              color="primary"
-              label="Add a comment..." 
-              onKeyDown={handleSubmit}
-              variant="outlined" />
+            <Grid 
+              style={{
+                marginTop: '65%'
+              }}>
+              <IconButton aria-label="favourite">
+                {(() => {
+                  if (like) {
+                    return <FavoriteIcon
+                      color="secondary"
+                      onClick={handleToggle}
+                    />
+                  } else {
+                    return <FavoriteBorderIcon 
+                      color="secondary"
+                      onClick={handleToggle}
+                    />
+                  }
+                })()}
+              </IconButton>
+              <IconButton aria-label="comment">
+                <MessageIcon color="secondary"/>
+              </IconButton>
+              <TextField 
+                id="outlined-basic" 
+                fullWidth
+                color="primary"
+                label="Only say nice things..." 
+                onKeyDown={handleSubmit}
+                variant="outlined" 
+                style={{
+                  width: '100%'
+                }}
+              />
+            </Grid>
           </Grid>
         </Box>
       </Grid>

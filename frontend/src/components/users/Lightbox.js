@@ -40,7 +40,11 @@ class Lightbox extends React.Component {
 
     return (
       <ThemeProvider theme={ColorTheme}>
-        <Container maxWidth="lg" spacing={4} fixed>
+        <Container 
+          spacing={4} 
+          fixed style={{
+            width: '70%'
+          }}>
           <Box
             mx="auto"
             component="span"
@@ -91,6 +95,7 @@ class Lightbox extends React.Component {
           </Box>
         </Container>
         <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
       </ThemeProvider>
     )
   }
