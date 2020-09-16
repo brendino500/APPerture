@@ -12,6 +12,9 @@ import { useHistory } from 'react-router-dom'
 import ColorTheme from '../../../src/ColorTheme'
 
 const useStyles = makeStyles((theme) => ({
+  typography: {
+    fontFamily: 'Libre Baskerville'
+  },
   paper: {
     marginTop: theme.spacing(8),
     display: 'flex',
