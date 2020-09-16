@@ -1,3 +1,15 @@
 #root > main > div.box > div > div > div > div.MuiGrid-root.MuiGrid-container.MuiGrid-item.MuiGrid-grid-xs-12.MuiGrid-grid-sm-true > div > div > a > div > p {
   color: #bdbdbd;
 }
+
+#root > main > div.MuiContainer-root.MuiContainer-fixed.MuiContainer-maxWidthLg {
+  margin-top: 10%;
+}
+
+#root > main > div.MuiContainer-root.MuiContainer-fixed.MuiContainer-maxWidthLg > span > div > div > div.MuiGrid-root.MuiGrid-container.MuiGrid-item.MuiGrid-grid-xs-12.MuiGrid-grid-sm-true > div > div {
+  margin: 10px;
+}
+
+#root > main > div.MuiContainer-root.MuiContainer-fixed.MuiContainer-maxWidthLg > span > div > div > div.MuiGrid-root.photo-image > img {
+  padding: 5px;
+}
