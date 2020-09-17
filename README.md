@@ -1,7 +1,11 @@
 # General Assembly SEI-49 | Project 4 - APPerture 
 
-![demo](http://g.recordit.co/N0aH7UBEFW.gif)
-<!-- ![demo](http://g.recordit.co/GsFoLhxTGU.gif) -->
+![demo1](readMeImages/AppertureDemo1.gif)
+Parallax feature and sign in behavior.
+<br />
+
+![demo](readMeImages/AppertureDemo2.gif)
+Profile features.
 
 ## Technical brief
 * **Build a full-stack application** by making your own Backend and Frontend.
