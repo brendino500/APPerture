@@ -10,8 +10,6 @@ import MessageIcon from '@material-ui/icons/Message'
 
 function PhotoComments({ photoComments })  {
 
-  console.log('OBJECT', photoComments)
-
   const [like, setLike] = React.useState(false)
   const [comments, setComments] = React.useState([])
   const { id: currentPhotoId } = useParams()
@@ -19,9 +17,7 @@ function PhotoComments({ photoComments })  {
 
   const getData = async () => {
     const res = await showSinglePhoto(photoComments.id)
-    // console.log('CHECK RESPONSE', res.data)
     setComments(res.data.comments)
-    console.log('RESPONSE', res.data.comments)
   }
 
   React.useEffect(() => {
@@ -38,8 +34,6 @@ function PhotoComments({ photoComments })  {
   const handleToggle = () => {
     setLike(!like)
   }
-
-  console.log(comments)
 
   return (
     <ThemeProvider theme={ColorTheme}>

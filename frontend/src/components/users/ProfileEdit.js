@@ -25,7 +25,7 @@ const initialState = {
 function ProfileEdit() {
   const history = useHistory()
   const [state, setState] = React.useState(initialState)
-  // console.log('state data', state.data)
+  
   React.useEffect(() => {
     const currentUserId = getUserId()
     console.log('Current User ID is: ', currentUserId)
@@ -35,9 +35,7 @@ function ProfileEdit() {
     } else {
       const getCurrentUser = async () => {
         const res = await getUser(currentUserId)
-        // console.log('res data', res.data)
         setState({ data: res.data })
-        // console.log('res', res)
       }
       getCurrentUser()
     }
@@ -45,11 +43,9 @@ function ProfileEdit() {
 
   const handleChange = e => {
     const data = { ...state.data, [e.target.name]: e.target.value }
-    // console.log('Info check', state.data)
     const errors = { ...state.errors, [e.target.name]: '' }
     setState({ data, errors })
   }
-  // console.log('state', state.data)
 
   const handleSubmit = async e => {
     e.preventDefault()
@@ -60,7 +56,6 @@ function ProfileEdit() {
       // popupNotification(res.data.message)
       history.push(`/profile/${currentUserId}`)
     } catch (err) {
-      // console.log('err', err)
       // setState({ errors: err.response.data.errors })
       popupNotification('All fields are needed or wrong inputs')
     }

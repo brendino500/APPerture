@@ -104,14 +104,12 @@ function Navbar() {
 
   const [anchorEl, setAnchorEl] = React.useState(null)
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null)
-
   const [search, setSearch] = React.useState('')
 
   const isMenuOpen = Boolean(anchorEl)
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl)
 
   React.useEffect(() => {
-    // if you aren't redirecting to a /photo
     if (!location.pathname.startsWith('/photo')) {
       // set state to
       setSearch('')

@@ -64,9 +64,7 @@ function Login() {
       setToken(res.data.token)
       popupNotification(res.data.message)
       history.push('/photos')
-      // console.log('handle submit data ', res.data)
     } catch (err) {
-      // console.log(err)
       setState({ errors: err.response.data.errors })
       popupNotification('Wrong Credentials')
     }
