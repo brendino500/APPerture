@@ -35,12 +35,33 @@
 	* Navigate to [http://localhost:8000/](http://localhost:8000/)
 	* Open the frontend `code frontend` in your terminal
 	* Type `npm i` in your terminal to dl dependencies then `npm start`
-<br />
+<br/>
 <br />
 
+---
+
 **We chose to work in a pair** because our previous project raised the difficulties to work in group which is a point we wanted to be prepared for.  Therefore, we decided to exposed ourselves to the market reality and the collaboration requirements.  Subsequently, the planning and attribution of tasks was essential to us which allowed to keep this project objectives clear.
+
+---
+<br />
+
+**The project idea rapidly took form** as we both had a similar vision on the final render & UX.  
+Our appreciation for photography was the starting point of our brain storming and led to us to revisit a market reference App: Instagram. Excited by some of its functionalities, we decided to challenge ourselves and work our project around them.
+<br />
+
+![wireframe](readMeImages/miro.png)
+
+<br/>
+
+Establishing the Relationship Diagram & setting up our Backend accordingly was the very first obstacle.
 <br/>
 
 ![wireframe](readMeImages/graphic.png)
 
-<br/>
+<br />
+
+The logic related to the ‘Following - Follower’ gave us a hard time! With some help, we came up with a solution that made this challenge mentally rewarding. 
+
+<br />
+
+![wireframe](readMeImages/profileViewBackend.png)
