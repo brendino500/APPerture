@@ -1,6 +1,7 @@
 # General Assembly SEI-49 | Project 4 - APPerture 
 
-![demo](http://g.recordit.co/6Tw8JkNG94.gif)
+![demo](http://g.recordit.co/irvdZkiitD.gif)
+![demo](http://g.recordit.co/GsFoLhxTGU.gif)
 
 ## Technical brief
 * **Build a full-stack application** by making your own Backend and Frontend.
