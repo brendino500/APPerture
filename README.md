@@ -41,7 +41,7 @@ Profile features.
 
 ## :trident: Overview
 
-- The App is hosted [here]()
+- The App is hosted [here](http://apperture-project.herokuapp.com/)
 - Else, kindly clone or fork the repository:
   _ To install all the packages listed in the package.json: —> `npm i`  
    _ Navigate into the shell -> `pipenv shell`
