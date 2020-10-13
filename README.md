@@ -54,7 +54,7 @@ Profile features.
 
 ---
 
-**We chose to work in a pair** because our previous project raised the difficulties to work in group which is a point we wanted to be prepared for. Therefore, we decided to exposed ourselves to the market reality and the collaboration requirements. Subsequently, the planning and attribution of tasks was essential to us which allowed to keep this project objectives clear.
+**We chose to work in a pair** because our previous project raised the difficulties to work in group which is a point we wanted to be prepared for. Therefore, we decided to expose ourselves to the market reality and the collaboration requirements. Subsequently, the planning and attribution of tasks were essential to us which allowed to keep this project objectives clear.
 
 ---
 
@@ -89,7 +89,7 @@ The logic related to the ‘Following - Follower’ gave us a hard time! With so
 
 **ReactJS gave us food for thoughts** as we wanted to use another technology than Bulma (previous project).
 <br />
-Intrigued by the substantial functionalities and the documentation of Material UI, we had to allocate some time to verify that our current knowledge would allow us to implement it. Material UI requires React Hooks which was only optional in our brief. Our decision was risky but the learning curve is what mattered most to us, therefore we settled on Material UI along with React Hooks.
+Intrigued by the **substantial functionalities and the documentation of Material UI**, we had to allocate some time to verify that our current knowledge would allow us to implement it. **Material UI requires React Hooks which was only optional in our brief**. Our decision was risky but the **learning curve is what mattered most to us**, therefore we settled on Material UI along with React Hooks.
 
 <img src="readMeImages/photoComments.png" width="500" />
 <img src="readMeImages/materiaUIExample.png" width="500" />
@@ -97,6 +97,25 @@ Intrigued by the substantial functionalities and the documentation of Material U
 <br />
 
 ---
+
+## :weight_lifting_man: Challenges
+
+- After only a **week and a half of learning both Python and Django**, we felt this was the most important part of the project. We spent the most time figuring out the backend as we really wanted to do this right.
+
+- The tables and relationships was also another tricky idea to code and implement.
+
+---
+
+## :collision: Highlights
+
+- Using **Material UI** which forced us to implement React Hooks was an **incredible challenge**, but a successful one.
+
+- The use of **Parallax** on our homepage as well as the content view made a powerful impact. Again, something which was **hard to implement** but one which was very rewarding.
+
+- As we worked on previous 48 hour project together **we weren't the strongest at styling or CSS**. That project was six weeks prior to this, and **this showcases how much we have both progressed with our learning, understanding and implementing of code. **
+
+<img src="https://i.ibb.co/9q2tPMP/Screenshot-2020-10-13-at-15-55-50.png" alt="styling example" />
+<img src="https://i.ibb.co/SwYJF3R/Screenshot-2020-10-13-at-15-56-17.png" alt="styling example "width="500" />
 
 ## :high_brightness: Used Resources
 
