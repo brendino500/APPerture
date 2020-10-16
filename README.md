@@ -112,7 +112,7 @@ Intrigued by the **substantial functionalities and the documentation of Material
 
 - The use of **Parallax** on our homepage as well as the content view made a powerful impact. Again, something which was **hard to implement** but one which was very rewarding.
 
-- As we worked on previous 48 hour project together **we weren't the strongest at styling or CSS**. That project was six weeks prior to this, and **this showcases how much we have both progressed with our learning, understanding and implementing of code. **
+- As we worked on previous 48 hour project together **we weren't the strongest at styling or CSS**. That project was six weeks prior to this, and **this showcases how much we have both progressed with our learning, understanding and implementing of code.**
 
 <img src="https://i.ibb.co/9q2tPMP/Screenshot-2020-10-13-at-15-55-50.png" alt="styling example" />
 <img src="https://i.ibb.co/SwYJF3R/Screenshot-2020-10-13-at-15-56-17.png" alt="styling example "width="500" />
