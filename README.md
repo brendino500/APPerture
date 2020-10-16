@@ -54,7 +54,15 @@ Profile features.
 
 ---
 
+## :writing_hand: Process
+
 **We chose to work in a pair** because our previous project raised the difficulties to work in group which is a point we wanted to be prepared for. Therefore, we decided to expose ourselves to the market reality and the collaboration requirements. Subsequently, the planning and attribution of tasks were essential to us which allowed to keep this project objectives clear.
+
+We decided to **pair code directly through VSCode live share while being on Zoom every day** to be exposed to today’s market working methods. Doing so **enhanced our ability to communicate through the various daily objectives or issues encountered** while working on separated components which was incredibly efficient.
+
+This working method allowed us to **test & validate our codes**, therefore confirmed our ideas  instantly which optimised our productivity.
+
+Instead of debugging any pushed commits on the development branch that would trigger merging conflicts, we were resolving them as we were testing our components.
 
 ---
 
